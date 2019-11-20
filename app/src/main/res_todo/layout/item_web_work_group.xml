@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/white"></View>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textSize="18sp"
+            tools:text="工作"
+            />
+
+        <ImageView
+            android:id="@+id/iv_options"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/ic_more_vert_grey_600_24dp"/>
+    </FrameLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>

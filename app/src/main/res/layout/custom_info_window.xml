@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+    <android.support.v7.widget.CardView
+            android:id="@+id/cv_back"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp">
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="bottom|left"
+                    />
+
+            <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="bottom|right"
+                    />
+        </FrameLayout>
+    </android.support.v7.widget.CardView>
+
+    <ImageView
+            android:id="@+id/iv_portrait"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="name"
+            android:id="@+id/tv_name"
+            android:textSize="14sp"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_portrait"
+            app:layout_constraintStart_toEndOf="@+id/iv_portrait"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="relation"
+            android:textSize="12sp"
+            android:id="@+id/tv_relation"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_name"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="守护中"
+            android:textSize="10sp"
+            android:id="@+id/tv_status"
+            app:layout_constraintStart_toStartOf="@+id/tv_name"
+            app:layout_constraintBottom_toTopOf="@+id/tv_name"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <edu.tjrac.swant.baselib.common.widget.StatusBarPlaceHolderView android:layout_width="match_parent"
+                                                                    android:layout_height="wrap_content"
+    />
+    <FrameLayout android:layout_width="match_parent" android:layout_height="48dp">
+        <!--<ImageView android:layout_width="48dp" android:layout_height="48dp"-->
+                   <!--android:layout_gravity="right|center_vertical"-->
+                   <!--android:layout_marginRight="12dp"-->
+                   <!--android:padding="12dp"-->
+                   <!--android:src="@drawable/ic_help_outline_grey_600_24dp"/>-->
+    </FrameLayout>
+
+    <!--<android.support.v4.widget.NestedScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1">-->
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_likes"
+            android:layout_width="match_parent" android:layout_height="50dp"
+        >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="24dp"
+                android:text="@string/my_likes"
+                android:textColor="@color/text_color_gray"
+            />
+
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fl_arts"
+            android:layout_width="match_parent" android:layout_height="50dp"
+        >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="24dp"
+                android:text="@string/my_arts"
+                android:textColor="@color/text_color_gray"
+            />
+
+        </FrameLayout>
+        <View android:layout_width="match_parent" android:layout_height="0dp"
+              android:layout_weight="1"></View>
+        <FrameLayout
+            android:id="@+id/fl_feedback"
+            android:layout_width="match_parent" android:layout_height="50dp"
+        >
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:layout_gravity="center_vertical"
+                      android:layout_marginLeft="24dp"
+                      android:text="@string/feedback"
+                      android:textColor="@color/text_color_gray"
+            />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fl_setting"
+            android:layout_width="match_parent" android:layout_height="50dp"
+        >
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:layout_gravity="center_vertical"
+                      android:layout_marginLeft="24dp"
+                      android:text="@string/setting"
+                      android:textColor="@color/text_color_gray"
+            />
+        </FrameLayout>
+        <TextView
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/bottom_nav_height"
+            android:textColor="@color/text_color_gray"
+            android:layout_width="match_parent" android:layout_height="50dp"
+            android:text="copyright @1007991483@qq.com"
+        />
+    </LinearLayout>
+  
+
+    <!--</android.support.v4.widget.NestedScrollView>-->
+
+
+</LinearLayout>

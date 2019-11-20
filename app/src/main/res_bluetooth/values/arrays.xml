@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bluetooth_service_type_flags">
+        <item>LE Limited Discoverable Mode</item>
+        <item>LE General Discoverable Mode</item>
+        <item>BR/EDR Not Supported</item>
+        <item>LE and BR/ERD Capable(Controller)</item>
+        <item>LE and BR/ERD Capable(Host)</item>
+        <item>Reserved</item>
+    </string-array>
+</resources>

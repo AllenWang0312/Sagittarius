@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="edu.tjrac.swant.meitu.view.MeituSearchActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:gravity="center_vertical" android:orientation="horizontal">
+        <ImageView
+            android:layout_width="48dp"
+            android:padding="8dp"
+            android:layout_height="48dp"
+            android:src="@drawable/back"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="36dp"
+            android:layout_marginRight="16dp"
+            style="@style/button_positive_square_style"
+            android:text="搜索"/>
+    </LinearLayout>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="热门搜索"-->
+    <!--/>-->
+    <!--<com.zhy.view.flowlayout.FlowLayout-->
+        <!--android:id="@+id/tfl"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+    <!--</com.zhy.view.flowlayout.FlowLayout>-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="热门标签"
+    />
+    <com.zhy.view.flowlayout.FlowLayout
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/tfl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.zhy.view.flowlayout.FlowLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

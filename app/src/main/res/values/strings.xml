@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">不止笔记</string>
+
+    <string name="settings">设置</string>
+    <string name="night_mode">夜间模式</string>
+    <string name="follow_system">跟随系统</string>
+    <string name="language_setting">语言设置</string>
+    <string name="zn_rcn">中文(简体)</string>
+    <string name="zn_rtw">中文(繁体)</string>
+    <string name="en">英文</string>
+
+
+    <string name="map">地图</string>
+    <string name="note">记事</string>
+    <string name="notice">提醒</string>
+    <string name="help_feedback">帮助和反馈</string>
+
+    <string name="navigation_drawer_open">打开抽屉</string>
+    <string name="navigation_drawer_close">关闭抽屉</string>
+
+
+    <string name="sort_files">文件整理</string>
+    <string name="file_system">文件管理</string>
+
+    <string name="new_group">新建分组</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="todo">todo</string>
+
+    <string name="meitu">meitu</string>
+
+    <string name="assistant">助理</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="long_string">
+        scroll: 所有想滚动出屏幕的view都需要设置这个flag， 没有设置这个flag的view将被固定在屏幕顶部。例如，TabLayout 没有设置这个值，将会停留在屏幕顶部。
+        enterAlways: 设置这个flag时，向下的滚动都会导致该view变为可见，启用快速“返回模式”。
+        enterAlwaysCollapsed: 当你的视图已经设置minHeight属性又使用此标志时，你的视图只能已最小高度进入，只有当滚动视图到达顶部时才扩大到完整高度。
+        exitUntilCollapsed: 滚动退出屏幕，最后折叠在顶端。
+        为了ToolBar可以滚动，CoordinatorLayout里面,放一个带有可滚动的View.如上的例子,放的是ViewPager,而ViewPager里面是放了RecylerView的,即是可以滚动的View。CoordinatorLayout包含的子视图中带有滚动属性的View需要设置app:layout_behavior属性。例如，示例中Viewpager设置了此属性。
+        ————————————————
+        版权声明：本文为CSDN博主「样子有点傻」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+        原文链接：https://blog.csdn.net/ytfghytf/article/details/86618332
+
+    </string>
+
+
+</resources>

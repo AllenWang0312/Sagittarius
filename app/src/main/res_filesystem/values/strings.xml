@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detial">详情</string>
+    <string name="big_image">大图</string>
+    <string name="little_image">缩略图</string>
+
+    <string name="action_cut">剪切</string>
+    <string name="action_copy">复制</string>
+    <string name="action_paste">粘贴</string>
+
+    <string name="action_delete">删除</string>
+
+
+    <string name="action_by_name">名称</string>
+    <string name="action_by_size">大小</string>
+    <string name="action_by_time">最近使用</string>
+    <string name="action_by_create_time">创建时间</string>
+
+
+    <!--<string name="action_settings">设置</string>-->
+    <string name="action_image">图片</string>
+    <string name="action_video">视频</string>
+    <string name="action_music">音乐</string>
+
+
+    <string name="action_filesystem">本地存储</string>
+    <string name="create_new_dir">新建文件夹</string>
+    <string name="create_new_file">新建文件</string>
+    <string name="no_data">没有数据</string>
+    <string name="rename_files">批量重命名</string>
+
+</resources>

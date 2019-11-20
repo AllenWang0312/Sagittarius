@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 启动页的THMEME,设置背景，防止启动出现短暂的白屏 -->
+    <style name="SplashTheme" parent="AppTheme.TranslucentStatus">
+        <item name="android:windowBackground">@mipmap/weiguang_splash</item>
+    </style>
+</resources>

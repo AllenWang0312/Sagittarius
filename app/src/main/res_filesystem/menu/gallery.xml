@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools">
+    <!--<item-->
+    <!--android:orderInCategory="100"-->
+    <!--android:tital="@string/action_settings"-->
+    <!--app:showAsAction="never"/>-->
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:title="搜索"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always"
+        ></item>
+    <!--<item android:id="@+id/sort"-->
+          <!--android:icon="@drawable/ic_import_export_white_24dp"-->
+          <!--android:tital="排序"-->
+          <!--app:showAsAction="always"-->
+
+        <!--&gt;</item>-->
+    <item
+        android:id="@+id/cut"
+        android:icon="@drawable/ic_content_cut_white_24dp"
+        android:title="@string/action_cut"
+        android:visible="false"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/copy"
+        android:icon="@drawable/ic_content_copy_white_24dp"
+        android:title="@string/action_copy"
+        android:visible="false"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/paste"
+        android:icon="@drawable/ic_move_to_inbox_white_24dp"
+        android:title="@string/action_paste"
+        android:visible="false"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_delete_white_24dp"
+        android:title="@string/action_delete"
+        android:visible="false"
+        app:showAsAction="always"
+        />
+
+    <!--<item-->
+        <!--android:id="@+id/rename_files"-->
+        <!--android:tital="@string/rename_files"-->
+        <!--android:icon="@drawable/ic_delete_white_24dp"-->
+        <!--&gt;-->
+
+    <!--</item>-->
+    <!--<group>-->
+        <!--&lt;!&ndash;<item android:id="@+id/new_dir"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:tital="@string/create_new_dir">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<item android:id="@+id/new_file"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:tital="@string/create_new_file">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;</item>&ndash;&gt;-->
+     <!---->
+    <!--</group>-->
+
+
+
+</menu>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <CheckBox
+            android:id="@+id/cb_filter"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:button="@null"
+            android:drawableRight="@drawable/expand"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="No filter"
+
+            >
+
+        </CheckBox>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+
+        android:id="@+id/swiper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

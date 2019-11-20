@@ -1,0 +1,16 @@
+#*.md
+*.keystore
+*.pro
+*.properties
+*.bat
+.gradle
+
+*/build/
+*/.idea/
+
+.DS_Store
+*.iml
+*.md
+/captures
+.externalNativeBuild
+

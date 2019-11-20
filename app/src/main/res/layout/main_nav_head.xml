@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <FrameLayout
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:id="@+id/iv_portarit"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+    <com.amap.api.maps.MapView
+            android:id="@+id/mv"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+    </com.amap.api.maps.MapView>
+
+
+    <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="8dp"
+            android:text="定位"
+            android:id="@+id/sw_locate"/>
+</FrameLayout>

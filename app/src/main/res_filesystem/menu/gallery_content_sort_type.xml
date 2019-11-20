@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/filesystem"
+        android:title="@string/action_by_name"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/image"
+        android:title="@string/action_by_size"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/video"
+        android:title="@string/action_by_time"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/music"
+        android:title="@string/action_by_create_time"
+        app:showAsAction="never"
+        />
+
+</menu>

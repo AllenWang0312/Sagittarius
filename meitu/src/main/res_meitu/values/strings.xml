@@ -1,0 +1,26 @@
+<resources>
+    <string name="title_activity_meitu_login">MeituLoginActivity</string>
+
+<string name="sagittarius">Sagittarius</string>
+    <string name="login_account">用户名</string>
+    <string name="login_pass">密码</string>
+<string name="login_account_hint">用户名/邮箱/手机号</string>
+
+    <string name="login_login">登录</string>
+
+
+
+    <string name="model">模特</string>
+    <string name="colum">专辑</string>
+    <string name="mine">我的</string>
+
+
+
+
+    <string name="my_likes">我的收藏</string>
+    <string name="my_arts">我的作品</string>
+
+
+    <string name="feedback">反馈</string>
+    <string name="setting">设置</string>
+</resources>

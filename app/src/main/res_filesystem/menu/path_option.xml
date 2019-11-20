@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/clip"
+        android:title="复制文件夹路径"></item>
+    <item
+        android:id="@+id/set_carry_path"
+        android:title="设置整理路径"></item>
+    <item
+        android:id="@+id/reanme"
+        android:title="重命名"></item>
+</menu>

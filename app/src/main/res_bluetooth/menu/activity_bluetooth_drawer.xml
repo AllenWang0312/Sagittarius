@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+    <item
+        android:id="@+id/nav_bluetooth"
+        android:icon="@drawable/ic_bluetooth_black_24dp"
+        android:title="BlueTooth"/>
+    <item
+        android:id="@+id/nav_bluetooth_config"
+        android:icon="@drawable/ic_bluetooth_black_24dp"
+        android:title="Configure GATT server"/>
+    <item
+        android:id="@+id/nav_bluetooth_manage"
+        android:icon="@drawable/ic_bluetooth_black_24dp"
+        android:title="Manage favorites"/>
+    <item
+        android:id="@+id/nav_bluetooth_definitions"
+        android:icon="@drawable/ic_bluetooth_black_24dp"
+        android:title="Definitions"/>
+    <item
+        android:id="@+id/nav_bluetooth_nRF"
+        android:icon="@drawable/ic_bluetooth_black_24dp"
+        android:title="nRF Logger"/>
+    <item
+        android:id="@+id/nav_bluetooth_information"
+        android:icon="@drawable/ic_bluetooth_black_24dp"
+        android:title="Device information"/>
+    <item
+        android:id="@+id/nav_bluetooth_settings"
+        android:icon="@drawable/ic_bluetooth_black_24dp"
+        android:title="Settings"/>
+    <item
+        android:id="@+id/nav_bluetooth_feedback"
+        android:icon="@drawable/ic_bluetooth_black_24dp"
+        android:title="Send feedback"/>
+
+</menu>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_bottom"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="48dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        >
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:layout_marginRight="4dp"
+            app:fabSize="mini"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_paths"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_mini_float_button"
+            android:orientation="horizontal"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            >
+        </android.support.v7.widget.RecyclerView>
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginLeft="4dp"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_more_vert_white_24dp"
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginLeft="4dp"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_add_white_24dp"
+            />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            >
+
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ic_inbox_white_24dp"
+                tools:ignore="VectorDrawableCompat"/>
+
+            <TextView
+                android:id="@+id/tv_clipfile_size"
+                android:visibility="gone"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_margin="4dp"
+                android:layout_gravity="right|top"
+                android:background="@drawable/bg_theme_bradge"
+                android:gravity="center"
+                android:translationZ="8dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:textSize="6sp"
+                />
+            <!--android:background="@drawable/bg_theme_bradge"-->
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

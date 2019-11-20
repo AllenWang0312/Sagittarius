@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="edu.tjrac.swant.meitu">
+    <!-- <uses-permission android:name="android.permission.BLUETOOTH"/> -->
+    <!-- <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> -->
+    <uses-permission android:name="android.permission.INTERNET"/> <!-- 允许程序设置内置sd卡的写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!-- 允许程序获取网络状态 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> <!-- 允许程序访问WiFi网络信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> <!-- 允许程序读写手机状态和身份 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/sagittarius"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".view.ColumDetailActivity">
+        </activity>
+        <activity
+            android:name=".view.SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity> <!-- todo -->
+        <!-- common -->
+        <activity
+            android:name="edu.tjrac.swant.image.ImagePreviewActivity"
+            android:launchMode="singleTop">
+        </activity>
+        <activity android:name=".view.MeituLoginActivity">
+        </activity>
+        <activity android:name=".view.FeedbackListActivity">
+        </activity>
+        <activity android:name=".view.MeituCollectionsActivity">
+        </activity>
+        <activity android:name=".view.ModelInfoActivity">
+        </activity> <!-- <activity android:name=".view.LoginActivity"/> -->
+        <!-- <activity -->
+        <!-- android:name=".ui.login.LoginActivity" -->
+        <!-- android:label="@string/title_activity_login"/> -->
+        <activity android:name=".view.MeituSearchActivity"/>
+        <activity android:name=".view.ColumWebViewActivity"></activity>
+        <activity
+            android:name=".view.MeituMainActivity"
+            android:theme="@style/AppTheme.TranslucentStatus"/>
+    </application>
+
+</manifest>

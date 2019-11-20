@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.tjrac.swant.media.RTSPMediaPlayerActivity">
+    <!--<edu.tjrac.swant.simplemediaplayer.SimpleVideoPlayer-->
+        <!--android:id="@+id/simple_player"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--&gt;-->
+    <!--</edu.tjrac.swant.simplemediaplayer.SimpleVideoPlayer>-->
+</android.support.constraint.ConstraintLayout>

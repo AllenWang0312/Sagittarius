@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.DemoEntrancesActivity">
+    <TextView android:text="网络相关"/>
+    <TableRow>
+        <Button android:id="@+id/bt_login" android:text="登录"/>
+        <Button android:id="@+id/bt_netimg" android:text="网图"/>
+        <Button/>
+
+    </TableRow>
+
+
+    <TextView android:text="传感器相关"/>
+    <TableRow>
+        <Button android:id="@+id/bt_bluetooth" android:text="蓝牙"/>
+        <Button android:id="@+id/bt_fingerprint" android:text="指纹"/>
+
+    </TableRow>
+</TableLayout>

@@ -1,0 +1,2 @@
+include ':app', ':meitu', 'kbaselib', 'amap','picture_library','ucrop'
+//':simplemediaplayer',

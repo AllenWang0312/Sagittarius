@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView
+    android:id="@+id/tv_path_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:textSize="18sp"
+    android:textColor="@color/white"
+    android:drawableRight="@drawable/ic_chevron_right_pink_100_24dp"
+    android:gravity="center"
+    android:layout_height="36dp"/>

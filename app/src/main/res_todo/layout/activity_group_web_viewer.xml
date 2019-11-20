@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    tools:context="edu.tjrac.swant.todo.view.GroupWebViewerActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipChildren="false"
+        android:layout_gravity="center"
+        >
+
+    </android.support.v4.view.ViewPager>
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/fl_note"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:layout_marginBottom="-160dp"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:background="@drawable/md_page_bg"-->
+        <!--&gt;-->
+
+    <!--</FrameLayout>-->
+</FrameLayout>
