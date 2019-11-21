@@ -4,6 +4,10 @@ package edu.tjrac.swant.meitu.bean
  * Created by wpc on 2019-09-05.
  */
 class Model : ModelInfo {
+    override fun getID(): Int? {
+return id
+    }
+
     override fun getCoverImg(): String? {
         return cover
     }
@@ -17,6 +21,7 @@ class Model : ModelInfo {
     }
 
     var id: Int? = 0
+
     var cover: String? = null
 
     var name: String? = null

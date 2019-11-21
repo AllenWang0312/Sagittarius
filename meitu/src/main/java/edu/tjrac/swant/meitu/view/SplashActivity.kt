@@ -87,7 +87,7 @@ class SplashActivity : BaseActivity() {
                             }
                         }
                     })
-            Net.instance.getApiService().tokenLogin(App.token!!)
+            Net.instance.getApiService().tokenLogin()
                     .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
                     .subscribe(object : NESubscriber<BR<User>>(this) {
                         override fun onSuccess(t: BR<User>?) {

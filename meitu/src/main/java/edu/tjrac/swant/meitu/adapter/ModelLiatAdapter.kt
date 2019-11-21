@@ -28,7 +28,7 @@ class ModelLiatAdapter(var layoutid:Int, data: List<ModelInfo>?)
         }
 
         helper.setText(R.id.tv_title,
-//                "" + item.id + "|" +
+                "" + item.getID() + "|" +
                 item?.getNameStr())
     }
 }

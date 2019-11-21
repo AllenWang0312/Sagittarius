@@ -4,6 +4,10 @@ package edu.tjrac.swant.meitu.bean
  * Created by wpc on 2019-11-19.
  */
 class Like :ColumInfo,ModelInfo{
+    override fun getID(): Int? {
+        return modelid
+    }
+
     override fun getColumCover(): String? {
         return colum?.getColumCover()
     }

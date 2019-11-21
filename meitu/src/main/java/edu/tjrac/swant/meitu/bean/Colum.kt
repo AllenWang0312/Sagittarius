@@ -27,7 +27,7 @@ class Colum : ColumInfo {
 
     override fun getColumCover(): String {
 //        return
-        return Config.URL.FILE_SERVER + "/" + modelid + "/" + id + "/0.jpg"
+        return Config.URL.FILE_SERVER + "/muri/" + modelid + "/" + id + "/0.jpg"
     }
 
     override fun getTitleStr(): String {

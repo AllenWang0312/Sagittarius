@@ -35,19 +35,19 @@ class ModelInfoActivity : BaseActivity() {
         adapter = ColumLiatAdapter(R.layout.item_meitu_colum, data)
         adapter?.setOnItemClickListener { ad, view, position ->
             var item = data?.get(position)
-            if (item?.get!!) {
+//            if (item?.get!!) {
                 startActivity(Intent(this, ColumDetailActivity::class.java)
-                        .putExtra("model_id", item.modelid)
-                        .putExtra("id", item.id))
+                        .putExtra("model_id", item?.modelid)
+                        .putExtra("id", item?.id))
 
 //                GalleryFragment
-            } else {
-                startActivity(Intent(this, ColumWebViewActivity::class.java)
-                        .putExtra("colum_id", item.id)
-                        .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
-                        .putExtra("tital", item?.title!!))
-
-            }
+//            } else {
+//                startActivity(Intent(this, ColumWebViewActivity::class.java)
+//                        .putExtra("colum_id", item.id)
+//                        .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
+//                        .putExtra("tital", item?.title!!))
+//
+//            }
         }
         recycler.adapter = adapter
         fab.setOnClickListener {
