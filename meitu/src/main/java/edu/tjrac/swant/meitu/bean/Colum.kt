@@ -11,16 +11,18 @@ class Colum : ColumInfo {
 
     var title: String? = ""
     var subs: String? = ""
-    var org: String? = ""
-    var orgid: Int? = 0
+
+    var group: String? = ""
+    var groupid: Int? = 0
+
     var no: String? = ""
     var nums: Int? = 0
     var time: String? = ""
     var html: String? = ""
-    var hot: Int? = 0
-    var images: ArrayList<String>? = null
 
     var get: Boolean? = false
+    var images: ArrayList<String>? = null
+    var hot: Int? = 0
 
 
     override fun getColumCover(): String {

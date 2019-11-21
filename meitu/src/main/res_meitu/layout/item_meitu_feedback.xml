@@ -9,6 +9,7 @@
 
     <TextView android:id="@+id/tv_name" android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:textColor="@color/text_color_primary"
               android:layout_marginStart="8dp"
               android:layout_marginLeft="8dp" android:layout_marginTop="8dp"
               app:layout_constraintStart_toEndOf="@+id/icon" app:layout_constraintTop_toTopOf="@+id/icon"
@@ -16,7 +17,7 @@
 
     <TextView android:id="@+id/tv_content" android:layout_width="0dp"
               android:layout_height="0dp"
-              android:textColor="@color/white"
+              android:textColor="@color/text_color_primary"
               android:layout_marginTop="8dp" android:layout_marginEnd="8dp"
               android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
               app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-        android:textColor="@color/white" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/text_color_primary" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
         tools:text="like:100"/>
 
 </android.support.constraint.ConstraintLayout>

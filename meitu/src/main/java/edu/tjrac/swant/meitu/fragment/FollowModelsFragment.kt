@@ -7,14 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.tjrac.swant.baselib.common.base.BaseFragment
-import edu.tjrac.swant.meitu.view.ModelInfoActivity
+import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.ModelLiatAdapter
 import edu.tjrac.swant.meitu.bean.Like
-import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
-import edu.tjrac.swant.meitu.R
+import edu.tjrac.swant.meitu.view.ModelInfoActivity
 import kotlinx.android.synthetic.main.fragment_follow_models.view.*
 
 /**
@@ -36,7 +35,7 @@ class FollowModelsFragment : BaseFragment() {
         }
         v.recycler.layoutManager = LinearLayoutManager(activity!!)
         v.recycler.adapter = adapter
-        Net.instance.getApiService().getFollowModelList(App.loged?.id!!)
+        Net.instance.getApiService().getFollowModelList()
                 .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
                 .subscribe(object : NESubscriber<BR<ArrayList<Like>>>(this) {
                     override fun onSuccess(t: BR<ArrayList<Like>>?) {

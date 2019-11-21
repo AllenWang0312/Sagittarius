@@ -27,6 +27,10 @@ class MineFragment : BaseFragment(), View.OnClickListener {
     }
 
     lateinit var v: View
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_meitu_mine, container, false)
         v?.fl_likes.setOnClickListener(this)

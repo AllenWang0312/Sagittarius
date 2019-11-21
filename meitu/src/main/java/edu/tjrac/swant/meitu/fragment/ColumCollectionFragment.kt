@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.tjrac.swant.baselib.common.base.BaseFragment
-import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.ColumLiatAdapter
 import edu.tjrac.swant.meitu.bean.Like
@@ -48,7 +47,7 @@ class ColumCollectionFragment : BaseFragment() {
         }
         v.recycler.layoutManager = LinearLayoutManager(activity!!)
         v.recycler.adapter = adapter
-        Net.instance.getApiService().getFavouriteColumsList(App.loged?.id!!)
+        Net.instance.getApiService().getFavouriteColumsList()
                 .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
                 .subscribe(object : NESubscriber<BR<ArrayList<Like>>>(this) {
                     override fun onSuccess(t: BR<ArrayList<Like>>?) {

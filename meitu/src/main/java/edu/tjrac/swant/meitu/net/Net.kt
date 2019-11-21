@@ -26,7 +26,9 @@ class Net:BaseNet(){
                     .addQueryParameter("platform", "android")
                     .addQueryParameter("version", BuildConfig.VERSION_NAME)
                     .build()
+
             var builder = originalRequest.newBuilder()
+
             if (!StringUtils.isEmpty(App.token)) {
                 builder.addHeader("token", App.token)
             }

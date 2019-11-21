@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
@@ -8,10 +9,10 @@
     />
     <FrameLayout android:layout_width="match_parent" android:layout_height="48dp">
         <!--<ImageView android:layout_width="48dp" android:layout_height="48dp"-->
-                   <!--android:layout_gravity="right|center_vertical"-->
-                   <!--android:layout_marginRight="12dp"-->
-                   <!--android:padding="12dp"-->
-                   <!--android:src="@drawable/ic_help_outline_grey_600_24dp"/>-->
+        <!--android:layout_gravity="right|center_vertical"-->
+        <!--android:layout_marginRight="12dp"-->
+        <!--android:padding="12dp"-->
+        <!--android:src="@drawable/ic_help_outline_grey_600_24dp"/>-->
     </FrameLayout>
 
     <!--<android.support.v4.widget.NestedScrollView-->
@@ -22,12 +23,47 @@
                   android:layout_height="match_parent"
                   android:orientation="vertical">
 
-        <FrameLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="120dp">
+            <ImageView android:id="@+id/imageView" android:layout_width="86dp" android:layout_height="86dp"
+                       android:layout_marginStart="24dp"
+                       android:layout_marginTop="24dp"
+                       app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="131dp" tools:layout_editor_absoluteY="47dp"/>
+            <TextView
+                android:id="@+id/tv_account"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="131dp" tools:layout_editor_absoluteY="74dp"/>
 
-        </FrameLayout>
-
+        </android.support.constraint.ConstraintLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="64dp">
+            <TextView android:id="@+id/tv_zone" android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      tools:text="2\n动态"
+            />
+            <TextView android:id="@+id/tv_focus" android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      tools:text="2\n关注"
+            />
+            <TextView android:id="@+id/follow" android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      tools:text="2\n粉丝"
+            />
+        </LinearLayout>
         <FrameLayout
             android:id="@+id/fl_likes"
             android:layout_width="match_parent" android:layout_height="50dp"
@@ -81,14 +117,14 @@
             />
         </FrameLayout>
         <TextView
-            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginBottom="@dimen/bottom_nav_height"
+            android:gravity="center" android:text="copyright @1007991483@qq.com"
             android:textColor="@color/text_color_gray"
-            android:layout_width="match_parent" android:layout_height="50dp"
-            android:text="copyright @1007991483@qq.com"
         />
     </LinearLayout>
-  
+
 
     <!--</android.support.v4.widget.NestedScrollView>-->
 

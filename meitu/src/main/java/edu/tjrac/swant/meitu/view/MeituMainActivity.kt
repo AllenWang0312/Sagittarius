@@ -11,8 +11,8 @@ import edu.tjrac.swant.baselib.common.adapter.FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.fragment.ColumListFragment
+import edu.tjrac.swant.meitu_v2.fragment.HomeFragment
 import edu.tjrac.swant.meitu.fragment.MineFragment
-import edu.tjrac.swant.meitu.fragment.ModelListFragment
 import kotlinx.android.synthetic.main.activity_meitu_main.*
 
 
@@ -65,7 +65,8 @@ class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
         bnv.selectedItemId = R.id.tab_one;
 
         adapter = FragmentsPagerAdapter(supportFragmentManager)
-        adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
+        adapter?.addFragment(HomeFragment(), resources.getString(R.string.model))
+//        adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
         adapter?.addFragment(ColumListFragment(), resources.getString(R.string.colum))
         adapter?.addFragment(MineFragment(), resources.getString(R.string.mine))
         vp.adapter = adapter;

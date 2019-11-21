@@ -101,6 +101,9 @@ class ModelListFragment : BaseFragment(), View.OnClickListener {
                     override fun onError(e: Throwable?) {
                         super.onError(e)
 //                    adapter.loadMoreEnd()
+                        if (v?.swiper?.isRefreshing!!) {
+                            v?.swiper?.isRefreshing = false
+                        }
                     }
 
                     override fun onCompleted() {

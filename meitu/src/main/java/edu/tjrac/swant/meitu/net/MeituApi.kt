@@ -15,7 +15,7 @@ interface MeituApi {
 
     @FormUrlEncoded
     @POST("/v1/api/account/tokenlogin")
-    fun tokenLogin(@Field("token") token: String): Observable<BR<User>>
+    fun tokenLogin(): Observable<BR<User>>
 
     @FormUrlEncoded
     @POST("/v1/api/account/login")
@@ -45,11 +45,14 @@ interface MeituApi {
     @GET("/v1/api/tags/hot")
     fun getHotTags(): Observable<BR<ArrayList<Tags>>>
 
-    @GET("/v1/api/like/models")
-    fun getFollowModelList(@Query("user_id") user_id: Int): Observable<BR<ArrayList<Like>>>
 
-    @GET("/v1/api/like/colums")
-    fun getFavouriteColumsList(@Query("user_id") user_id: Int): Observable<BR<ArrayList<Like>>>
+    @POST("/v1/api/like/models")
+    fun getFollowModelList(): Observable<BR<ArrayList<Like>>>
+
+    @POST("/v1/api/like/colums")
+    fun getFavouriteColumsList(): Observable<BR<ArrayList<Like>>>
+
+
 
     @GET("/v1/api/feedback/list")
     fun getFeedbackList(@Query("pageNo") pageNo: Int,
