@@ -23,6 +23,10 @@ class Config{
             val FIRST_TIME = "first_time"
             val CACHE = "CACHE"
             val TOKEN="token"
+
+            val ISNIGHT_MODE = "is_night_mode"
+            val LANGUAGE_FOLLOW_SYSTEM = "follow_system"
+            val LANGUAGE_SETTING = "language_setting"
         }
 
     }

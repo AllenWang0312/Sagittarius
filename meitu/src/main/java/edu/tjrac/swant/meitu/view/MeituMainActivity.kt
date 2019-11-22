@@ -48,6 +48,7 @@ class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
     override fun initStatusBar() {
         super.initStatusBar()
     }
+
     var adapter: FragmentsPagerAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,10 +70,10 @@ class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
         adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
         adapter?.addFragment(ColumListFragment(), resources.getString(R.string.colum))
         adapter?.addFragment(MineFragment(), resources.getString(R.string.mine))
+        vp.offscreenPageLimit = 3
         vp.adapter = adapter;
 
     }
-
 
 
 //    override fun onCreateOptionsMenu(menu: Menu?): Boolean {

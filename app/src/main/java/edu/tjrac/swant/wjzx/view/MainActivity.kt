@@ -11,7 +11,6 @@ import android.view.View
 import edu.tjrac.swant.assistant.AssistantFragment
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.map.MapFragment
-import edu.tjrac.swant.meitu.MeituMainActivity
 import edu.tjrac.swant.todo.view.WebWorkSpaceActivity
 import edu.tjrac.swant.wjzx.R
 import edu.tjrac.swant.wjzx.adapter.MainManuAdapter
@@ -87,9 +86,9 @@ class MainActivity : BaseActivity() {
                 R.string.settings -> {
                     startActivity(Intent(this, SettingActivity::class.java))
                 }
-                R.string.meitu -> {
-                    startActivity(Intent(this, MeituMainActivity::class.java))
-                }
+//                R.string.meitu -> {
+//                    startActivity(Intent(this, MeituMainActivity::class.java))
+//                }
             }
 //            nav_recycler?.post {
 //                nav_adapter?.selectPosition = position
@@ -197,7 +196,7 @@ class MainActivity : BaseActivity() {
         )
         nav_data?.add(M(1,R.string.meitu,R.drawable.ic_launch_grey_600_24dp))
         nav_data?.add(M(-1))
-        nav_data?.add(M(1, R.string.settings, R.drawable.ic_settings_grey_600_24dp))
+//        nav_data?.add(M(1, R.string.settings, R.drawable.))
         nav_data?.add(M(1, R.string.help_feedback, R.drawable.ic_help_outline_grey_600_24dp))
 //        nav_data?.add(M(1, R.string.file_system, R.drawable.ic_folder_shared_grey_600_24dp))
     }

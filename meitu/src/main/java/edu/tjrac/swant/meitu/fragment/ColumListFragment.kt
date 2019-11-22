@@ -72,8 +72,8 @@ class ColumListFragment : BaseFragment() {
 //        var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 // 绑定布局管理器
         v?.recycler?.layoutManager = layoutManager
-        var dp4 = UiUtil.dp2px(activity!!, 4).toInt()
-        v?.recycler?.addItemDecoration(GridSpacingItemDecoration(2, dp4, dp4));
+        var dp8 = UiUtil.dp2px(activity!!, 8).toInt()
+        v?.recycler?.addItemDecoration(GridSpacingItemDecoration(2, dp8, dp8));
         v?.swiper?.setOnRefreshListener {
             pageNo = 1
             initData()

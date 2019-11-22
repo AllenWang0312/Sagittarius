@@ -42,7 +42,7 @@ interface MeituApi {
                      @Query("pageNo") pageNo: Int,
                      @Query("tag") tag: String?): Observable<BR<ArrayList<Colum>>>
 
-    @GET("/v1/api/tags/hot")
+    @GET("/v1/api/tag/hot")
     fun getHotTags(): Observable<BR<ArrayList<Tags>>>
 
 
@@ -61,4 +61,7 @@ interface MeituApi {
     @GET("/v1/api/colum")
     fun getColumDetails(@Query("model_id") modelid: Int?,
                        @Query("colum_id") id: Int?): Observable<BR<Colum>>
+
+    @GET("/v1/api/home")
+    fun getHomeData() : Observable<BR<HomeBean>>
 }

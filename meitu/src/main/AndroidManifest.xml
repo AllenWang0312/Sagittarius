@@ -51,7 +51,9 @@
         <activity android:name=".view.ColumWebViewActivity"></activity>
         <activity
             android:name=".view.MeituMainActivity"
-            android:theme="@style/AppTheme.TranslucentStatus"/>
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".view.SettingActivity"
+        ></activity>
     </application>
 
 </manifest>

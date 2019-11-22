@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import edu.tjrac.swant.baselib.common.base.BaseActivity
@@ -17,7 +18,14 @@ import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import kotlinx.android.synthetic.main.activity_meitu_search.*
 
-class MeituSearchActivity : BaseActivity() {
+class MeituSearchActivity : BaseActivity(), View.OnClickListener {
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.iv_back->{
+                finish()
+            }
+        }
+    }
 
     var mInflater: LayoutInflater? = null
     var pageNo = 1
@@ -31,6 +39,7 @@ class MeituSearchActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mInflater = LayoutInflater.from(this)
         setContentView(R.layout.activity_meitu_search)
+        iv_back?.setOnClickListener(this)
         gethottags()
         adapter = ColumLiatAdapter(R.layout.item_meitu_colum, data)
         adapter?.setOnItemClickListener{ad, view, position ->

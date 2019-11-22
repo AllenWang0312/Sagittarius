@@ -25,23 +25,25 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp">
-            <ImageView android:id="@+id/imageView" android:layout_width="86dp" android:layout_height="86dp"
-                       android:layout_marginStart="24dp"
+            android:layout_height="wrap_content">
+            <ImageView android:id="@+id/iv_cover" android:layout_width="64dp" android:layout_height="64dp"
                        android:layout_marginTop="24dp"
+                       app:layout_constraintEnd_toEndOf="parent"
                        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                tools:layout_editor_absoluteX="131dp" tools:layout_editor_absoluteY="47dp"/>
+                android:text="TextView" app:layout_constraintEnd_toEndOf="@+id/iv_cover"
+                app:layout_constraintStart_toStartOf="@+id/iv_cover"
+                app:layout_constraintTop_toBottomOf="@+id/iv_cover"/>
             <TextView
                 android:id="@+id/tv_account"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:text="TextView"
-                tools:layout_editor_absoluteX="131dp" tools:layout_editor_absoluteY="74dp"/>
+                android:layout_marginBottom="8dp" android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="@+id/tv_name"
+                app:layout_constraintStart_toStartOf="@+id/tv_name" app:layout_constraintTop_toBottomOf="@+id/tv_name"/>
 
         </android.support.constraint.ConstraintLayout>
         <LinearLayout android:layout_width="match_parent" android:layout_height="64dp">
@@ -49,19 +51,19 @@
                       android:layout_height="match_parent"
                       android:layout_weight="1"
                       android:gravity="center"
-                      tools:text="2\n动态"
+                      android:text="0\n动态"
             />
             <TextView android:id="@+id/tv_focus" android:layout_width="0dp"
                       android:layout_height="match_parent"
                       android:layout_weight="1"
                       android:gravity="center"
-                      tools:text="2\n关注"
+                      android:text="0\n关注"
             />
             <TextView android:id="@+id/follow" android:layout_width="0dp"
                       android:layout_height="match_parent"
                       android:layout_weight="1"
                       android:gravity="center"
-                      tools:text="2\n粉丝"
+                      android:text="0\n粉丝"
             />
         </LinearLayout>
         <FrameLayout

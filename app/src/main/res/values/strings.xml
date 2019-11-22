@@ -1,13 +1,7 @@
 <resources>
     <string name="app_name">不止笔记</string>
 
-    <string name="settings">设置</string>
-    <string name="night_mode">夜间模式</string>
-    <string name="follow_system">跟随系统</string>
-    <string name="language_setting">语言设置</string>
-    <string name="zn_rcn">中文(简体)</string>
-    <string name="zn_rtw">中文(繁体)</string>
-    <string name="en">英文</string>
+
 
 
     <string name="map">地图</string>

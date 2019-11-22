@@ -7,20 +7,16 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:fitsSystemWindows="true"
-        android:translationZ="8dp">
-
+        android:layout_margin="8dp"
+        android:translationZ="8dp"
+        app:layout_scrollFlags="scroll|enterAlways">
         <FrameLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@color/white"
-
-            app:layout_scrollFlags="scroll|enterAlways">
+            android:background="@drawable/card"
+        >
             <ImageView
                 android:id="@+id/iv_search"
                 android:layout_width="48dp" android:layout_height="48dp"

@@ -1,4 +1,4 @@
-package edu.tjrac.swant.wjzx.view
+package edu.tjrac.swant.meitu.view
 
 import android.content.Intent
 import android.os.Build
@@ -8,12 +8,12 @@ import android.view.View
 import android.widget.RadioButton
 import edu.tjrac.swant.baselib.common.base.BaseApplication
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
-import edu.tjrac.swant.wjzx.App.Companion.isNightMode
-import edu.tjrac.swant.wjzx.R
+import edu.tjrac.swant.meitu.App.Companion.followSystem
+import edu.tjrac.swant.meitu.App.Companion.isNightMode
+import edu.tjrac.swant.meitu.App.Companion.languageSetting
+import edu.tjrac.swant.meitu.App.Companion.needReStart
+import edu.tjrac.swant.meitu.R
 import kotlinx.android.synthetic.main.activity_setting.*
-import edu.tjrac.swant.wjzx.App.Companion.followSystem
-import edu.tjrac.swant.wjzx.App.Companion.languageSetting
-import edu.tjrac.swant.wjzx.App.Companion.needReStart
 import java.util.*
 
 
@@ -41,7 +41,7 @@ class SettingActivity : BaseBarActivity() {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-            isNightMode=isChecked
+            isNightMode = isChecked
             recreate()
         }
 
@@ -128,8 +128,8 @@ class SettingActivity : BaseBarActivity() {
     override fun onBackPressed() {
         if (needReStart) {
             BaseApplication.instance?.exit()
-            startActivity(Intent(this, MainActivity::class.java))
-            needReStart=false
+            startActivity(Intent(this, MeituMainActivity::class.java))
+            needReStart = false
         } else {
             super.onBackPressed()
         }

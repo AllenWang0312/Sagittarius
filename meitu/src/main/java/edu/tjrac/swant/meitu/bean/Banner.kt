@@ -5,4 +5,9 @@ package edu.tjrac.swant.meitu.bean
  */
 class Banner{
 
+    var id:Int?=0
+    var state:Boolean?=false
+    var link:String?=""
+
+
 }

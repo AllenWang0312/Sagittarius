@@ -5,9 +5,9 @@ package edu.tjrac.swant.meitu.bean
  */
 class HomeBean {
 
-
     var banner:ArrayList<Banner>?=null
     //今日最热
+
     var models:ArrayList<Model>?=null
 
     var colum:ArrayList<Colum>?=null

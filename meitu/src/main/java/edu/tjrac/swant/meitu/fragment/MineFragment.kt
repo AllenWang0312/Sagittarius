@@ -9,6 +9,7 @@ import edu.tjrac.swant.baselib.common.base.BaseFragment
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.view.FeedbackListActivity
 import edu.tjrac.swant.meitu.view.MeituCollectionsActivity
+import edu.tjrac.swant.meitu.view.SettingActivity
 import kotlinx.android.synthetic.main.fragment_meitu_mine.view.*
 
 /**
@@ -23,6 +24,12 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             R.id.fl_feedback -> {
                 startActivity(Intent(activity!!, FeedbackListActivity::class.java))
             }
+            R.id.fl_setting->{
+                startActivity(Intent(activity!!, SettingActivity::class.java))
+            }
+            R.id.iv_cover->{
+//                startActivity(Intent(activity!!, SettingActivity::class.java))
+            }
         }
     }
 
@@ -35,6 +42,9 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         v = inflater.inflate(R.layout.fragment_meitu_mine, container, false)
         v?.fl_likes.setOnClickListener(this)
         v?.fl_feedback.setOnClickListener(this)
+        v?.fl_setting.setOnClickListener(this)
+        v?.iv_cover.setOnClickListener(this)
+
         return v
     }
 }

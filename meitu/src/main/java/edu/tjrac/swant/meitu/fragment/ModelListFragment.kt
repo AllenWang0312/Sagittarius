@@ -2,7 +2,7 @@ package edu.tjrac.swant.meitu.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,8 +59,8 @@ class ModelListFragment : BaseFragment(), View.OnClickListener {
         adapter = ModelLiatAdapter(R.layout.item_meitu_model, data!!)
 
 //        var layoutManager = LinearLayoutManager(this)
-        var layoutManager = GridLayoutManager(activity!!, 3)
-//        var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        var layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+//        var layoutManager = GridLayoutManager(activity!!, 3)
 // 绑定布局管理器
         v?.recycler?.layoutManager = layoutManager!!
         var dp4 = UiUtil.dp2px(activity!!, 4).toInt()
