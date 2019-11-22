@@ -13,7 +13,6 @@ interface MeituApi {
     @GET("/v1/api/config/splash")
     fun getSplashInfo(): Observable<BR<ArrayList<SplashInfo>>>
 
-    @FormUrlEncoded
     @POST("/v1/api/account/tokenlogin")
     fun tokenLogin(): Observable<BR<User>>
 

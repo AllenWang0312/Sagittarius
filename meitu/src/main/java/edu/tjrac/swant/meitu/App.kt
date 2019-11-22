@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatDelegate
 import edu.tjrac.swant.baselib.common.base.BaseApplication
+import edu.tjrac.swant.baselib.util.StringUtils
 import edu.tjrac.swant.meitu.bean.User
 
 /**
@@ -26,7 +27,9 @@ open class App : BaseApplication() {
                 field = token
             }
             get() {
-                field = sp?.getString(Config.SP.TOKEN, "")
+                if(StringUtils.isEmpty(field)){
+                    field = sp?.getString(Config.SP.TOKEN, "")
+                }
                 return field
             }
         var isNightMode: Boolean? = null
@@ -72,7 +75,6 @@ open class App : BaseApplication() {
     override fun onCreate() {
         context = this
         super.onCreate()
-
         if (isNightMode!!) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         } else {

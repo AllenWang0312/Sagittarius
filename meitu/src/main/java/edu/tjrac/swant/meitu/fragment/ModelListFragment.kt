@@ -88,6 +88,7 @@ class ModelListFragment : BaseFragment(), View.OnClickListener {
     private fun initData() {
         if (pageNo == 1) {
             data?.clear()
+            adapter?.notifyDataSetChanged()
         }
         Net.instance.getApiService().getModelList(pageSize, pageNo)
                 .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())

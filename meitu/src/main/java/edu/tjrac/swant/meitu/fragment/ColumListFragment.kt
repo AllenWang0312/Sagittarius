@@ -36,17 +36,17 @@ class ColumListFragment : BaseFragment() {
 
         adapter = ColumLiatAdapter(R.layout.item_meitu_colum, data!!)
 
-        adapter?.setOnItemClickListener{ad, view, position ->
-            var item =data?.get(position)
-            if (item?.get!!){
+        adapter?.setOnItemClickListener { ad, view, position ->
+            var item = data?.get(position)
+            if (item?.get!!) {
                 startActivity(Intent(activity!!, ColumDetailActivity::class.java)
-                        .putExtra("model_id",item.modelid)
-                        .putExtra("id",item.id))
+                        .putExtra("model_id", item.modelid)
+                        .putExtra("id", item.id))
 
 //                GalleryFragment
-            }else{
+            } else {
                 startActivity(Intent(activity, ColumWebViewActivity::class.java)
-                        .putExtra("colum_id",item.id)
+                        .putExtra("colum_id", item.id)
                         .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
                         .putExtra("tital", item?.title!!))
             }
@@ -91,6 +91,7 @@ class ColumListFragment : BaseFragment() {
     private fun initData() {
         if (pageNo == 1) {
             data?.clear()
+            adapter?.notifyDataSetChanged()
         }
         Net.instance.getApiService().getColumList(pageSize, pageNo, null)
                 .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
