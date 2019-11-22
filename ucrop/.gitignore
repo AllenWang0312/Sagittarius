@@ -5,7 +5,7 @@
 *.bat
 *.gradle
 
-*/build/
+/build
 */.idea/
 
 .DS_Store
