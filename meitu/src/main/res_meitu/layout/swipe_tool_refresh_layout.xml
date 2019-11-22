@@ -10,12 +10,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:translationZ="8dp"
-        app:layout_scrollFlags="scroll|enterAlways">
+    >
         <FrameLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/card"
+
+            app:layout_scrollFlags="scroll|enterAlways"
         >
             <ImageView
                 android:id="@+id/iv_search"

@@ -4,9 +4,6 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-    <edu.tjrac.swant.baselib.common.widget.StatusBarPlaceHolderView android:layout_width="match_parent"
-                                                                    android:layout_height="wrap_content"
-    />
     <FrameLayout android:layout_width="match_parent" android:layout_height="48dp">
         <!--<ImageView android:layout_width="48dp" android:layout_height="48dp"-->
         <!--android:layout_gravity="right|center_vertical"-->
