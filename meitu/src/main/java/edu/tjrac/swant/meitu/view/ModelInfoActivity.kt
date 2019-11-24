@@ -20,6 +20,8 @@ import kotlinx.android.synthetic.main.activity_model_info.*
 class ModelInfoActivity : BaseActivity() {
 
     var model_id: Int? = 100
+    var get:Boolean?=false
+
     var adapter: ColumLiatAdapter? = null
     var data: ArrayList<Colum>? = ArrayList()
 
@@ -30,24 +32,24 @@ class ModelInfoActivity : BaseActivity() {
 
         if (null != intent) {
             model_id = intent.getIntExtra("model_id", 100)
+            get=intent.getBooleanExtra("get",false)
         }
         recycler.layoutManager = GridLayoutManager(this, 3)
         adapter = ColumLiatAdapter(R.layout.item_meitu_colum, data)
         adapter?.setOnItemClickListener { ad, view, position ->
             var item = data?.get(position)
-//            if (item?.get!!) {
+            if (get!!) {
                 startActivity(Intent(this, ColumDetailActivity::class.java)
                         .putExtra("model_id", item?.modelid)
                         .putExtra("id", item?.id))
-
 //                GalleryFragment
-//            } else {
-//                startActivity(Intent(this, ColumWebViewActivity::class.java)
-//                        .putExtra("colum_id", item.id)
-//                        .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
-//                        .putExtra("tital", item?.title!!))
-//
-//            }
+            } else {
+                startActivity(Intent(this, ColumWebViewActivity::class.java)
+                        .putExtra("colum_id", item?.id)
+                        .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
+                        .putExtra("tital", item?.title!!))
+
+            }
         }
         recycler.adapter = adapter
         fab.setOnClickListener {

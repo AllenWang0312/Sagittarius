@@ -77,6 +77,7 @@ class ModelListFragment : BaseFragment(), View.OnClickListener {
             var item = data?.get(position)
             startActivity(Intent(activity!!, ModelInfoActivity::class.java)
                     .putExtra("model_id", item?.id)
+                    .putExtra("get",item?.get)
             )
 //            BaseWebViewActivity.start(activity!!, item?.name!!, "https://m.meituri.com/t/" + item.id + "/")
         }

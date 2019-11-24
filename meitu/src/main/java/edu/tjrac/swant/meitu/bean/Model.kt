@@ -5,7 +5,7 @@ package edu.tjrac.swant.meitu.bean
  */
 class Model : ModelInfo {
     override fun getID(): Int? {
-return id
+        return id
     }
 
     override fun getCoverImg(): String? {
@@ -43,4 +43,5 @@ return id
     var tags: String? = null
 
     var hot: Int? = null
+    var get:Boolean?=false
 }

@@ -119,8 +119,8 @@ class SplashActivity : BaseActivity() {
     var next: Intent? = null
         get() {
             if (field == null) {
-                field = Intent(this@SplashActivity, MeituLoginActivity::class.java)
-//                field = Intent(this@SplashActivity, MeituMainActivity::class.java)
+//                field = Intent(this@SplashActivity, MeituLoginActivity::class.java)
+                field = Intent(this@SplashActivity, MeituMainActivity::class.java)
             }
             return field
         }
