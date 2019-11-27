@@ -1,6 +1,7 @@
 package edu.tjrac.swant.meitu.net
 
 import edu.tjrac.swant.meitu.bean.*
+import edu.tjrac.swant.meitu.bean.stuct.LoginRespon
 import retrofit2.http.*
 import rx.Observable
 import java.util.*
@@ -19,8 +20,13 @@ interface MeituApi {
     @FormUrlEncoded
     @POST("/v1/api/account/login")
     fun login(@Field("account") account: String,
-              @Field("pwd") pwd: String): Observable<BR<User>>
+              @Field("pwd") pwd: String,
+              @Field("device") device: String): Observable<BR<LoginRespon>>
 
+    @FormUrlEncoded
+    @POST("/v1/api/account/register")
+    fun register(@Field("account") account: String,
+                 @Field("pwd") pwd: String): Observable<BR<Any>>
 
     //    @FormUrlEncoded
     @GET("/v1/api/model/list")
@@ -52,15 +58,15 @@ interface MeituApi {
     fun getFavouriteColumsList(): Observable<BR<ArrayList<Like>>>
 
 
-
     @GET("/v1/api/feedback/list")
     fun getFeedbackList(@Query("pageNo") pageNo: Int,
                         @Query("pageSize") pageSize: Int): Observable<BR<ArrayList<Feedback>>>
 
     @GET("/v1/api/colum")
     fun getColumDetails(@Query("model_id") modelid: Int?,
-                       @Query("colum_id") id: Int?): Observable<BR<Colum>>
+                        @Query("colum_id") id: Int?): Observable<BR<Colum>>
 
-    @GET("/v1/api/home")
-    fun getHomeData() : Observable<BR<HomeBean>>
+    @GET("/v1/api/m/home")
+    fun getHomeData(@Query("contry") contry: String?): Observable<BR<HomeBean>>
+
 }

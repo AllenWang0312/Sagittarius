@@ -1,6 +1,5 @@
 package edu.tjrac.swant.meitu.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -13,7 +12,6 @@ import edu.tjrac.swant.meitu.bean.Like
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
-import edu.tjrac.swant.meitu.view.ModelInfoActivity
 import kotlinx.android.synthetic.main.fragment_follow_models.view.*
 
 /**
@@ -28,11 +26,11 @@ class FollowModelsFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_follow_models, container, false)
         adapter = ModelLiatAdapter(R.layout.item2_meitu_model, data)
-        adapter?.setOnItemClickListener { ad, view, position ->
-            var item = data?.get(position)
-            startActivity(Intent(activity!!, ModelInfoActivity::class.java)
-                    .putExtra("model_id", item?.modelid))
-        }
+//        adapter?.setOnItemClickListener { ad, view, position ->
+//            var item = data?.get(position)
+//            startActivity(Intent(activity!!, ModelInfoActivity::class.java)
+//                    .putExtra("model_id", item?.modelid))
+//        }
         v.recycler.layoutManager = LinearLayoutManager(activity!!)
         v.recycler.adapter = adapter
         Net.instance.getApiService().getFollowModelList()

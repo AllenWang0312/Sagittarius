@@ -3,6 +3,7 @@ package edu.tjrac.swant.meitu
 import android.content.Context
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatDelegate
+import android.util.Log
 import edu.tjrac.swant.baselib.common.base.BaseApplication
 import edu.tjrac.swant.baselib.util.StringUtils
 import edu.tjrac.swant.meitu.bean.User
@@ -13,6 +14,7 @@ import edu.tjrac.swant.meitu.bean.User
 open class App : BaseApplication() {
     companion object {
         var context: Context? = null
+        var device:String?="device"
         var needReStart = false
         var sp: SharedPreferences? = null
             get() {
@@ -24,7 +26,8 @@ open class App : BaseApplication() {
         var token: String? = ""
             set(value) {
                 sp?.edit()?.putString(Config.SP.TOKEN, value)?.commit()
-                field = token
+                field = value
+                Log.i("token", value)
             }
             get() {
                 if(StringUtils.isEmpty(field)){
@@ -74,6 +77,7 @@ open class App : BaseApplication() {
 
     override fun onCreate() {
         context = this
+        device=
         super.onCreate()
         if (isNightMode!!) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

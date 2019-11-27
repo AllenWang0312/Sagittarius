@@ -8,5 +8,6 @@ interface ModelInfo{
     fun getCoverImg():String?
     fun getHotCot():Int?
     fun getNameStr():String?
+    fun get():Boolean?
 //    fun getTitleStr():String
 }

@@ -18,6 +18,7 @@ import edu.tjrac.swant.meitu.bean.User
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
+import edu.tjrac.swant.meitu.net.RxUtil
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.util.*
 
@@ -75,7 +76,7 @@ class SplashActivity : BaseActivity() {
 //        }
         if (!StringUtils.isEmpty(App.token)) {
             Net.instance.getApiService().getSplashInfo()
-                    .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
+                    .compose(RxUtil.applySchedulers())
                     .subscribe(object : NESubscriber<BR<ArrayList<SplashInfo>>>(this) {
                         override fun onSuccess(t: BR<ArrayList<SplashInfo>>?) {
                             for (i in t?.data!!) {
@@ -88,7 +89,7 @@ class SplashActivity : BaseActivity() {
                         }
                     })
             Net.instance.getApiService().tokenLogin()
-                    .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
+                    .compose(RxUtil.applySchedulers())
                     .subscribe(object : NESubscriber<BR<User>>(this) {
                         override fun onSuccess(t: BR<User>?) {
                             App.loged = t?.data
@@ -119,8 +120,8 @@ class SplashActivity : BaseActivity() {
     var next: Intent? = null
         get() {
             if (field == null) {
-//                field = Intent(this@SplashActivity, MeituLoginActivity::class.java)
-                field = Intent(this@SplashActivity, MeituMainActivity::class.java)
+                field = Intent(this@SplashActivity, MeituLoginActivity::class.java)
+//                field = Intent(this@SplashActivity, MeituMainActivity::class.java)
             }
             return field
         }

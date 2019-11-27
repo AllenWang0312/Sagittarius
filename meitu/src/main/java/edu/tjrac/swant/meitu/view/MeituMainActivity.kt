@@ -10,9 +10,9 @@ import android.view.MenuItem
 import edu.tjrac.swant.baselib.common.adapter.FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.fragment.ColumListFragment
 import edu.tjrac.swant.meitu.fragment.MineFragment
 import edu.tjrac.swant.meitu.fragment.ModelListFragment
+import edu.tjrac.swant.meitu_v2.fragment.HomeFragment
 import kotlinx.android.synthetic.main.activity_meitu_main.*
 
 
@@ -66,9 +66,9 @@ class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
         bnv.selectedItemId = R.id.tab_one;
 
         adapter = FragmentsPagerAdapter(supportFragmentManager)
-//        adapter?.addFragment(HomeFragment(), resources.getString(R.string.model))
         adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
-        adapter?.addFragment(ColumListFragment(), resources.getString(R.string.colum))
+        adapter?.addFragment(HomeFragment(), resources.getString(R.string.home))
+//        adapter?.addFragment(ColumListFragment(), resources.getString(R.string.colum))
         adapter?.addFragment(MineFragment(), resources.getString(R.string.mine))
         vp.offscreenPageLimit = 3
         vp.adapter = adapter;

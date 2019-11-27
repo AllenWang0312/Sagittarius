@@ -4,6 +4,10 @@ package edu.tjrac.swant.meitu.bean
  * Created by wpc on 2019-09-05.
  */
 class Model : ModelInfo {
+    override fun get(): Boolean? {
+        return get
+    }
+
     override fun getID(): Int? {
         return id
     }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <TableRow>
+        <TextView
+            android:layout_margin="12dp"
+            android:text="@string/login_account"/>
+        <EditText
+            android:id="@+id/et_account"
+            android:layout_width="200dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+        />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_margin="12dp"
+            android:text="@string/login_pass"/>
+        <EditText
+            android:id="@+id/et_pass"
+            android:layout_width="200dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+        />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_margin="12dp"
+            android:text="@string/login_repass"/>
+        <EditText
+            android:id="@+id/et_repass"
+            android:layout_width="200dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+        />
+    </TableRow>
+    <Button
+        android:id="@+id/bt_register"
+        style="@style/button_positive_square_style"
+        android:layout_height="36dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/login_register"/>
+
+
+</TableLayout>

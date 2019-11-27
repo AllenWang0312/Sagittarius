@@ -10,8 +10,6 @@ class HomeBean {
 
     var models:ArrayList<Model>?=null
 
-    var colum:ArrayList<Colum>?=null
-
-    var groups:ArrayList<Group>?=null
+    var companys:ArrayList<Company>?=null
 
 }
