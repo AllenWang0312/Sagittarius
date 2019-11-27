@@ -20,6 +20,8 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.MeituSelectTabActivity">
+        </activity>
         <activity android:name=".view.ColumDetailActivity">
         </activity>
         <activity
@@ -48,12 +50,11 @@
         <!-- android:name=".ui.login.LoginActivity" -->
         <!-- android:label="@string/title_activity_login"/> -->
         <activity android:name=".view.MeituSearchActivity"/>
-        <activity android:name=".view.ColumWebViewActivity"></activity>
+        <activity android:name=".view.ColumWebViewActivity"/>
         <activity
             android:name=".view.MeituMainActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".view.SettingActivity"
-        ></activity>
+        <activity android:name=".view.SettingActivity"/>
     </application>
 
 </manifest>

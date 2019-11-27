@@ -1,8 +1,10 @@
 package edu.tjrac.swant.meitu
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatDelegate
+import android.telephony.TelephonyManager
 import android.util.Log
 import edu.tjrac.swant.baselib.common.base.BaseApplication
 import edu.tjrac.swant.baselib.util.StringUtils
@@ -14,7 +16,7 @@ import edu.tjrac.swant.meitu.bean.User
 open class App : BaseApplication() {
     companion object {
         var context: Context? = null
-        var device:String?="device"
+        var device: String? = "device"
         var needReStart = false
         var sp: SharedPreferences? = null
             get() {
@@ -30,7 +32,7 @@ open class App : BaseApplication() {
                 Log.i("token", value)
             }
             get() {
-                if(StringUtils.isEmpty(field)){
+                if (StringUtils.isEmpty(field)) {
                     field = sp?.getString(Config.SP.TOKEN, "")
                 }
                 return field
@@ -75,9 +77,13 @@ open class App : BaseApplication() {
     }
 
 
+    @SuppressLint("MissingPermission")
     override fun onCreate() {
         context = this
-        device=
+
+        var tm = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        device = tm.getDeviceId()
+
         super.onCreate()
         if (isNightMode!!) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

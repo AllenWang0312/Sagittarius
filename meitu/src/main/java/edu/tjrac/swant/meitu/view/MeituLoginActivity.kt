@@ -7,7 +7,7 @@ import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.baselib.util.StringUtils
 import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.bean.User
+import edu.tjrac.swant.meitu.bean.stuct.LoginRespon
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
@@ -31,14 +31,18 @@ class MeituLoginActivity : BaseActivity() {
             if (StringUtils.isEmpty(account) || StringUtils.isEmpty(pass)) {
 
             } else {
-                Net.instance.getApiService().login(account, pass,App.device)
+                Net.instance.getApiService().login(account, pass, App.device!!)
                         .compose(RxUtil.applySchedulers())
-                        .subscribe(object : NESubscriber<BR<User>>(this) {
-                            override fun onSuccess(t: BR<User>?) {
+                        .subscribe(object : NESubscriber<BR<LoginRespon>>(this) {
+                            override fun onSuccess(t: BR<LoginRespon>?) {
                                 login.bt_login.post {
-                                    App.token = t?.data?.token
-                                    App.loged = t?.data
-                                    startActivity(Intent(this@MeituLoginActivity, MeituMainActivity::class.java))
+                                    App.token = t?.data?.user?.token
+                                    App.loged = t?.data?.user
+                                    if(t?.data?.has_tab!=true){
+                                        startActivity(Intent(this@MeituLoginActivity, MeituSelectTabActivity::class.java))
+                                    }
+                                    startActivity(Intent(this@MeituLoginActivity, MeituMainActivity::class.java)
+                                            .putExtra("bind",t?.data?.has_bind))
                                     finish()
                                 }
                             }

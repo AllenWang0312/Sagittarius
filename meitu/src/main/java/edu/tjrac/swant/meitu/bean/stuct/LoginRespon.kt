@@ -7,7 +7,7 @@ import edu.tjrac.swant.meitu.bean.User
  */
 class LoginRespon {
     var user: User? = null
-    var tab: Boolean? = false
-    var bind: Boolean? = false
+    var has_tab: Boolean? = false
+    var has_bind: Boolean? = false
 
 }

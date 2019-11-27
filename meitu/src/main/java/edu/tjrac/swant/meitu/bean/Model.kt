@@ -3,7 +3,7 @@ package edu.tjrac.swant.meitu.bean
 /**
  * Created by wpc on 2019-09-05.
  */
-class Model : ModelInfo {
+class Model : ModelInfo,Tab() {
     override fun get(): Boolean? {
         return get
     }
@@ -24,11 +24,9 @@ class Model : ModelInfo {
         return name
     }
 
-    var id: Int? = 0
 
     var cover: String? = null
 
-    var name: String? = null
     var nicknames: String? = null
     var jobs: String? = null
     var interest: String? = null
@@ -46,6 +44,5 @@ class Model : ModelInfo {
 
     var tags: String? = null
 
-    var hot: Int? = null
     var get:Boolean?=false
 }
