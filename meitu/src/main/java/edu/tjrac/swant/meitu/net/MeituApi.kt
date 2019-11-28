@@ -1,5 +1,6 @@
 package edu.tjrac.swant.meitu.net
 
+import com.google.gson.JsonObject
 import edu.tjrac.swant.meitu.bean.*
 import edu.tjrac.swant.meitu.bean.stuct.LoginRespon
 import retrofit2.http.*
@@ -14,14 +15,16 @@ interface MeituApi {
     @GET("/v1/api/config/splash")
     fun getSplashInfo(): Observable<BR<ArrayList<SplashInfo>>>
 
-    @POST("/v1/api/account/tokenlogin")
-    fun tokenLogin(): Observable<BR<User>>
-
     @FormUrlEncoded
     @POST("/v1/api/account/login")
     fun login(@Field("account") account: String,
               @Field("pwd") pwd: String,
               @Field("device") device: String): Observable<BR<LoginRespon>>
+
+    @FormUrlEncoded
+    @POST("/v1/api/account/tokenlogin")
+    fun tokenLogin(@Field("device") device: String): Observable<BR<LoginRespon>>
+
 
     @FormUrlEncoded
     @POST("/v1/api/account/register")
@@ -66,7 +69,24 @@ interface MeituApi {
     fun getColumDetails(@Query("model_id") modelid: Int?,
                         @Query("colum_id") id: Int?): Observable<BR<Colum>>
 
+
+
+    @GET("/v1/api/m/tabs")
+    fun getTabs(@Query("gender") gender: String?,
+                @Query("pageNo") pageNo: Int): Observable<BR<ArrayList<Tab>>>
+
+    @POST("/v1/api/m/tabs/follow")
+    fun followTabs(@Body selected: ArrayList<Tab>?): Observable<BR<JsonObject>>
+
+    @GET("/v1/api/m/tabs/followed")
+    fun followedTabs(): Observable<BR<ArrayList<Tab>>>
+
+
     @GET("/v1/api/m/home")
     fun getHomeData(@Query("contry") contry: String?): Observable<BR<HomeBean>>
 
+
+    @GET("/v1/api/m/home/zone")
+    fun getZoneHistroy(@Query("pageNo") pageNo: Int,
+                       @Query("pageSize") pageSize: Int): Observable<BR<Zone>>
 }

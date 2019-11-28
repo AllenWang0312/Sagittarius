@@ -14,7 +14,7 @@ import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.Config
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.bean.SplashInfo
-import edu.tjrac.swant.meitu.bean.User
+import edu.tjrac.swant.meitu.bean.stuct.LoginRespon
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
@@ -88,12 +88,13 @@ class SplashActivity : BaseActivity() {
                             }
                         }
                     })
-            Net.instance.getApiService().tokenLogin()
+            Net.instance.getApiService().tokenLogin(App.device!!)
                     .compose(RxUtil.applySchedulers())
-                    .subscribe(object : NESubscriber<BR<User>>(this) {
-                        override fun onSuccess(t: BR<User>?) {
-                            App.loged = t?.data
-                            next = Intent(this@SplashActivity, MeituMainActivity::class.java)
+                    .subscribe(object : NESubscriber<BR<LoginRespon>>(this) {
+                        override fun onSuccess(t: BR<LoginRespon>?) {
+//                            App.loged = t?.data
+//                            next = Intent(this@SplashActivity, MeituMainActivity::class.java)
+                            MeituLoginActivity.onLoginSuccess(this@SplashActivity,t?.data)
                         }
 
                         override fun onError(e: Throwable?) {

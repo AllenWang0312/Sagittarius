@@ -10,14 +10,20 @@ import android.view.MenuItem
 import edu.tjrac.swant.baselib.common.adapter.FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.meitu.R
+import edu.tjrac.swant.meitu.bean.Tab
 import edu.tjrac.swant.meitu.fragment.MineFragment
 import edu.tjrac.swant.meitu.fragment.ModelListFragment
+import edu.tjrac.swant.meitu.net.BR
+import edu.tjrac.swant.meitu.net.NESubscriber
+import edu.tjrac.swant.meitu.net.Net
+import edu.tjrac.swant.meitu.net.RxUtil
 import edu.tjrac.swant.meitu_v2.fragment.HomeFragment
 import kotlinx.android.synthetic.main.activity_meitu_main.*
 
 
 @SuppressLint("RestrictedApi")
 class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
+
     override fun onPageSelected(position: Int) {
         var menuItem = bnv.getMenu().getItem(position)
         menuItem.setChecked(true)
@@ -66,13 +72,20 @@ class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
         bnv.selectedItemId = R.id.tab_one;
 
         adapter = FragmentsPagerAdapter(supportFragmentManager)
-        adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
         adapter?.addFragment(HomeFragment(), resources.getString(R.string.home))
+        adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
 //        adapter?.addFragment(ColumListFragment(), resources.getString(R.string.colum))
         adapter?.addFragment(MineFragment(), resources.getString(R.string.mine))
         vp.offscreenPageLimit = 3
         vp.adapter = adapter;
 
+        Net.instance.getApiService().followedTabs()
+                .compose(RxUtil.applySchedulers())
+                .subscribe(object : NESubscriber<BR<ArrayList<Tab>>>(this) {
+                    override fun onSuccess(t: BR<ArrayList<Tab>>?) {
+
+                    }
+                })
     }
 
 
@@ -82,7 +95,6 @@ class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
 //    }
 
     fun disableShiftMode(navigationView: BottomNavigationView) {
-
         val menuView = navigationView.getChildAt(0) as BottomNavigationMenuView
         try {
             val shiftingMode = menuView.javaClass.getDeclaredField("mShiftingMode")
@@ -98,7 +110,7 @@ class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
+
 
 }
