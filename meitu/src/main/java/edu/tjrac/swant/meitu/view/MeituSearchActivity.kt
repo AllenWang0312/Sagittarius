@@ -94,12 +94,12 @@ class MeituSearchActivity : BaseActivity(), View.OnClickListener {
 
         for (item in data) {
             var v = mInflater?.inflate(R.layout.search_page_flowlayout_tv, null) as TextView
-            v.text = item?.shortname!!
+            v.text = item?.name!!
             var layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
             layoutParams.setMargins(0, 0, dp12, dp4)
             v.layoutParams = layoutParams
             v.setOnClickListener {
-                tag = item?.shortname!!
+                tag = item?.name!!
                 search()
             }
             tfl.addView(v)

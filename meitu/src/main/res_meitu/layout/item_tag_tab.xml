@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckBox
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:button="@null"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp"
+    android:background="@drawable/tab_bg_selecter"
+    android:textColor="@drawable/tab_textcolor_selecter"
+    android:gravity="center"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    tools:text="不选主题">
+
+</CheckBox>

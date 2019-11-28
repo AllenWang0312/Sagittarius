@@ -1,5 +1,6 @@
 package edu.tjrac.swant.meitu.view
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import edu.tjrac.swant.baselib.common.adapter.ViewsPagerAdapter
@@ -35,16 +36,7 @@ class MeituLoginActivity : BaseActivity() {
                         .compose(RxUtil.applySchedulers())
                         .subscribe(object : NESubscriber<BR<LoginRespon>>(this) {
                             override fun onSuccess(t: BR<LoginRespon>?) {
-                                login.bt_login.post {
-                                    App.token = t?.data?.user?.token
-                                    App.loged = t?.data?.user
-                                    if(t?.data?.has_tab!=true){
-                                        startActivity(Intent(this@MeituLoginActivity, MeituSelectTabActivity::class.java))
-                                    }
-                                    startActivity(Intent(this@MeituLoginActivity, MeituMainActivity::class.java)
-                                            .putExtra("bind",t?.data?.has_bind))
-                                    finish()
-                                }
+                                onLoginSuccess(this@MeituLoginActivity, t?.data)
                             }
                         })
             }
@@ -76,5 +68,23 @@ class MeituLoginActivity : BaseActivity() {
         vp_login.adapter = adapter
 
     }
+
+    companion object {
+        fun onLoginSuccess(context: Activity, data: LoginRespon?) {
+            if (!StringUtils.isEmpty(data?.user?.token)) {
+                App.token = data?.user?.token
+            }
+            App.loged = data?.user
+
+            if (data?.has_tab != true) {
+                context.startActivity(Intent(context, MeituSelectTabActivity::class.java))
+            } else {
+                context.startActivity(Intent(context, MeituMainActivity::class.java)
+                        .putExtra("bind", data?.has_bind))
+            }
+            context.finish()
+        }
+    }
+
 
 }
