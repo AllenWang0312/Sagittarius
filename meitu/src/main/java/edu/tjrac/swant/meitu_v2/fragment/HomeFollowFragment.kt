@@ -13,19 +13,23 @@ import edu.tjrac.swant.meitu.net.Net
  * Created by wpc on 2019-11-28.
  */
 
-class HomeFollowFragment:BaseFragment() {
+class HomeFollowFragment : BaseFragment() {
 
-    var v:View?=null
+    var v: View? = null
 
-    var follows=ArrayList<Tab>()
+    var follows = ArrayList<Tab>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        v=inflater.inflate(R.layout.fragment_home_follow,container,false)
+        v = inflater.inflate(R.layout.fragment_home_follow, container, false)
 
         return v
     }
 
-    fun onGetFollowSuccess(){
-Net.instance.getApiService().getZoneHistroy()
+    var pageNo = 1
+    var pageSize = 20
+
+    fun onGetFollowSuccess() {
+        Net.instance.getApiService().getZoneHistroy(pageNo, pageSize)
+
     }
 }
