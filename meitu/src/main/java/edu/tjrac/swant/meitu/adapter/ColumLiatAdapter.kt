@@ -9,17 +9,17 @@ import com.bumptech.glide.request.transition.Transition
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.bean.ColumInfo
+import edu.tjrac.swant.meitu.bean.AlbumInfo
 
 /**
  * Created by wpc on 2019-09-05.
  */
-class ColumLiatAdapter(var layoutId: Int, data: List<ColumInfo>?)
-    : BaseQuickAdapter<ColumInfo, BaseViewHolder>(layoutId, data) {
+class ColumLiatAdapter(var layoutId: Int, data: List<AlbumInfo>?)
+    : BaseQuickAdapter<AlbumInfo, BaseViewHolder>(layoutId, data) {
 
-    override fun convert(helper: BaseViewHolder, item: ColumInfo) {
+    override fun convert(helper: BaseViewHolder, item: AlbumInfo) {
         var iv_cover = helper.getView<ImageView>(R.id.iv_cover)
-        Glide.with(mContext).load(item.getColumCover())
+        Glide.with(mContext).load(item.getAlbumCover())
 //                .into(iv_cover)
                 .into(object :SimpleTarget<Drawable>(){
                     override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {

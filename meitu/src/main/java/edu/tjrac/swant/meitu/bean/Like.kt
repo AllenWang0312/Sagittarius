@@ -3,7 +3,7 @@ package edu.tjrac.swant.meitu.bean
 /**
  * Created by wpc on 2019-11-19.
  */
-class Like :ColumInfo,ModelInfo{
+class Like :AlbumInfo,ModelInfo{
     override fun get(): Boolean? {
         return model?.get
     }
@@ -12,8 +12,8 @@ class Like :ColumInfo,ModelInfo{
         return modelid
     }
 
-    override fun getColumCover(): String? {
-        return colum?.getColumCover()
+    override fun getAlbumCover(): String? {
+        return album?.getAlbumCover()
     }
 
     override fun getHotCot(): Int? {
@@ -29,7 +29,7 @@ class Like :ColumInfo,ModelInfo{
     }
 
     override fun getTitleStr(): String? {
-        return colum?.title
+        return album?.title
     }
 
     var id:Int?=0
@@ -39,7 +39,7 @@ class Like :ColumInfo,ModelInfo{
     var model:Model?=null
     var columid:Int?=0
 
-    var colum:Colum?=null
+    var album:Album?=null
     var releation:String?=""
 
 }

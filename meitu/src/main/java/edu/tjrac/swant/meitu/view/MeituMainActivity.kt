@@ -74,7 +74,7 @@ class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
         adapter = FragmentsPagerAdapter(supportFragmentManager)
         adapter?.addFragment(HomeFragment(), resources.getString(R.string.home))
         adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
-//        adapter?.addFragment(ColumListFragment(), resources.getString(R.string.colum))
+//        adapter?.addFragment(ColumListFragment(), resources.getString(R.string.album))
         adapter?.addFragment(MineFragment(), resources.getString(R.string.mine))
         vp.offscreenPageLimit = 3
         vp.adapter = adapter;

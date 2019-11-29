@@ -11,7 +11,7 @@ import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.baselib.util.UiUtil
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.ColumLiatAdapter
-import edu.tjrac.swant.meitu.bean.Colum
+import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.bean.Tags
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
@@ -33,7 +33,7 @@ class MeituSearchActivity : BaseActivity(), View.OnClickListener {
     var tag: String? = null
 
     var adapter: ColumLiatAdapter? = null
-    var data: ArrayList<Colum>? = ArrayList()
+    var data: ArrayList<Album>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,8 +109,8 @@ class MeituSearchActivity : BaseActivity(), View.OnClickListener {
     private fun search() {
         Net.instance.getApiService().getColumList(pageSize, pageNo, tag)
                 .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
-                .subscribe(object : NESubscriber<BR<ArrayList<Colum>>>(this) {
-                    override fun onSuccess(t: BR<ArrayList<Colum>>?) {
+                .subscribe(object : NESubscriber<BR<ArrayList<Album>>>(this) {
+                    override fun onSuccess(t: BR<ArrayList<Album>>?) {
                         if (pageNo == 1) {
                             data?.clear()
                         }

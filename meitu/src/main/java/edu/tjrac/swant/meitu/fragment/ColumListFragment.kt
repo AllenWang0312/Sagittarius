@@ -11,7 +11,7 @@ import edu.tjrac.swant.baselib.common.recycler.GridSpacingItemDecoration
 import edu.tjrac.swant.baselib.util.UiUtil
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.ColumLiatAdapter
-import edu.tjrac.swant.meitu.bean.Colum
+import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.swiper_recycler_view.view.*
  */
 class ColumListFragment : BaseFragment() {
 
-    var data: ArrayList<Colum>? = ArrayList()
+    var data: ArrayList<Album>? = ArrayList()
     var adapter: ColumLiatAdapter? = null
 
     var pageSize = 20
@@ -95,8 +95,8 @@ class ColumListFragment : BaseFragment() {
         }
         Net.instance.getApiService().getColumList(pageSize, pageNo, null)
                 .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
-                .subscribe(object : NESubscriber<BR<ArrayList<Colum>>>(this) {
-                    override fun onSuccess(t: BR<ArrayList<Colum>>?) {
+                .subscribe(object : NESubscriber<BR<ArrayList<Album>>>(this) {
+                    override fun onSuccess(t: BR<ArrayList<Album>>?) {
                         if (null != t?.data) {
                             onGetDataSuccess(t?.data!!)
                         }
@@ -116,7 +116,7 @@ class ColumListFragment : BaseFragment() {
                 })
     }
 
-    private fun onGetDataSuccess(data: ArrayList<Colum>) {
+    private fun onGetDataSuccess(data: ArrayList<Album>) {
         if (data?.size > 0) {
             this.data?.addAll(data)
             adapter?.loadMoreComplete()

@@ -14,15 +14,16 @@ import kotlinx.android.synthetic.main.fragment_main.view.*
  */
 class HomeFragment : BaseFragment() {
 
-    var v:View?=null
-    var adapter :FragmentsPagerAdapter?=null
+    var v: View? = null
+    var adapter: FragmentsPagerAdapter? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        v=inflater.inflate(R.layout.fragment_main,container,false)
-        adapter=FragmentsPagerAdapter(fragmentManager!!)
+        v = inflater.inflate(R.layout.fragment_main, container, false)
+        adapter = FragmentsPagerAdapter(fragmentManager!!)
 
-        adapter?.addFragment(HomeHomeFragment(),"home_home")
+        adapter?.addFragment(HomeFollowFragment(), "cycler")
+        adapter?.addFragment(HomeHomeFragment(), "home_home")
 
-        v?.vp?.adapter=adapter
+        v?.vp?.adapter = adapter
         v?.tab?.setupWithViewPager(v?.vp!!)
 
 

@@ -31,7 +31,7 @@ class ColumCollectionFragment : BaseFragment() {
         adapter = ColumLiatAdapter(R.layout.item2_meitu_colum, data)
         adapter?.setOnItemClickListener{ad, view, position ->
             var item =data?.get(position)
-            if (item?.colum?.get!!){
+            if (item?.album?.get!!){
                 startActivity(Intent(activity!!, ColumDetailActivity::class.java)
                         .putExtra("model_id",item.modelid)
                         .putExtra("id",item.id))
@@ -40,8 +40,8 @@ class ColumCollectionFragment : BaseFragment() {
             }else{
                 startActivity(Intent(activity, ColumWebViewActivity::class.java)
                         .putExtra("colum_id",item.id)
-                        .putExtra("url", "https://m.meituri.com/a/" + item?.colum?.id + "/")
-                        .putExtra("tital", item?.colum?.title!!))
+                        .putExtra("url", "https://m.meituri.com/a/" + item?.album?.id + "/")
+                        .putExtra("tital", item?.album?.title!!))
 
             }
         }

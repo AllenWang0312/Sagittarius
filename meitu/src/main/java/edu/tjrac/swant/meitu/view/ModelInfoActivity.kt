@@ -9,7 +9,7 @@ import edu.tjrac.swant.baselib.util.StringUtils
 import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.ColumLiatAdapter
-import edu.tjrac.swant.meitu.bean.Colum
+import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.bean.ModelDetail
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
@@ -23,7 +23,7 @@ class ModelInfoActivity : BaseActivity() {
     var get:Boolean?=false
 
     var adapter: ColumLiatAdapter? = null
-    var data: ArrayList<Colum>? = ArrayList()
+    var data: ArrayList<Album>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,7 +90,7 @@ class ModelInfoActivity : BaseActivity() {
                         }
                         setTitle(t?.data?.info?.name)
 
-                        data?.addAll(t?.data?.colums!!)
+                        data?.addAll(t?.data?.albums!!)
                         adapter?.notifyDataSetChanged()
                     }
                 })

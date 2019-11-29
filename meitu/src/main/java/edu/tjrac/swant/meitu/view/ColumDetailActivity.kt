@@ -7,7 +7,7 @@ import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.image.ImagePreviewActivity
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.ImageAdapter
-import edu.tjrac.swant.meitu.bean.Colum
+import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
@@ -38,8 +38,8 @@ class ColumDetailActivity : BaseActivity() {
 
         Net.instance.getApiService().getColumDetails(model_id, colum_id)
                 .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
-                .subscribe(object : NESubscriber<BR<Colum>>(this) {
-                    override fun onSuccess(t: BR<Colum>?) {
+                .subscribe(object : NESubscriber<BR<Album>>(this) {
+                    override fun onSuccess(t: BR<Album>?) {
 //                             startActivity(Intent(activity!!,ImagePreviewActivity::class.java)
 //                                     .putExtra("images",t?.data))
                         data?.addAll(t?.data?.images!!)

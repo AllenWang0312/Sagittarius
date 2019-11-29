@@ -201,7 +201,6 @@ class MeituSelectTabActivity : BaseActivity(), View.OnClickListener {
                             data?.addAll(t?.data!!)
                             tag.setMaxSelectCount(maxSize - selected?.size!!)
                             tab_adapter?.notifyDataChanged()
-
                             datas?.add(t?.data!!)
                         }
                     }

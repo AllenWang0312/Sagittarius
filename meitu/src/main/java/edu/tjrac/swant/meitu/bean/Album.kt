@@ -5,7 +5,7 @@ import edu.tjrac.swant.meitu.Config
 /**
  * Created by wpc on 2019-09-05.
  */
-class Colum : ColumInfo {
+class Album : AlbumInfo {
     var id: Int? = 0
     var modelid: Int? = 0
 
@@ -25,7 +25,7 @@ class Colum : ColumInfo {
     var hot: Int? = 0
 
 
-    override fun getColumCover(): String {
+    override fun getAlbumCover(): String {
 //        return
         return Config.URL.FILE_SERVER + "/muri/" + modelid + "/" + id + "/0.jpg"
     }

@@ -45,10 +45,10 @@ interface MeituApi {
     fun like(@QueryMap map: HashMap<String, String>): Observable<BR<Int>>
 
 
-    @GET("/v1/api/colum/list")
+    @GET("/v1/api/album/list")
     fun getColumList(@Query("pageSize") pageSize: Int,
                      @Query("pageNo") pageNo: Int,
-                     @Query("tag") tag: String?): Observable<BR<ArrayList<Colum>>>
+                     @Query("tag") tag: String?): Observable<BR<ArrayList<Album>>>
 
     @GET("/v1/api/tag/hot")
     fun getHotTags(): Observable<BR<ArrayList<Tags>>>
@@ -57,7 +57,7 @@ interface MeituApi {
     @POST("/v1/api/like/models")
     fun getFollowModelList(): Observable<BR<ArrayList<Like>>>
 
-    @POST("/v1/api/like/colums")
+    @POST("/v1/api/like/albums")
     fun getFavouriteColumsList(): Observable<BR<ArrayList<Like>>>
 
 
@@ -65,10 +65,9 @@ interface MeituApi {
     fun getFeedbackList(@Query("pageNo") pageNo: Int,
                         @Query("pageSize") pageSize: Int): Observable<BR<ArrayList<Feedback>>>
 
-    @GET("/v1/api/colum")
+    @GET("/v1/api/album")
     fun getColumDetails(@Query("model_id") modelid: Int?,
-                        @Query("colum_id") id: Int?): Observable<BR<Colum>>
-
+                        @Query("colum_id") id: Int?): Observable<BR<Album>>
 
 
     @GET("/v1/api/m/tabs")
@@ -87,6 +86,8 @@ interface MeituApi {
 
 
     @GET("/v1/api/m/home/zone")
-    fun getZoneHistroy(@Query("pageNo") pageNo: Int,
-                       @Query("pageSize") pageSize: Int): Observable<BR<Zone>>
+    fun getZoneHistroy(@Query("year") year: String,
+                       @Query("month") month: String,
+                       @Query("pageNo") pageNo: Int,
+                       @Query("pageSize") pageSize: Int): Observable<BR<ArrayList<Zone>>>
 }

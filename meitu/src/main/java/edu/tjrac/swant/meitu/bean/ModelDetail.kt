@@ -5,5 +5,5 @@ package edu.tjrac.swant.meitu.bean
  */
 class ModelDetail {
     var info: Model? = null
-    var colums: List<Colum>? = null
+    var albums: List<Album>? = null
 }

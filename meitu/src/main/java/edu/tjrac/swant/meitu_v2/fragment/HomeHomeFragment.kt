@@ -11,7 +11,7 @@ import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.ColumLiatAdapter
 import edu.tjrac.swant.meitu.adapter.CompanyListAdapter
 import edu.tjrac.swant.meitu.adapter.ModelLiatAdapter
-import edu.tjrac.swant.meitu.bean.Colum
+import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.bean.HomeBean
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
@@ -29,7 +29,7 @@ class HomeHomeFragment:BaseFragment() {
     var head: View? = null
     var v: View? = null
     var adapter: ColumLiatAdapter? = null
-    var data:ArrayList<Colum>?= ArrayList()
+    var data:ArrayList<Album>?= ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = layoutInflater.inflate(R.layout.swiper_recycler_view, container, false)
@@ -92,8 +92,8 @@ class HomeHomeFragment:BaseFragment() {
         }
         Net.instance.getApiService().getColumList(pageSize,pageNo,null)
                 .compose(RxUtil.applySchedulers())
-                .subscribe(object : NESubscriber<BR<ArrayList<Colum>>>(this) {
-                    override fun onSuccess(t: BR<ArrayList<Colum>>?) {
+                .subscribe(object : NESubscriber<BR<ArrayList<Album>>>(this) {
+                    override fun onSuccess(t: BR<ArrayList<Album>>?) {
                         if (null != t?.data) {
                             onGetDataSuccess(t?.data!!)
                         }
@@ -108,7 +108,7 @@ class HomeHomeFragment:BaseFragment() {
                 })
     }
 
-    private fun onGetDataSuccess(data: java.util.ArrayList<Colum>) {
+    private fun onGetDataSuccess(data: java.util.ArrayList<Album>) {
         if(data?.size!!>0){
             this.data?.addAll(data)
             adapter?.loadMoreComplete()
