@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.RadioButton
 import edu.tjrac.swant.baselib.common.base.BaseApplication
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
+import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.App.Companion.followSystem
 import edu.tjrac.swant.meitu.App.Companion.isNightMode
 import edu.tjrac.swant.meitu.App.Companion.languageSetting
@@ -86,7 +87,12 @@ class SettingActivity : BaseBarActivity() {
             }
 //            recreate()
         }
-
+        bt_exit.setOnClickListener {
+            App.token = ""
+            App.loged = null
+            BaseApplication.instance?.exit()
+            startActivity(Intent(this,MeituLoginActivity::class.java))
+        }
     }
 
     private fun initLanguageSettingUI(set: Boolean?, languageSetting: Int?) {

@@ -13,14 +13,16 @@ import edu.tjrac.swant.meitu.bean.ZoneTitle
 class ZoneListAdapter(data: MutableList<MultiItemEntity>?) : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>(data) {
     init {
         addItemType(0, R.layout.item_zone_title)
-        addItemType(1,R.layout.item_zone_cyc_album_kuan)
+        addItemType(1, R.layout.item_zone_cyc_album_kuan)
     }
 
     override fun convert(helper: BaseViewHolder?, item: MultiItemEntity?) {
-        if(item is ZoneTitle){
+        if (item is ZoneTitle) {
 
-        } else if(item is Zone){
-
+        } else if (item is Zone) {
+            helper?.setText(R.id.tv_name, item.model?.name)
+                    ?.setText(R.id.tv_subs, item.album?.time)
+                    ?.setText(R.id.tv_content,item.album?.title)
         }
     }
 

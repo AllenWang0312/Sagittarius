@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.SplashActivity">
-    <TextView
-        android:id="@+id/tv_skip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="36dp"
-        android:layout_marginRight="32dp"
-        android:background="@drawable/splash_skip_bg"
-        android:paddingLeft="12dp"
-        android:paddingTop="4dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="4dp"
-        android:text="跳过(3)"
-        android:textColor="@color/white"
-    />
-    <ImageView android:id="@+id/iv" android:layout_width="match_parent"
-               android:layout_height="match_parent"/>
+    android:layout_height="match_parent" tools:context=".view.SplashActivity">
+
+
+
+    <ImageView android:id="@+id/iv_cover" android:layout_width="64dp"
+               android:layout_height="64dp"
+               android:visibility="gone"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="@+id/iv"
+               app:layout_constraintVertical_bias="0.26"/>
+    <TextView android:id="@+id/tv_name"
+              android:visibility="gone"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="@color/line_color"
+              app:layout_constraintEnd_toEndOf="@+id/iv_cover" app:layout_constraintStart_toStartOf="@+id/iv_cover"
+              app:layout_constraintTop_toBottomOf="@+id/iv_cover" tools:text="王鹏程"/>
+
+    <ImageView android:id="@+id/iv"
+               android:layout_width="0dp"
+               android:layout_height="611dp"
+               app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent"/>
+
+
     <!--<Button-->
     <!--android:id="@+id/bt"-->
     <!--style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"-->
@@ -32,5 +41,17 @@
     <!--android:layout_marginBottom="86dp"-->
     <!--android:text="开始使用"-->
     <!--/>-->
-
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/splash_skip_bg"
+        android:paddingLeft="12dp"
+        android:paddingTop="4dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="4dp" android:text="跳过(3)" android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+</android.support.constraint.ConstraintLayout>

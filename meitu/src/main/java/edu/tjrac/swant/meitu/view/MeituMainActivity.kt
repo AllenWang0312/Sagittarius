@@ -12,12 +12,12 @@ import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.bean.Tab
 import edu.tjrac.swant.meitu.fragment.MineFragment
-import edu.tjrac.swant.meitu.fragment.ModelListFragment
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import edu.tjrac.swant.meitu.net.RxUtil
-import edu.tjrac.swant.meitu_v2.fragment.HomeFragment
+import edu.tjrac.swant.meitu_v2.fragment.HomeFollowFragment
+import edu.tjrac.swant.meitu_v2.fragment.HomeHomeFragment
 import kotlinx.android.synthetic.main.activity_meitu_main.*
 
 
@@ -72,8 +72,11 @@ class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
         bnv.selectedItemId = R.id.tab_one;
 
         adapter = FragmentsPagerAdapter(supportFragmentManager)
-        adapter?.addFragment(HomeFragment(), resources.getString(R.string.home))
-        adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
+//        adapter?.addFragment(HomeFragment(), resources.getString(R.string.home))
+//        adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
+        adapter?.addFragment(HomeFollowFragment(), "cycler")
+        adapter?.addFragment(HomeHomeFragment(), "home_home")
+
 //        adapter?.addFragment(ColumListFragment(), resources.getString(R.string.album))
         adapter?.addFragment(MineFragment(), resources.getString(R.string.mine))
         vp.offscreenPageLimit = 3

@@ -6,14 +6,16 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.tbruyelle.rxpermissions2.RxPermissions
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.baselib.util.StringUtils
 import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.Config
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.bean.SplashInfo
+import edu.tjrac.swant.meitu.bean.Banner
 import edu.tjrac.swant.meitu.bean.stuct.LoginRespon
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
@@ -24,7 +26,7 @@ import java.util.*
 
 class SplashActivity : BaseActivity() {
     var sp: SharedPreferences? = null
-    var waitTime = 3;
+    var waitTime = 5;
 
     var timer = Timer()
     override fun onResume() {
@@ -74,15 +76,23 @@ class SplashActivity : BaseActivity() {
 //        bt.setOnClickListener {
 //            jump()
 //        }
+        if (App.loged != null) {
+            iv_cover.visibility = View.VISIBLE
+            tv_name.visibility = View.VISIBLE
+            Glide.with(this).load(App.loged?.portarit)
+                    .apply(RequestOptions().circleCrop()).into(iv_cover)
+            tv_name.text = App.loged?.name
+        }
         if (!StringUtils.isEmpty(App.token)) {
             Net.instance.getApiService().getSplashInfo()
                     .compose(RxUtil.applySchedulers())
-                    .subscribe(object : NESubscriber<BR<ArrayList<SplashInfo>>>(this) {
-                        override fun onSuccess(t: BR<ArrayList<SplashInfo>>?) {
+                    .subscribe(object : NESubscriber<BR<ArrayList<Banner>>>(this) {
+                        override fun onSuccess(t: BR<ArrayList<Banner>>?) {
                             for (i in t?.data!!) {
                                 var now = System.currentTimeMillis()
                                 if (now > i.getStartTime() && now < i.getEndTime()) {
-                                    Glide.with(this@SplashActivity).load(i.art_url).into(iv)
+//                                    Log.i("splash",i.src)
+                                    Glide.with(this@SplashActivity).load(i.src).into(iv)
                                     break
                                 }
                             }
@@ -94,11 +104,23 @@ class SplashActivity : BaseActivity() {
                         override fun onSuccess(t: BR<LoginRespon>?) {
 //                            App.loged = t?.data
 //                            next = Intent(this@SplashActivity, MeituMainActivity::class.java)
-                            MeituLoginActivity.onLoginSuccess(this@SplashActivity,t?.data)
+//                            MeituLoginActivity.onLoginSuccess(this@SplashActivity, t?.data)
+                            if (!StringUtils.isEmpty(t?.data?.user?.token)) {
+                                App.token = t?.data?.user?.token
+                            }
+                            App.loged = t?.data?.user
+
+                            if (t?.data?.has_tab != true) {
+                                next = Intent(this@SplashActivity, MeituSelectTabActivity::class.java)
+                            } else {
+                                next = Intent(this@SplashActivity, MeituMainActivity::class.java)
+                                        .putExtra("bind", t?.data?.has_bind)
+                            }
                         }
 
                         override fun onError(e: Throwable?) {
                             super.onError(e)
+                            next = Intent(this@SplashActivity, MeituMainActivity::class.java)
                         }
                     })
         }
@@ -122,14 +144,11 @@ class SplashActivity : BaseActivity() {
         get() {
             if (field == null) {
                 field = Intent(this@SplashActivity, MeituLoginActivity::class.java)
-//                field = Intent(this@SplashActivity, MeituMainActivity::class.java)
             }
             return field
         }
 
     private fun jump() {
-//        startActivity(Intent(this, MainActivity::class.java))
-//        startActivity(Intent(this@SplashActivity, ModelInfoActivity::class.java))
         finish()
         startActivity(next)
     }

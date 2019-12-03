@@ -3,6 +3,6 @@
 
     <!-- 启动页的THMEME,设置背景，防止启动出现短暂的白屏 -->
     <style name="SplashTheme" parent="AppTheme.TranslucentStatus">
-        <item name="android:windowBackground">@mipmap/weiguang_splash</item>
+        <item name="android:windowBackground">@mipmap/splash_bg</item>
     </style>
 </resources>

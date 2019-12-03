@@ -139,7 +139,7 @@ open abstract class NESubscriber<O : BR<*>>(internal var view: BaseView?) : Subs
             if (!StringUtils.isEmpty(t.toast)) {
                 T.Companion.show(t.toast!!)
             }
-            if (StringUtils.isEmpty(t.msg)&&StringUtils.isEmpty(t.toast)) {
+            if (StringUtils.isEmpty(t.msg)&&t.code==0) {
                 onSuccess(t)
             }
         }

@@ -64,6 +64,20 @@
             />
         </LinearLayout>
         <FrameLayout
+            android:id="@+id/fl_down"
+            android:layout_width="match_parent" android:layout_height="50dp"
+        >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="24dp"
+                android:text="@string/my_downloads"
+                android:textColor="@color/text_color_gray"
+            />
+
+        </FrameLayout>
+        <FrameLayout
             android:id="@+id/fl_likes"
             android:layout_width="match_parent" android:layout_height="50dp"
         >

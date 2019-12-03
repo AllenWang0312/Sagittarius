@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.support.v7.app.AppCompatDelegate
 import android.telephony.TelephonyManager
 import android.util.Log
+import com.google.gson.Gson
 import edu.tjrac.swant.baselib.common.base.BaseApplication
 import edu.tjrac.swant.baselib.util.StringUtils
 import edu.tjrac.swant.meitu.bean.User
@@ -37,6 +38,26 @@ open class App : BaseApplication() {
                 }
                 return field
             }
+        var loged: User? = null
+            get() {
+                if (null == field) {
+                    var user = sp?.getString(Config.SP.LOGINED_USER, "")
+                    field = Gson().fromJson(user, User::class.java)
+                }
+                return field
+            }
+            set(value) {
+                field = value
+                var user: String
+                if (field == null) {
+                    user = ""
+                } else {
+                    user = Gson().toJson(field)
+                }
+
+                sp?.edit()?.putString(Config.SP.LOGINED_USER, user!!)?.commit()
+            }
+
         var isNightMode: Boolean? = null
             get() {
                 if (null == field) {
@@ -73,7 +94,7 @@ open class App : BaseApplication() {
                 needReStart = true
                 sp?.edit()?.putInt(Config.SP.LANGUAGE_SETTING, value!!)?.commit()
             }
-        var loged: User? = User(1)
+
     }
 
 

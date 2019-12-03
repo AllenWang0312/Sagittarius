@@ -13,7 +13,7 @@ import java.util.*
 interface MeituApi {
 
     @GET("/v1/api/config/splash")
-    fun getSplashInfo(): Observable<BR<ArrayList<SplashInfo>>>
+    fun getSplashInfo(): Observable<BR<ArrayList<Banner>>>
 
     @FormUrlEncoded
     @POST("/v1/api/account/login")
@@ -84,6 +84,11 @@ interface MeituApi {
     @GET("/v1/api/m/home")
     fun getHomeData(@Query("contry") contry: String?): Observable<BR<HomeBean>>
 
+    @POST("/v1/api/m/mine/info")
+    fun getUserInfo(): Observable<BR<User>>
+
+    @POST("/v1/api/account/info")
+    fun getUser(): Observable<BR<User>>
 
     @GET("/v1/api/m/home/zone")
     fun getZoneHistroy(@Query("year") year: String,

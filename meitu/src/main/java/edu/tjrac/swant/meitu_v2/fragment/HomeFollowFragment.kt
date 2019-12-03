@@ -41,34 +41,42 @@ class HomeFollowFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_home_follow, container, false)
         initTime()
-
-        adapter = ZoneListAdapter(data)
         swiper?.setOnRefreshListener {
             data?.clear()
             initTime()
-            pageNo=1
+            pageNo = 1
             initData()
         }
+        adapter = ZoneListAdapter(data)
         adapter?.setOnLoadMoreListener {
-            if (end) {
-                nextMonth()
-                data?.add(ZoneTitle(year + "-" + month))
-                end = false
-            } else {
-                pageNo++
-            }
-            initData()
+            loadMore()
         }
+        var head = layoutInflater.inflate(R.layout.head_home_follow, null)
+        adapter?.setHeaderView(head)
+
         v?.recycler?.layoutManager = LinearLayoutManager(activity!!)
         v?.recycler?.adapter = adapter
+
+        initData()
         return v
+    }
+
+    private fun loadMore() {
+        if (end) {
+            nextMonth()
+            data?.add(ZoneTitle(year + "-" + month))
+            end = false
+        } else {
+            pageNo++
+        }
+        initData()
     }
 
     private fun initTime() {
         var timestr = TimeUtils.getTimeWithFormat(time, YMD)
         year = timestr.substring(0, 4)
         month = timestr.substring(5, 7)
-        data?.add(ZoneTitle(year + "-" + month))
+        data?.add(ZoneTitle("$year-$month"))
     }
 
     private fun nextMonth() {
@@ -85,7 +93,7 @@ class HomeFollowFragment : BaseFragment() {
         if (month.length == 1) {
             month = "0$month"
         }
-        pageNo=1
+        pageNo = 1
     }
 
     var pageNo = 1
@@ -103,10 +111,22 @@ class HomeFollowFragment : BaseFragment() {
                     override fun onSuccess(t: BR<ArrayList<Zone>>?) {
                         if (t?.data?.size!! > 0) {
                             data?.addAll(t?.data!!)
+                            end = false
                         } else {
                             end = true
                         }
-                        adapter?.loadMoreComplete()
+                        loadMore()
+                    }
+
+                    override fun onError(e: Throwable?) {
+                        super.onError(e)
+                    }
+
+                    override fun onCompleted() {
+                        super.onCompleted()
+                        if (swiper.isRefreshing) {
+                            swiper.isRefreshing = false
+                        }
                     }
                 })
 
