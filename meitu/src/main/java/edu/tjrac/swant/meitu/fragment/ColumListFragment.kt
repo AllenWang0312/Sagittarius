@@ -15,7 +15,7 @@ import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
-import edu.tjrac.swant.meitu.view.ColumDetailActivity
+import edu.tjrac.swant.meitu.view.AlbumDetailActivity
 import edu.tjrac.swant.meitu.view.ColumWebViewActivity
 import kotlinx.android.synthetic.main.swiper_recycler_view.view.*
 
@@ -39,8 +39,8 @@ class ColumListFragment : BaseFragment() {
         adapter?.setOnItemClickListener { ad, view, position ->
             var item = data?.get(position)
             if (item?.get!!) {
-                startActivity(Intent(activity!!, ColumDetailActivity::class.java)
-                        .putExtra("model_id", item.modelid)
+                startActivity(Intent(activity!!, AlbumDetailActivity::class.java)
+                        .putExtra("model_id", item.model_id)
                         .putExtra("id", item.id))
 
 //                GalleryFragment

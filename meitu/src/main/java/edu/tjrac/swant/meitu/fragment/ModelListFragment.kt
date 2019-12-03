@@ -2,7 +2,7 @@ package edu.tjrac.swant.meitu.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.StaggeredGridLayoutManager
+import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +16,6 @@ import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import edu.tjrac.swant.meitu.view.MeituSearchActivity
-import edu.tjrac.swant.meitu.view.ModelInfoActivity
 import kotlinx.android.synthetic.main.swipe_tool_refresh_layout.view.*
 
 /**
@@ -59,8 +58,8 @@ class ModelListFragment : BaseFragment(), View.OnClickListener {
         adapter = ModelLiatAdapter(R.layout.item_meitu_model, data!!)
 
 //        var layoutManager = LinearLayoutManager(this)
-        var layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
-//        var layoutManager = GridLayoutManager(activity!!, 3)
+//        var layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        var layoutManager = GridLayoutManager(activity!!, 3)
 // 绑定布局管理器
         v?.recycler?.layoutManager = layoutManager!!
         var dp4 = UiUtil.dp2px(activity!!, 4).toInt()

@@ -67,7 +67,7 @@ interface MeituApi {
 
     @GET("/v1/api/album")
     fun getColumDetails(@Query("model_id") modelid: Int?,
-                        @Query("colum_id") id: Int?): Observable<BR<Album>>
+                        @Query("album_id") id: Int?): Observable<BR<Album>>
 
 
     @GET("/v1/api/m/tabs")

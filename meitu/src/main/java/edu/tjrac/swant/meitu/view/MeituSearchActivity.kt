@@ -45,8 +45,8 @@ class MeituSearchActivity : BaseActivity(), View.OnClickListener {
         adapter?.setOnItemClickListener{ad, view, position ->
             var item =data?.get(position)
             if (item?.get!!){
-                startActivity(Intent(this, ColumDetailActivity::class.java)
-                        .putExtra("model_id",item.modelid)
+                startActivity(Intent(this, AlbumDetailActivity::class.java)
+                        .putExtra("model_id",item.model_id)
                         .putExtra("id",item.id))
 
 //                GalleryFragment

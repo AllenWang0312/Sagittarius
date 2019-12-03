@@ -2,7 +2,7 @@ package edu.tjrac.swant.meitu.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.StaggeredGridLayoutManager
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.image.ImagePreviewActivity
 import edu.tjrac.swant.meitu.R
@@ -13,7 +13,7 @@ import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import kotlinx.android.synthetic.main.activity_model_info.*
 
-class ColumDetailActivity : BaseActivity() {
+class AlbumDetailActivity : BaseActivity() {
 
     var model_id: Int? = 0
     var colum_id: Int? = 0
@@ -23,7 +23,7 @@ class ColumDetailActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_colum_detail)
-        if (intent?.hasExtra("id")!!) colum_id = intent.getIntExtra("id", 0)
+        if (intent?.hasExtra("album_id")!!) colum_id = intent.getIntExtra("album_id", 0)
         if (intent?.hasExtra("model_id")!!) model_id = intent.getIntExtra("model_id", 0)
 
         adapter = ImageAdapter(data)
@@ -33,7 +33,8 @@ class ColumDetailActivity : BaseActivity() {
                     .putExtra("index", position))
 
         }
-        recycler.layoutManager = GridLayoutManager(this, 2)
+//        recycler.layoutManager = GridLayoutManager(this, 2)
+        recycler.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recycler?.adapter = adapter
 
         Net.instance.getApiService().getColumDetails(model_id, colum_id)
