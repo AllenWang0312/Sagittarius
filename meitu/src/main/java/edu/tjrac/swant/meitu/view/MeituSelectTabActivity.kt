@@ -1,6 +1,7 @@
 package edu.tjrac.swant.meitu.view
 
 import android.app.Service
+import android.content.Intent
 import android.os.Bundle
 import android.os.Vibrator
 import android.support.v7.widget.GridLayoutManager
@@ -144,6 +145,7 @@ class MeituSelectTabActivity : BaseActivity(), View.OnClickListener {
         tv_pre.setOnClickListener(this)
         tv_next.setOnClickListener(this)
         bt_submit.setOnClickListener(this)
+        bt_skip.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -156,6 +158,9 @@ class MeituSelectTabActivity : BaseActivity(), View.OnClickListener {
 
                             }
                         })
+            }
+            R.id.bt_skip->{
+                startActivity(Intent(this,MeituMainActivity::class.java))
             }
             R.id.tv_pre -> {
                 if (pageNo == 1) {

@@ -136,8 +136,10 @@ open abstract class NESubscriber<O : BR<*>>(internal var view: BaseView?) : Subs
         if (t == null) {
             return onError(Throwable("接口错误"))
         } else {
-            if (StringUtils.isEmpty(t.msg)) {
-                if (!StringUtils.isEmpty(t.toast)) T.Companion.show(t.toast!!)
+            if (!StringUtils.isEmpty(t.toast)) {
+                T.Companion.show(t.toast!!)
+            }
+            if (StringUtils.isEmpty(t.msg)&&StringUtils.isEmpty(t.toast)) {
                 onSuccess(t)
             }
         }
