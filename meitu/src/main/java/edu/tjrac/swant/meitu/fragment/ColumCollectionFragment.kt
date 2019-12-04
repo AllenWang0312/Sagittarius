@@ -13,7 +13,7 @@ import edu.tjrac.swant.meitu.bean.Like
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
-import edu.tjrac.swant.meitu.view.ColumDetailActivity
+import edu.tjrac.swant.meitu.view.AlbumDetailActivity
 import edu.tjrac.swant.meitu.view.ColumWebViewActivity
 import kotlinx.android.synthetic.main.fragment_follow_models.view.*
 
@@ -32,7 +32,7 @@ class ColumCollectionFragment : BaseFragment() {
         adapter?.setOnItemClickListener{ad, view, position ->
             var item =data?.get(position)
             if (item?.album?.get!!){
-                startActivity(Intent(activity!!, ColumDetailActivity::class.java)
+                startActivity(Intent(activity!!, AlbumDetailActivity::class.java)
                         .putExtra("model_id",item.modelid)
                         .putExtra("id",item.id))
 
