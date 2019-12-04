@@ -16,16 +16,17 @@ import edu.tjrac.swant.meitu.net.Net
 import edu.tjrac.swant.meitu.net.RxUtil
 import edu.tjrac.swant.meitu.view.FeedbackListActivity
 import edu.tjrac.swant.meitu.view.MeituCollectionsActivity
+import edu.tjrac.swant.meitu.view.MeituVisitHistroyActivity
 import edu.tjrac.swant.meitu.view.SettingActivity
 import kotlinx.android.synthetic.main.fragment_meitu_mine.*
 import kotlinx.android.synthetic.main.fragment_meitu_mine.view.*
 
-/**
- * Created by wpc on 2019-11-13.
- */
 class MineFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
+            R.id.tv_visit->{
+                startActivity(Intent(activity!!, MeituVisitHistroyActivity::class.java))
+            }
             R.id.fl_down->{
                 startActivity(Intent(activity!!, MeituCollectionsActivity::class.java))
             }
@@ -61,6 +62,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_meitu_mine, container, false)
+        v?.tv_visit.setOnClickListener(this)
         v?.fl_down.setOnClickListener(this)
         v?.fl_likes.setOnClickListener(this)
         v?.fl_feedback.setOnClickListener(this)

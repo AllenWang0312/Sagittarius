@@ -17,7 +17,7 @@ import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import edu.tjrac.swant.meitu.net.RxUtil
-import edu.tjrac.swant.meitu_v2.fragment.HomeFollowFragment
+import edu.tjrac.swant.meitu.fragment.HomeFollowFragment
 import kotlinx.android.synthetic.main.activity_meitu_main.*
 
 

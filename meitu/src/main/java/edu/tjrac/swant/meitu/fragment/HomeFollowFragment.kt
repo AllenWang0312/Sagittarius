@@ -1,5 +1,6 @@
-package edu.tjrac.swant.meitu_v2.fragment
+package edu.tjrac.swant.meitu.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import edu.tjrac.swant.meitu.net.RxUtil
+import edu.tjrac.swant.meitu.view.AlbumDetailActivity
 import kotlinx.android.synthetic.main.fragment_home_follow.*
 import kotlinx.android.synthetic.main.fragment_home_follow.view.*
 import java.util.*
@@ -48,6 +50,17 @@ class HomeFollowFragment : BaseFragment() {
             initData()
         }
         adapter = ZoneListAdapter(data)
+        adapter?.setOnItemClickListener { ada, view, position ->
+            var item = adapter?.getItem(position)
+            if (item is Zone) {
+                if (item.type == 4) {
+                    startActivity(Intent(activity!!, AlbumDetailActivity::class.java)
+                            .putExtra("album_id", item.album_id)
+                            .putExtra("model_id", item.model_id)
+                    )
+                }
+            }
+        }
         adapter?.setOnLoadMoreListener {
             loadMore()
         }
@@ -109,13 +122,14 @@ class HomeFollowFragment : BaseFragment() {
                 .compose(RxUtil.applySchedulers())
                 .subscribe(object : NESubscriber<BR<ArrayList<Zone>>>(this) {
                     override fun onSuccess(t: BR<ArrayList<Zone>>?) {
-                        if (t?.data?.size!! > 0) {
+                        if (null != t?.data && t?.data?.size!! > 0) {
                             data?.addAll(t?.data!!)
                             end = false
                         } else {
                             end = true
                         }
-                        loadMore()
+//                        loadMore()
+                        adapter?.loadMoreComplete()
                     }
 
                     override fun onError(e: Throwable?) {

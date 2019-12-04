@@ -95,4 +95,9 @@ interface MeituApi {
                        @Query("month") month: String,
                        @Query("pageNo") pageNo: Int,
                        @Query("pageSize") pageSize: Int): Observable<BR<ArrayList<Zone>>>
+    @GET("/v1/api/m/home/histroy")
+    fun getVisitHistroy(@Query("pageNo") pageNo: Int,
+                       @Query("pageSize") pageSize: Int): Observable<BR<ArrayList<VisitHistroy>>>
+    @GET("/v1/api/m/home/histroy/clean")
+    fun cleanVisitHistroy(): Observable<BR<Any>>
 }

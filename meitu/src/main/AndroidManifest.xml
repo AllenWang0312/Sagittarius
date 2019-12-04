@@ -21,6 +21,8 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.MeituVisitHistroyActivity">
+        </activity>
         <activity android:name=".view.UserInfoActivity">
         </activity>
         <activity android:name=".view.MeituSelectTabActivity">

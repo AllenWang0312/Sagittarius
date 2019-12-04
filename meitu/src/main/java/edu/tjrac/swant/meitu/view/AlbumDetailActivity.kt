@@ -20,6 +20,7 @@ class AlbumDetailActivity : BaseActivity() {
 
     var data: ArrayList<String>? = ArrayList()
     var adapter: ImageAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_colum_detail)
@@ -27,7 +28,7 @@ class AlbumDetailActivity : BaseActivity() {
         if (intent?.hasExtra("model_id")!!) model_id = intent.getIntExtra("model_id", 0)
 
         adapter = ImageAdapter(data)
-        adapter?.setOnItemClickListener { adapter, view, position ->
+        adapter?.setOnItemClickListener { ad, view, position ->
             startActivity(Intent(this, ImagePreviewActivity::class.java)
                     .putExtra("images", data)
                     .putExtra("index", position))
@@ -43,8 +44,10 @@ class AlbumDetailActivity : BaseActivity() {
                     override fun onSuccess(t: BR<Album>?) {
 //                             startActivity(Intent(activity!!,ImagePreviewActivity::class.java)
 //                                     .putExtra("images",t?.data))
-                        data?.addAll(t?.data?.images!!)
-                        adapter?.notifyDataSetChanged()
+                        if (null != t?.data?.images && t?.data?.images?.size!! > 0) {
+                            data?.addAll(t?.data?.images!!)
+                            adapter?.notifyDataSetChanged()
+                        }
                     }
                 })
     }
