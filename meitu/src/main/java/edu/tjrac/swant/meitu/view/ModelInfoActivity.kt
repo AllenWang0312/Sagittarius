@@ -8,7 +8,7 @@ import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.baselib.util.StringUtils
 import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.adapter.ColumLiatAdapter
+import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
 import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.bean.ModelDetail
 import edu.tjrac.swant.meitu.net.BR
@@ -22,7 +22,7 @@ class ModelInfoActivity : BaseActivity() {
     var model_id: Int? = 100
     var get:Boolean?=false
 
-    var adapter: ColumLiatAdapter? = null
+    var adapter: AlbumListAdapter? = null
     var data: ArrayList<Album>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,7 @@ class ModelInfoActivity : BaseActivity() {
             get=intent.getBooleanExtra("get",false)
         }
         recycler.layoutManager = GridLayoutManager(this, 3)
-        adapter = ColumLiatAdapter(R.layout.item_meitu_colum, data)
+        adapter = AlbumListAdapter(R.layout.item_meitu_colum, data)
         adapter?.setOnItemClickListener { ad, view, position ->
             var item = data?.get(position)
             if (get!!) {

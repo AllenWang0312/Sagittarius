@@ -1,5 +1,6 @@
 package edu.tjrac.swant.bluetooth.view
 
+//import kotlinx.android.synthetic.main.found_devices_filters.*
 import android.Manifest
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
@@ -24,13 +25,12 @@ import android.widget.CompoundButton
 import android.widget.PopupMenu
 import android.widget.PopupWindow
 import edu.tjrac.swant.baselib.common.base.BaseFragment
+import edu.tjrac.swant.baselib.common.recycler.BaseDecoration
 import edu.tjrac.swant.bluetooth.BlueToothHelper
 import edu.tjrac.swant.bluetooth.adapter.ScanResultRecycAdapter
 import edu.tjrac.swant.bluetooth.bean.ScanInfo
-import edu.tjrac.swant.unicorn.BaseDecoration
 import edu.tjrac.swant.wjzx.R
 import kotlinx.android.synthetic.main.found_swiper_recycler.*
-//import kotlinx.android.synthetic.main.found_devices_filters.*
 import java.util.*
 
 /**
@@ -152,7 +152,7 @@ class FoundDevicesFragment(private val parent: BLEFragment,
     private fun initRecycView() {
         recycler.setLayoutManager(LinearLayoutManager(activity))
         found_adapter = ScanResultRecycAdapter(sp!!, found_devices)
-        recycler.addItemDecoration(BaseDecoration(activity, BaseDecoration.VERTICAL_LIST))
+        recycler.addItemDecoration(BaseDecoration(activity!!, LinearLayoutManager.VERTICAL))
 
         found_adapter!!.setOnItemClickListener { adapter, view, position ->
             if (found_adapter!!.expendIndex == position) {

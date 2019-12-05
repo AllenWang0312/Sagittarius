@@ -10,7 +10,7 @@ import android.widget.TextView
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.baselib.util.UiUtil
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.adapter.ColumLiatAdapter
+import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
 import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.bean.Tags
 import edu.tjrac.swant.meitu.net.BR
@@ -32,7 +32,7 @@ class MeituSearchActivity : BaseActivity(), View.OnClickListener {
     var pageSize = 20
     var tag: String? = null
 
-    var adapter: ColumLiatAdapter? = null
+    var adapter: AlbumListAdapter? = null
     var data: ArrayList<Album>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ class MeituSearchActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_meitu_search)
         iv_back?.setOnClickListener(this)
         gethottags()
-        adapter = ColumLiatAdapter(R.layout.item_meitu_colum, data)
+        adapter = AlbumListAdapter(R.layout.item_meitu_colum, data)
         adapter?.setOnItemClickListener{ad, view, position ->
             var item =data?.get(position)
             if (item?.get!!){

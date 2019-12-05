@@ -16,7 +16,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 /**
  * Created by wpc on 2019-09-05.
  */
-class Net:BaseNet(){
+class Net : BaseNet() {
     override fun getInterceptor(): Interceptor {
         return Interceptor { chain ->
             val originalRequest = chain.request()
@@ -28,7 +28,7 @@ class Net:BaseNet(){
                     .build()
 
             var builder = originalRequest.newBuilder()
-
+            builder.addHeader("Content-Type", "text/pain;charset=utf-8")
             if (!StringUtils.isEmpty(App.token)) {
                 builder.addHeader("token", App.token)
             }
@@ -71,6 +71,7 @@ class Net:BaseNet(){
         return super.getOkHttpClient()
 
     }
+
     //add
     open fun getApiService(): MeituApi {
         if (null === api) {

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import edu.tjrac.swant.baselib.common.base.BaseFragment
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.adapter.ColumLiatAdapter
+import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
 import edu.tjrac.swant.meitu.bean.Like
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
@@ -24,11 +24,11 @@ class ColumCollectionFragment : BaseFragment() {
 
     lateinit var v: View
 
-    var adapter: ColumLiatAdapter? = null
+    var adapter: AlbumListAdapter? = null
     var data: ArrayList<Like>? = ArrayList()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_follow_models, container, false)
-        adapter = ColumLiatAdapter(R.layout.item2_meitu_colum, data)
+        adapter = AlbumListAdapter(R.layout.item2_meitu_colum, data)
         adapter?.setOnItemClickListener{ad, view, position ->
             var item =data?.get(position)
             if (item?.album?.get!!){

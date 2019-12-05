@@ -14,7 +14,7 @@ import edu.tjrac.swant.meitu.bean.AlbumInfo
 /**
  * Created by wpc on 2019-09-05.
  */
-class ColumLiatAdapter(var layoutId: Int, data: List<AlbumInfo>?)
+class AlbumListAdapter(var layoutId: Int, data: List<AlbumInfo>?)
     : BaseQuickAdapter<AlbumInfo, BaseViewHolder>(layoutId, data) {
 
     override fun convert(helper: BaseViewHolder, item: AlbumInfo) {

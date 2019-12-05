@@ -2,15 +2,16 @@ package edu.tjrac.swant.meitu.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.tjrac.swant.baselib.common.base.BaseFragment
-import edu.tjrac.swant.baselib.common.recycler.GridSpacingItemDecoration
+import edu.tjrac.swant.baselib.common.recycler.BaseDecoration
 import edu.tjrac.swant.baselib.util.UiUtil
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.adapter.ColumLiatAdapter
+import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
 import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
@@ -25,7 +26,7 @@ import kotlinx.android.synthetic.main.swiper_recycler_view.view.*
 class ColumListFragment : BaseFragment() {
 
     var data: ArrayList<Album>? = ArrayList()
-    var adapter: ColumLiatAdapter? = null
+    var adapter: AlbumListAdapter? = null
 
     var pageSize = 20
     var pageNo = 1
@@ -34,7 +35,7 @@ class ColumListFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = layoutInflater.inflate(R.layout.swiper_recycler_view, container, false)
 
-        adapter = ColumLiatAdapter(R.layout.item_meitu_colum, data!!)
+        adapter = AlbumListAdapter(R.layout.item_meitu_colum, data!!)
 
         adapter?.setOnItemClickListener { ad, view, position ->
             var item = data?.get(position)
@@ -73,7 +74,8 @@ class ColumListFragment : BaseFragment() {
 // 绑定布局管理器
         v?.recycler?.layoutManager = layoutManager
         var dp8 = UiUtil.dp2px(activity!!, 8).toInt()
-        v?.recycler?.addItemDecoration(GridSpacingItemDecoration(2, dp8, dp8));
+        v?.recycler?.addItemDecoration(BaseDecoration(activity!!, LinearLayoutManager.VERTICAL))
+//        v?.recycler?.addItemDecoration(GridSpacingItemDecoration(2, dp8, dp8));
         v?.swiper?.setOnRefreshListener {
             pageNo = 1
             initData()

@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.tjrac.swant.baselib.common.base.BaseFragment
+import edu.tjrac.swant.baselib.common.recycler.GridSpacingItemDecoration
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.adapter.ColumLiatAdapter
+import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
+import edu.tjrac.swant.meitu.adapter.AppsAdapter
 import edu.tjrac.swant.meitu.adapter.CompanyListAdapter
 import edu.tjrac.swant.meitu.adapter.ModelLiatAdapter
 import edu.tjrac.swant.meitu.bean.Album
@@ -24,27 +26,28 @@ import kotlinx.android.synthetic.main.swiper_recycler_view.view.*
  * Created by wpc on 2019-11-28.
  */
 
-class HomeHomeFragment:BaseFragment() {
+class HomeHomeFragment : BaseFragment() {
 
     var head: View? = null
     var v: View? = null
-    var adapter: ColumLiatAdapter? = null
-    var data:ArrayList<Album>?= ArrayList()
+    var adapter: AlbumListAdapter? = null
+    var data: ArrayList<Album>? = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = layoutInflater.inflate(R.layout.swiper_recycler_view, container, false)
 
         v?.swiper?.setOnRefreshListener {
-            pageNo=1
+            pageNo = 1
             initData(true)
         }
-        adapter= ColumLiatAdapter(R.layout.item_meitu_colum,data)
-        adapter?.setOnLoadMoreListener{
+        adapter = AlbumListAdapter(R.layout.item_meitu_colum, data)
+        v?.recycler?.addItemDecoration(GridSpacingItemDecoration(2, 10, 10))
+        adapter?.setOnLoadMoreListener {
             pageNo++
             initData(false)
         }
-        v?.recycler?.layoutManager= GridLayoutManager(activity!!,2)
-        v?.recycler?.adapter =adapter
+        v?.recycler?.layoutManager = GridLayoutManager(activity!!, 2)
+        v?.recycler?.adapter = adapter
 
 
         initData(true)
@@ -52,45 +55,61 @@ class HomeHomeFragment:BaseFragment() {
         return v
     }
 
-    var pageSize=20
-    var pageNo=1
+    var pageSize = 20
+    var pageNo = 1
 
-    private fun initData(refreshHead:Boolean) {
-        if(pageNo==1){
+    private fun initData(refreshHead: Boolean) {
+        if (pageNo == 1) {
             data?.clear()
             adapter?.notifyDataSetChanged()
         }
-        if(refreshHead){
+        if (refreshHead) {
             Net.instance.getApiService().getHomeData("cn")
                     .compose(RxUtil.applySchedulers())
                     .subscribe(object : NESubscriber<BR<HomeBean>>(this) {
                         override fun onSuccess(t: BR<HomeBean>?) {
                             head = layoutInflater.inflate(R.layout.meitu_home_head, null)
+                            if (t?.data?.apps?.size!! > 0) {
+                                head?.recycler_apps?.visibility = View.VISIBLE
+                                head?.recycler_apps?.layoutManager = GridLayoutManager(activity!!, 4)
+                                var adapter = AppsAdapter(t?.data?.apps!!)
+                                adapter?.setOnItemClickListener { ad, view, position ->
+                                    var item = adapter?.getItem(position)
+                                    if (item?.path.equals("/m/models")) {
 
-                            if(t?.data?.companys?.size!!>0){
-                                head?.fl_com_head?.visibility= View.VISIBLE
-                                head?.recycler_companys?.visibility= View.VISIBLE
-                                head?.recycler_companys?.layoutManager= LinearLayoutManager(activity!!, LinearLayoutManager.HORIZONTAL,true)
-                                head?.recycler_companys?.adapter= CompanyListAdapter(R.layout.item_meitu_company,t?.data?.companys)
-                            }else{
-                                head?.fl_com_head?.visibility= View.GONE
-                                head?.recycler_companys?.visibility= View.GONE
+                                    } else {
+
+                                    }
+                                }
+                                head?.recycler_apps?.adapter = adapter
+
+                            } else {
+                                head?.recycler_apps?.visibility = View.VISIBLE
                             }
-                            if(t?.data?.models?.size!!>0){
-                                head?.fl_mol_head?.visibility= View.VISIBLE
-                                head?.recycler_models?.visibility= View.VISIBLE
-                                head?.recycler_models?.layoutManager= LinearLayoutManager(activity!!, LinearLayoutManager.HORIZONTAL,true)
-                                head?.recycler_models?.adapter= ModelLiatAdapter(R.layout.item_meitu_model_hor,t?.data?.models)
-                            }else{
-                                head?.fl_mol_head?.visibility= View.GONE
-                                head?.recycler_models?.visibility= View.GONE
+                            if (t?.data?.companys?.size!! > 0) {
+                                head?.fl_com_head?.visibility = View.VISIBLE
+                                head?.recycler_companys?.visibility = View.VISIBLE
+                                head?.recycler_companys?.layoutManager = LinearLayoutManager(activity!!, LinearLayoutManager.HORIZONTAL, true)
+                                head?.recycler_companys?.adapter = CompanyListAdapter(R.layout.item_meitu_company, t?.data?.companys)
+                            } else {
+                                head?.fl_com_head?.visibility = View.GONE
+                                head?.recycler_companys?.visibility = View.GONE
+                            }
+                            if (t?.data?.models?.size!! > 0) {
+                                head?.fl_mol_head?.visibility = View.VISIBLE
+                                head?.recycler_models?.visibility = View.VISIBLE
+                                head?.recycler_models?.layoutManager = LinearLayoutManager(activity!!, LinearLayoutManager.HORIZONTAL, true)
+                                head?.recycler_models?.adapter = ModelLiatAdapter(R.layout.item_meitu_model_hor, t?.data?.models)
+                            } else {
+                                head?.fl_mol_head?.visibility = View.GONE
+                                head?.recycler_models?.visibility = View.GONE
                             }
                             adapter?.setHeaderView(head)
 
                         }
                     })
         }
-        Net.instance.getApiService().getColumList(pageSize,pageNo,null)
+        Net.instance.getApiService().getColumList(pageSize, pageNo, null)
                 .compose(RxUtil.applySchedulers())
                 .subscribe(object : NESubscriber<BR<ArrayList<Album>>>(this) {
                     override fun onSuccess(t: BR<ArrayList<Album>>?) {
@@ -109,10 +128,10 @@ class HomeHomeFragment:BaseFragment() {
     }
 
     private fun onGetDataSuccess(data: java.util.ArrayList<Album>) {
-        if(data?.size!!>0){
+        if (data?.size!! > 0) {
             this.data?.addAll(data)
             adapter?.loadMoreComplete()
-        }else{
+        } else {
             adapter?.loadMoreEnd()
         }
     }

@@ -8,7 +8,16 @@
 
 
     </FrameLayout>
-
+    <FrameLayout
+        android:id="@+id/fl_nitifications"
+        android:layout_width="match_parent"
+        android:layout_height="36dp" android:visibility="gone">
+    </FrameLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_apps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
 
     <FrameLayout android:id="@+id/fl_com_head" android:layout_width="match_parent"
                  android:layout_height="wrap_content">
