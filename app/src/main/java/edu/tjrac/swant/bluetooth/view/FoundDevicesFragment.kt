@@ -107,7 +107,7 @@ class FoundDevicesFragment(private val parent: BLEFragment,
                 //                    found_adapter.notifyItemInserted(found_devices.size() - 1);
                 //                }
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED === action) {
-                parent.scan!!.setTitle("scan")
+                parent.scan!!.setTitle("ic_scan")
                 swiper.setRefreshing(false)
             }//            else if (BluetoothDevice.ACTION_ACL_CONNECTED == action) {
             //                //从Intent得到blueDevice对象
@@ -275,7 +275,7 @@ class FoundDevicesFragment(private val parent: BLEFragment,
                 //                    @Override
                 //                    public void run() {
                 //                        found_swiper.setRefreshing(false);
-                //                        parent.scan.setTitle("scan");
+                //                        parent.ic_scan.setTitle("ic_scan");
                 //                        scanner.stopScan(callback);
                 //                    }
                 //                }, 1000 * scan_timeout);
@@ -293,7 +293,7 @@ class FoundDevicesFragment(private val parent: BLEFragment,
     fun stopScanning() {
         swiper.setRefreshing(false)
         scanner!!.stopScan(callback)
-        parent.scan!!.setTitle("scan")
+        parent.scan!!.setTitle("ic_scan")
     }
 
     override fun onDestroy() {

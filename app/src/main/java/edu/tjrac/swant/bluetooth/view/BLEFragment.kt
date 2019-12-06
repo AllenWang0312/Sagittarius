@@ -101,8 +101,8 @@ class BLEFragment : BaseFragment() {
     //
     //        @Override
     //        public void onScanFailed(int errorCode) {
-    //            scan.setTitle("scan");
-    //            T.show(getActivity(), "scan failed");
+    //            ic_scan.setTitle("ic_scan");
+    //            T.show(getActivity(), "ic_scan failed");
     //            super.onScanFailed(errorCode);
     //        }
     //    };
@@ -348,7 +348,7 @@ class BLEFragment : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.ble_scan -> when (scan!!.title.toString()) {
-                "scan" -> found!!.scanDevices()
+                "ic_scan" -> found!!.scanDevices()
                 "stop scanning" -> found!!.stopScanning()
                 "disconnect" -> {
                 }
