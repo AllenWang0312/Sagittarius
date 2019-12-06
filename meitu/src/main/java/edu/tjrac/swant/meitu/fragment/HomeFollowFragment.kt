@@ -14,7 +14,6 @@ import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.ZoneListAdapter
 import edu.tjrac.swant.meitu.bean.Tab
 import edu.tjrac.swant.meitu.bean.Zone
-import edu.tjrac.swant.meitu.bean.ZoneTitle
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
@@ -77,7 +76,7 @@ class HomeFollowFragment : BaseFragment() {
     private fun loadMore() {
         if (end) {
             nextMonth()
-            data?.add(ZoneTitle(year + "-" + month))
+//            data?.add(ZoneTitle(year + "-" + month))
             end = false
         } else {
             pageNo++
@@ -89,7 +88,7 @@ class HomeFollowFragment : BaseFragment() {
         var timestr = TimeUtils.getTimeWithFormat(time, YMD)
         year = timestr.substring(0, 4)
         month = timestr.substring(5, 7)
-        data?.add(ZoneTitle("$year-$month"))
+//        data?.add(ZoneTitle("$year-$month"))
     }
 
     private fun nextMonth() {

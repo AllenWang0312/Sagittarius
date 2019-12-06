@@ -1,7 +1,7 @@
 <resources>
     <string name="title_activity_meitu_login">MeituLoginActivity</string>
 
-    <string name="sagittarius">Sagittarius</string>
+    <string name="app_name">BiuBiu</string>
     <string name="login_account">用户名</string>
 
     <string name="login_pass">密码</string>
@@ -18,7 +18,7 @@
     <string name="colum">专辑</string>
     <string name="mine">我的</string>
 
-    <string name="my_downloads">下载管理</string>
+    <string name="my_visit">最近浏览</string>
     <string name="my_likes">我的收藏</string>
     <string name="my_arts">我的作品</string>
 

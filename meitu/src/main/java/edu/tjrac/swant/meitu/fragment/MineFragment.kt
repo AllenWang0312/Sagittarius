@@ -14,22 +14,20 @@ import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import edu.tjrac.swant.meitu.net.RxUtil
-import edu.tjrac.swant.meitu.view.FeedbackListActivity
-import edu.tjrac.swant.meitu.view.MeituCollectionsActivity
-import edu.tjrac.swant.meitu.view.MeituVisitHistroyActivity
-import edu.tjrac.swant.meitu.view.SettingActivity
+import edu.tjrac.swant.meitu.view.mine.FeedbackListActivity
+import edu.tjrac.swant.meitu.view.mine.MeituCollectionsActivity
+import edu.tjrac.swant.meitu.view.mine.MeituVisitHistroyActivity
+import edu.tjrac.swant.meitu.view.mine.SettingActivity
 import kotlinx.android.synthetic.main.fragment_meitu_mine.*
 import kotlinx.android.synthetic.main.fragment_meitu_mine.view.*
 
 class MineFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.tv_visit->{
+            R.id.fl_visit->{
                 startActivity(Intent(activity!!, MeituVisitHistroyActivity::class.java))
             }
-            R.id.fl_down->{
-                startActivity(Intent(activity!!, MeituCollectionsActivity::class.java))
-            }
+
             R.id.fl_likes -> {
                 startActivity(Intent(activity!!, MeituCollectionsActivity::class.java))
             }
@@ -62,8 +60,8 @@ class MineFragment : BaseFragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_meitu_mine, container, false)
-        v?.tv_visit.setOnClickListener(this)
-        v?.fl_down.setOnClickListener(this)
+//        v?.tv_visit.setOnClickListener(this)
+        v?.fl_visit.setOnClickListener(this)
         v?.fl_likes.setOnClickListener(this)
         v?.fl_feedback.setOnClickListener(this)
         v?.fl_setting.setOnClickListener(this)
