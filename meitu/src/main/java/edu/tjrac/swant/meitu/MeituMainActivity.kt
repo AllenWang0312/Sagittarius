@@ -75,7 +75,6 @@ class MeituMainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
 //        adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
         adapter?.addFragment(HomeFollowFragment(), "cycler")
 //        adapter?.addFragment(HomeHomeFragment(), "home_home")
-
 //        adapter?.addFragment(ColumListFragment(), resources.getString(R.string.album))
         adapter?.addFragment(MineFragment(), resources.getString(R.string.mine))
         vp.offscreenPageLimit = 3

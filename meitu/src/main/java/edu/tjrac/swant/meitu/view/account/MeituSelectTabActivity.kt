@@ -105,7 +105,7 @@ class MeituSelectTabActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meitu_select_tab)
 
-        recycler_selected.layoutManager = GridLayoutManager(this,3)
+        recycler_selected.layoutManager = GridLayoutManager(this, 3)
         adapter = TabListAdapter(R.layout.item_tab_select, selected)
         recycler_selected.adapter = adapter
         helper.attachToRecyclerView(recycler_selected)
@@ -156,11 +156,12 @@ class MeituSelectTabActivity : BaseActivity(), View.OnClickListener {
                         .compose(RxUtil.applySchedulers())
                         .subscribe(object : NESubscriber<BR<JsonObject>>(this) {
                             override fun onSuccess(t: BR<JsonObject>?) {
-
+                                finish()
+                                startActivity(Intent(this@MeituSelectTabActivity, MeituMainActivity::class.java))
                             }
                         })
             }
-            R.id.bt_skip->{
+            R.id.bt_skip -> {
                 startActivity(Intent(this, MeituMainActivity::class.java))
             }
             R.id.tv_pre -> {

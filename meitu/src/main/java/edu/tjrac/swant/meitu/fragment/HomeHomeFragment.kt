@@ -1,5 +1,6 @@
 package edu.tjrac.swant.meitu.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
@@ -19,14 +20,23 @@ import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import edu.tjrac.swant.meitu.net.RxUtil
+import edu.tjrac.swant.meitu.view.MeituSearchActivity
+import kotlinx.android.synthetic.main.fragment_home_home.view.*
 import kotlinx.android.synthetic.main.meitu_home_head.view.*
-import kotlinx.android.synthetic.main.swiper_recycler_view.view.*
 
 /**
  * Created by wpc on 2019-11-28.
  */
 
-class HomeHomeFragment : BaseFragment() {
+class HomeHomeFragment : BaseFragment(), View.OnClickListener {
+    override fun onClick(p0: View?) {
+        when (v?.id!!) {
+            R.id.et_search, R.id.iv_search -> {
+                startActivity(Intent(activity, MeituSearchActivity::class.java))
+            }
+
+        }
+    }
 
     var head: View? = null
     var v: View? = null
@@ -34,7 +44,9 @@ class HomeHomeFragment : BaseFragment() {
     var data: ArrayList<Album>? = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        v = layoutInflater.inflate(R.layout.swiper_recycler_view, container, false)
+        v = layoutInflater.inflate(R.layout.fragment_home_home, container, false)
+        v?.iv_search?.setOnClickListener(this)
+        v?.et_search?.setOnClickListener(this)
 
         v?.swiper?.setOnRefreshListener {
             pageNo = 1

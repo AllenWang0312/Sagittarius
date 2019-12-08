@@ -34,7 +34,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             R.id.fl_feedback -> {
                 startActivity(Intent(activity!!, FeedbackListActivity::class.java))
             }
-            R.id.fl_setting -> {
+            R.id.iv_setting -> {
                 startActivity(Intent(activity!!, SettingActivity::class.java))
             }
 //            R.id.iv_cover -> {
@@ -64,7 +64,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         v?.fl_visit.setOnClickListener(this)
         v?.fl_likes.setOnClickListener(this)
         v?.fl_feedback.setOnClickListener(this)
-        v?.fl_setting.setOnClickListener(this)
+        v?.iv_setting.setOnClickListener(this)
         v?.iv_cover.setOnClickListener(this)
         return v
     }

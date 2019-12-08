@@ -1,6 +1,5 @@
 package edu.tjrac.swant.meitu.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
@@ -15,7 +14,6 @@ import edu.tjrac.swant.meitu.bean.Model
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
-import edu.tjrac.swant.meitu.view.MeituSearchActivity
 import kotlinx.android.synthetic.main.swipe_tool_refresh_layout.view.*
 
 /**
@@ -24,9 +22,6 @@ import kotlinx.android.synthetic.main.swipe_tool_refresh_layout.view.*
 class ModelListFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id!!) {
-            R.id.iv_search -> {
-                startActivity(Intent(activity, MeituSearchActivity::class.java))
-            }
         }
     }
 
@@ -53,7 +48,6 @@ class ModelListFragment : BaseFragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = layoutInflater.inflate(R.layout.swipe_tool_refresh_layout, container, false)
-        v?.iv_search?.setOnClickListener(this)
 
         adapter = ModelLiatAdapter(R.layout.item_meitu_model, data!!)
 
