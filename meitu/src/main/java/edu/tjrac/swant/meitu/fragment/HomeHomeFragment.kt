@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.meitu_home_head.view.*
  */
 
 class HomeHomeFragment : BaseFragment(), View.OnClickListener {
-    override fun onClick(p0: View?) {
+    override fun onClick(v: View?) {
         when (v?.id!!) {
             R.id.et_search, R.id.iv_search -> {
                 startActivity(Intent(activity, MeituSearchActivity::class.java))
@@ -121,7 +121,7 @@ class HomeHomeFragment : BaseFragment(), View.OnClickListener {
                         }
                     })
         }
-        Net.instance.getApiService().getColumList(pageSize, pageNo, null)
+        Net.instance.getApiService().getColumList(pageSize, pageNo)
                 .compose(RxUtil.applySchedulers())
                 .subscribe(object : NESubscriber<BR<ArrayList<Album>>>(this) {
                     override fun onSuccess(t: BR<ArrayList<Album>>?) {

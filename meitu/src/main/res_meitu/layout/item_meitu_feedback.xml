@@ -22,6 +22,7 @@
               android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
               app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="@+id/tv_name" app:layout_constraintTop_toBottomOf="@+id/tv_name"
+
               tools:text="contentcontentcontentcontent"/>
 
     <TextView
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content" android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
         android:textColor="@color/text_color_primary" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-        tools:text="like:100"/>
+        android:text="0"
+        tools:text="100"/>
 
 </android.support.constraint.ConstraintLayout>

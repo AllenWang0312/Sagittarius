@@ -17,9 +17,22 @@ class MeituCollectionsActivity : BaseBarActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meitu_collections)
         setToolbar(findViewById(R.id.toolbar))
+
         adapter = FragmentsPagerAdapter(supportFragmentManager)
-        adapter?.addFragment(FollowModelsFragment(), resources.getString(R.string.model))
-        adapter?.addFragment(ColumCollectionFragment(), resources.getString(R.string.colum))
+
+        if (intent.hasExtra("title")) {
+            var title = intent.getStringExtra("title")
+            setTitle(title)
+            adapter?.addFragment(FollowModelsFragment(), resources.getString(R.string.model))
+        } else {
+            setTitle("我的收藏")
+
+            adapter?.addFragment(ColumCollectionFragment(), resources.getString(R.string.colum))
+        }
+
+
+
+
 
         vp?.adapter = adapter
         tab?.setupWithViewPager(vp)
@@ -28,7 +41,7 @@ class MeituCollectionsActivity : BaseBarActivity() {
     override fun setToolbar(tool: View) {
         super.setToolbar(tool)
         enableBackIcon()
-        setTitle("我的收藏")
+
 
     }
 }

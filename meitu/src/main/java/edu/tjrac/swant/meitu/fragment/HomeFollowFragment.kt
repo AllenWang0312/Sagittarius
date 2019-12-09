@@ -51,6 +51,19 @@ class HomeFollowFragment : BaseFragment() {
             initData()
         }
         adapter = ZoneListAdapter(data)
+        adapter?.setOnItemChildClickListener{ada, view, position ->
+            when(view?.id){
+                R.id.tv_like->{
+
+                }
+                R.id.tv_comment->{
+
+                }
+                R.id.tv_share->{
+
+                }
+            }
+        }
         adapter?.setOnItemClickListener { ada, view, position ->
             var item = adapter?.getItem(position)
             if (item is Zone) {

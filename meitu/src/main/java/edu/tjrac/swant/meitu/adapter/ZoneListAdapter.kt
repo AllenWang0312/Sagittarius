@@ -1,6 +1,9 @@
 package edu.tjrac.swant.meitu.adapter
 
+import android.widget.ImageView
 import android.widget.LinearLayout
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
@@ -22,14 +25,21 @@ class ZoneListAdapter(data: MutableList<MultiItemEntity>?) : BaseMultiItemQuickA
         if (item is ZoneTitle) {
             helper?.setText(R.id.tv_title, item.title)
         } else if (item is Zone) {
+            helper?.addOnClickListener(R.id.tv_like)
+                    ?.addOnClickListener(R.id.tv_comment)
+                    ?.addOnClickListener(R.id.tv_share)
+
+            var icon = helper?.getView<ImageView>(R.id.iv_icon)
+            Glide.with(mContext).load(item.model?.cover)
+                    .apply(RequestOptions().circleCrop()).into(icon!!)
             helper?.setText(R.id.tv_name, item.model?.name)
                     ?.setText(R.id.tv_subs, item.album?.time)
                     ?.setText(R.id.tv_content, item.album?.title)
 
-            var ll_content=helper?.getView<LinearLayout>(R.id.ll_content)
-            if(null!=item?.album?.images&&item?.album?.images?.size!!>0){
-                var dp4=UiUtil.dp2px(mContext,4).toInt()
-                UiUtil.inflateGallery(mContext,ll_content,dp4,item.album?.images!!)
+            var ll_content = helper?.getView<LinearLayout>(R.id.ll_content)
+            if (null != item?.album?.images && item?.album?.images?.size!! > 0) {
+                var dp4 = UiUtil.dp2px(mContext, 4).toInt()
+                UiUtil.inflateGallery(mContext, ll_content, dp4, item.album?.images!!)
             }
         }
     }

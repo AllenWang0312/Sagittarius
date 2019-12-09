@@ -1,7 +1,5 @@
 package edu.tjrac.swant.meitu.bean
 
-import edu.tjrac.swant.meitu.Config
-
 /**
  * Created by wpc on 2019-09-05.
  */
@@ -12,7 +10,7 @@ class Album : AlbumInfo {
 
     var title: String? = ""
     var subs: String? = ""
-    var org:String?=""
+    var org: String? = ""
     var group: String? = ""
 
 
@@ -28,11 +26,14 @@ class Album : AlbumInfo {
     var hot: Int? = 0
     var get: Boolean? = false
 
+    var cover: ImageInfo? =null
 
-    override fun getAlbumCover(): String {
-//        return
-        return Config.URL.FILE_SERVER + "/muri/" + model_id + "/" + id + "/0.jpg"
+    override fun getAlbumCover(): String? {
+        return cover?.url
+//        return Config.URL.FILE_SERVER + "/muri/" + model_id + "/" + id + "/0.jpg"
     }
+
+
 
     override fun getTitleStr(): String {
         return title!!

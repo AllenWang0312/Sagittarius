@@ -3,6 +3,7 @@ package edu.tjrac.swant.meitu.net
 import com.google.gson.JsonObject
 import edu.tjrac.swant.meitu.bean.*
 import edu.tjrac.swant.meitu.bean.stuct.LoginRespon
+import edu.tjrac.swant.meitu.bean.stuct.UserCenter
 import retrofit2.http.*
 import rx.Observable
 import java.util.*
@@ -48,8 +49,11 @@ interface MeituApi {
     @GET("/v1/api/album/list")
     fun getColumList(@Query("pageSize") pageSize: Int,
                      @Query("pageNo") pageNo: Int,
-                     @Query("tag") tag: String?): Observable<BR<ArrayList<Album>>>
-
+                     @Query("tag") tag: String?,
+                     @Query("search") search: String?): Observable<BR<ArrayList<Album>>>
+    @GET("/v1/api/album/list")
+    fun getColumList(@Query("pageSize") pageSize: Int,
+                     @Query("pageNo") pageNo: Int): Observable<BR<ArrayList<Album>>>
     @GET("/v1/api/tag/hot")
     fun getHotTags(): Observable<BR<ArrayList<Tags>>>
 
@@ -89,15 +93,20 @@ interface MeituApi {
 
     @POST("/v1/api/account/info")
     fun getUser(): Observable<BR<User>>
+    @POST("/v1/api/m/mine/info")
+    fun getUserCenter(): Observable<BR<UserCenter>>
+
 
     @GET("/v1/api/m/home/zone")
     fun getZoneHistroy(@Query("year") year: String,
                        @Query("month") month: String,
                        @Query("pageNo") pageNo: Int,
                        @Query("pageSize") pageSize: Int): Observable<BR<ArrayList<Zone>>>
+
     @GET("/v1/api/m/home/histroy")
     fun getVisitHistroy(@Query("pageNo") pageNo: Int,
-                       @Query("pageSize") pageSize: Int): Observable<BR<ArrayList<VisitHistroy>>>
+                        @Query("pageSize") pageSize: Int): Observable<BR<ArrayList<VisitHistroy>>>
+
     @GET("/v1/api/m/home/histroy/clean")
     fun cleanVisitHistroy(): Observable<BR<Any>>
 }

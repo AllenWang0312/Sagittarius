@@ -95,7 +95,7 @@ class ColumListFragment : BaseFragment() {
             data?.clear()
             adapter?.notifyDataSetChanged()
         }
-        Net.instance.getApiService().getColumList(pageSize, pageNo, null)
+        Net.instance.getApiService().getColumList(pageSize, pageNo)
                 .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
                 .subscribe(object : NESubscriber<BR<ArrayList<Album>>>(this) {
                     override fun onSuccess(t: BR<ArrayList<Album>>?) {
