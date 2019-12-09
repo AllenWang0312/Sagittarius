@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import edu.tjrac.swant.baselib.common.base.BaseFragment
 import edu.tjrac.swant.baselib.util.TimeUtils
@@ -20,8 +22,10 @@ import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import edu.tjrac.swant.meitu.net.RxUtil
 import edu.tjrac.swant.meitu.view.AlbumDetailActivity
+import edu.tjrac.swant.meitu.view.MeituSearchActivity
 import kotlinx.android.synthetic.main.fragment_home_follow.*
 import kotlinx.android.synthetic.main.fragment_home_follow.view.*
+import kotlinx.android.synthetic.main.search_view.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -29,7 +33,15 @@ import kotlin.collections.ArrayList
  * Created by wpc on 2019-11-28.
  */
 
-class HomeFollowFragment : BaseFragment() {
+class HomeFollowFragment : BaseFragment(), View.OnClickListener {
+    override fun onClick(v: View?) {
+        when (v?.id!!) {
+            R.id.fl_search -> {
+                startActivity(Intent(activity, MeituSearchActivity::class.java))
+            }
+
+        }
+    }
 
     var v: View? = null
 
@@ -42,6 +54,10 @@ class HomeFollowFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_home_follow, container, false)
+        //        v?.fl_search?.setOnTouchListener(this)
+        v?.fl_search?.setOnClickListener(this)
+//        v?.et_search?.setOnClickListener(this)
+
         initTime()
         swiper?.setOnRefreshListener {
             data?.clear()
@@ -51,15 +67,15 @@ class HomeFollowFragment : BaseFragment() {
             initData()
         }
         adapter = ZoneListAdapter(data)
-        adapter?.setOnItemChildClickListener{ada, view, position ->
-            when(view?.id){
-                R.id.tv_like->{
+        adapter?.setOnItemChildClickListener { ada, view, position ->
+            when (view?.id) {
+                R.id.tv_like -> {
 
                 }
-                R.id.tv_comment->{
+                R.id.tv_comment -> {
 
                 }
-                R.id.tv_share->{
+                R.id.tv_share -> {
 
                 }
             }
@@ -158,5 +174,10 @@ class HomeFollowFragment : BaseFragment() {
                     }
                 })
 
+    }
+
+    fun  upDateUserPortrait(url: String) {
+        Glide.with(activity!!).load(url)
+                .apply(RequestOptions().circleCrop()).into(iv_portrait)
     }
 }

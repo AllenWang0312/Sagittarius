@@ -1,13 +1,14 @@
 package edu.tjrac.swant.meitu.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import edu.tjrac.swant.baselib.common.base.BaseFragment
+import edu.tjrac.swant.baselib.common.recycler.BaseDecoration
 import edu.tjrac.swant.baselib.common.recycler.GridSpacingItemDecoration
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
@@ -20,23 +21,20 @@ import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import edu.tjrac.swant.meitu.net.RxUtil
-import edu.tjrac.swant.meitu.view.MeituSearchActivity
 import kotlinx.android.synthetic.main.fragment_home_home.view.*
 import kotlinx.android.synthetic.main.meitu_home_head.view.*
+
 
 /**
  * Created by wpc on 2019-11-28.
  */
 
-class HomeHomeFragment : BaseFragment(), View.OnClickListener {
-    override fun onClick(v: View?) {
-        when (v?.id!!) {
-            R.id.et_search, R.id.iv_search -> {
-                startActivity(Intent(activity, MeituSearchActivity::class.java))
-            }
-
-        }
+class HomeHomeFragment : BaseFragment(), View.OnTouchListener {
+    override fun onTouch(v: View?, m: MotionEvent?): Boolean {
+        return false
     }
+
+
 
     var head: View? = null
     var v: View? = null
@@ -45,8 +43,7 @@ class HomeHomeFragment : BaseFragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = layoutInflater.inflate(R.layout.fragment_home_home, container, false)
-        v?.iv_search?.setOnClickListener(this)
-        v?.et_search?.setOnClickListener(this)
+
 
         v?.swiper?.setOnRefreshListener {
             pageNo = 1
@@ -111,7 +108,9 @@ class HomeHomeFragment : BaseFragment(), View.OnClickListener {
                                 head?.fl_mol_head?.visibility = View.VISIBLE
                                 head?.recycler_models?.visibility = View.VISIBLE
                                 head?.recycler_models?.layoutManager = LinearLayoutManager(activity!!, LinearLayoutManager.HORIZONTAL, true)
+                                head?.recycler_models?.addItemDecoration(BaseDecoration(activity!!, LinearLayoutManager.HORIZONTAL))
                                 head?.recycler_models?.adapter = ModelLiatAdapter(R.layout.item_meitu_model_hor, t?.data?.models)
+
                             } else {
                                 head?.fl_mol_head?.visibility = View.GONE
                                 head?.recycler_models?.visibility = View.GONE
