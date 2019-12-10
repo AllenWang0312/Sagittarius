@@ -113,10 +113,10 @@ interface MeituApi {
     fun uploadFiles(@Part body: Array<MultipartBody.Part>): Observable<BR<ArrayList<String>>>
     //    @Multipart
     @FormUrlEncoded
-    @POST("v1/api/feedback")
+    @POST("v1/api/feedback/commit")
     fun feedback(@Field("images") pics: ArrayList<String>?,
                  @Field("content") message: String,
-                 @Field("mobile") mobile: String?): Observable<BR<Objects>>
+                 @Field("tel") tel: String?): Observable<BR<Objects>>
 
     @GET("/v1/api/m/home/zone")
     fun getZoneHistroy(@Query("year") year: String,
@@ -131,4 +131,7 @@ interface MeituApi {
 
     @GET("/v1/api/m/home/histroy/clean")
     fun cleanVisitHistroy(): Observable<BR<Any>>
+
+    @GET("/v1/api/m/home/histroy/record")
+    fun recordVisitHistroy(@Query("album_id")album_id: Int): Observable<BR<Any>>
 }

@@ -1,6 +1,5 @@
 package edu.tjrac.swant.meitu.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import com.bumptech.glide.Glide
@@ -11,6 +10,7 @@ import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
 import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.bean.ModelDetail
+import edu.tjrac.swant.meitu.listener.AlbumListClickListener
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_model_info.*
 class ModelInfoActivity : BaseActivity() {
 
     var model_id: Int? = 100
-    var get:Boolean?=false
+    var get: Boolean? = false
 
     var adapter: AlbumListAdapter? = null
     var data: ArrayList<Album>? = ArrayList()
@@ -32,25 +32,11 @@ class ModelInfoActivity : BaseActivity() {
 
         if (null != intent) {
             model_id = intent.getIntExtra("model_id", 100)
-            get=intent.getBooleanExtra("get",false)
+            get = intent.getBooleanExtra("get", false)
         }
         recycler.layoutManager = GridLayoutManager(this, 3)
         adapter = AlbumListAdapter(R.layout.item_meitu_colum, data)
-        adapter?.setOnItemClickListener { ad, view, position ->
-            var item = data?.get(position)
-            if (get!!) {
-                startActivity(Intent(this, AlbumDetailActivity::class.java)
-                        .putExtra("model_id", item?.model_id)
-                        .putExtra("album_id", item?.id))
-//                GalleryFragment
-            } else {
-                startActivity(Intent(this, AlbumWebViewActivity::class.java)
-                        .putExtra("album_id", item?.id)
-                        .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
-                        .putExtra("tital", item?.title!!))
-
-            }
-        }
+        adapter?.setOnItemClickListener(AlbumListClickListener(this))
         recycler.adapter = adapter
         fab.setOnClickListener {
             var request = HashMap<String, String>()

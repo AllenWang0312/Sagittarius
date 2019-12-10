@@ -25,7 +25,7 @@ open class AlbumListClickListener(
 //                GalleryFragment
             }else{
                 context.startActivity(Intent(context, AlbumWebViewActivity::class.java)
-                        .putExtra("colum_id",item.id)
+                        .putExtra("album_id",item.id)
                         .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
                         .putExtra("tital", item?.title!!))
 

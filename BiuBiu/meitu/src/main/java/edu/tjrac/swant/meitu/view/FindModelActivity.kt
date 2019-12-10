@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_find_model.*
 class FindModelActivity : BaseBarActivity() {
 
     var contry: String? = "cn"
-    var address = arrayListOf("cn", "cn_tw", "cn_hk", "cn_mo")
+    var address = arrayListOf("cn", "cn_tw", "cn_hk", "cn_mo","jp","kr","tha","usa")
     var pageNo = 1
     var pageSize = 20
     var adapter: ModelLiatAdapter? = null
@@ -44,9 +44,11 @@ class FindModelActivity : BaseBarActivity() {
 
         rg.setOnCheckedChangeListener { group, checkedId ->
             var index =group.indesOf(checkedId)
-            contry = address[index]
-            pageNo = 1
-            initData()
+            if(index>=0){
+                contry = address[index]
+                pageNo = 1
+                initData()
+            }
         }
         if(intent?.hasExtra("contry")!!){
             contry=intent?.getStringExtra("contry")

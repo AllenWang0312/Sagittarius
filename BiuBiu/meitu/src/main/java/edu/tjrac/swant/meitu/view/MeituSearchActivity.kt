@@ -1,6 +1,5 @@
 package edu.tjrac.swant.meitu.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
@@ -16,6 +15,7 @@ import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
 import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.bean.Tags
+import edu.tjrac.swant.meitu.listener.AlbumListClickListener
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
@@ -74,21 +74,7 @@ class MeituSearchActivity : BaseActivity(), View.OnClickListener {
         })
         gethottags()
         adapter = AlbumListAdapter(R.layout.item_meitu_colum, data)
-        adapter?.setOnItemClickListener { ad, view, position ->
-            var item = data?.get(position)
-            if (item?.get!!) {
-                startActivity(Intent(this, AlbumDetailActivity::class.java)
-                        .putExtra("model_id", item.model_id)
-                        .putExtra("id", item.id))
-
-//                GalleryFragment
-            } else {
-                startActivity(Intent(this, AlbumWebViewActivity::class.java)
-                        .putExtra("colum_id", item.id)
-                        .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
-                        .putExtra("tital", item?.title!!))
-            }
-        }
+        adapter?.setOnItemClickListener(AlbumListClickListener(this))
         adapter?.setOnLoadMoreListener {
             pageNo++
             search()

@@ -87,7 +87,7 @@ class FeedbackActivity : BaseBarActivity(),View.OnClickListener {
     }
 
     private fun submitFeedback(content: String, mobile: String?, data: ArrayList<String>?) {
-        Net.instance.getApiService().feedback(App.token!!,
+        Net.instance.getApiService().feedback(
                 data,
                 content,
                 mobile
