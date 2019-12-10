@@ -1,5 +1,6 @@
 *.iml
-.gradle
+/.gradle
+/gradle
 /local.properties
 .idea
 .DS_Store
@@ -7,19 +8,9 @@
 /captures
 .externalNativeBuild
 
-wpc.jks
-
-weiguang_splash.jpg
-
-Screenshot_20191107-141604.jpg
-Screenshot_20190626-094458.jpg
-
 kbaselib
-/
 gradlew.bat
-
 gradlew
-
 gradle/wrapper/gradle-wrapper
 .properties
 

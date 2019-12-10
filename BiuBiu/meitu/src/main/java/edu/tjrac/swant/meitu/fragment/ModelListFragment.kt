@@ -77,7 +77,7 @@ class ModelListFragment : BaseFragment(), View.OnClickListener {
             data?.clear()
             adapter?.notifyDataSetChanged()
         }
-        Net.instance.getApiService().getModelList(pageSize, pageNo)
+        Net.instance.getApiService().getModelList( pageNo,pageSize)
                 .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
                 .subscribe(object : NESubscriber<BR<ArrayList<Model>>>(this) {
                     override fun onSuccess(t: BR<ArrayList<Model>>?) {

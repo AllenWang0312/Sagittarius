@@ -2,23 +2,23 @@ package edu.tjrac.swant.meitu.view.mine
 
 import android.os.Bundle
 import android.view.View
-import edu.tjrac.swant.baselib.common.adapter.FragmentsPagerAdapter
+import edu.tjrac.swant.baselib.common.adapter.V4FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.fragment.ColumCollectionFragment
+import edu.tjrac.swant.meitu.fragment.AlbumCollectionFragment
 import edu.tjrac.swant.meitu.fragment.FollowModelsFragment
 import kotlinx.android.synthetic.main.activity_meitu_collections.*
 
 class MeituCollectionsActivity : BaseBarActivity() {
 
-    var adapter: FragmentsPagerAdapter? = null
+    var adapter: V4FragmentsPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meitu_collections)
         setToolbar(findViewById(R.id.toolbar))
 
-        adapter = FragmentsPagerAdapter(supportFragmentManager)
+        adapter = V4FragmentsPagerAdapter(supportFragmentManager)
 
         if (intent.hasExtra("title")) {
             var title = intent.getStringExtra("title")
@@ -27,7 +27,7 @@ class MeituCollectionsActivity : BaseBarActivity() {
         } else {
             setTitle("我的收藏")
 
-            adapter?.addFragment(ColumCollectionFragment(), resources.getString(R.string.colum))
+            adapter?.addFragment(AlbumCollectionFragment(), resources.getString(R.string.colum))
         }
 
 

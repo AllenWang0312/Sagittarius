@@ -7,12 +7,12 @@ import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.ViewPager
 import android.view.MenuItem
-import edu.tjrac.swant.baselib.common.adapter.FragmentsPagerAdapter
+import edu.tjrac.swant.baselib.common.adapter.V4FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.meitu.bean.Tab
-import edu.tjrac.swant.meitu.fragment.HomeFollowFragment
-import edu.tjrac.swant.meitu.fragment.HomeHomeFragment
+import edu.tjrac.swant.meitu.fragment.HomeFragment
 import edu.tjrac.swant.meitu.fragment.MineFragment
+import edu.tjrac.swant.meitu.fragment.TrendFragment
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
@@ -54,7 +54,7 @@ class MeituMainActivityV2 : BaseActivity(), BottomNavigationView.OnNavigationIte
         super.initStatusBar()
     }
 
-    var adapter: FragmentsPagerAdapter? = null
+    var adapter: V4FragmentsPagerAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meitu_main_v2)
@@ -70,13 +70,13 @@ class MeituMainActivityV2 : BaseActivity(), BottomNavigationView.OnNavigationIte
         vp.addOnPageChangeListener(this);
         bnv.selectedItemId = R.id.tab_one;
 
-        adapter = FragmentsPagerAdapter(supportFragmentManager)
-        adapter?.addFragment(HomeHomeFragment(), resources.getString(R.string.home))
+        adapter = V4FragmentsPagerAdapter(supportFragmentManager)
+        adapter?.addFragment(HomeFragment(), resources.getString(R.string.home))
 //        adapter?.addFragment(ModelListFragment(), resources.getString(R.string.model))
-        adapter?.addFragment(HomeFollowFragment(), "cycler")
-//        adapter?.addFragment(HomeHomeFragment(), "home_home")
+        adapter?.addFragment(TrendFragment(), "cycler")
+//        adapter?.addFragment(HomeFragment(), "home_home")
 
-//        adapter?.addFragment(ColumListFragment(), resources.getString(R.string.album))
+//        adapter?.addFragment(AlbumListFragment(), resources.getString(R.string.album))
         adapter?.addFragment(MineFragment(), resources.getString(R.string.mine))
         vp.offscreenPageLimit = 3
         vp.adapter = adapter;

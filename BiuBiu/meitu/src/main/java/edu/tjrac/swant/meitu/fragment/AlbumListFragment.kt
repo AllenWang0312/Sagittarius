@@ -2,13 +2,12 @@ package edu.tjrac.swant.meitu.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import edu.tjrac.swant.baselib.common.base.BaseFragment
-import edu.tjrac.swant.baselib.common.recycler.BaseDecoration
+import edu.tjrac.swant.baselib.common.recycler.GridSpacingItemDecoration
 import edu.tjrac.swant.baselib.util.UiUtil
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
@@ -17,13 +16,13 @@ import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
 import edu.tjrac.swant.meitu.view.AlbumDetailActivity
-import edu.tjrac.swant.meitu.view.ColumWebViewActivity
+import edu.tjrac.swant.meitu.view.AlbumWebViewActivity
 import kotlinx.android.synthetic.main.swiper_recycler_view.view.*
 
 /**
  * Created by wpc on 2019-09-05.
  */
-class ColumListFragment : BaseFragment() {
+class AlbumListFragment : BaseFragment() {
 
     var data: ArrayList<Album>? = ArrayList()
     var adapter: AlbumListAdapter? = null
@@ -46,7 +45,7 @@ class ColumListFragment : BaseFragment() {
 
 //                GalleryFragment
             } else {
-                startActivity(Intent(activity, ColumWebViewActivity::class.java)
+                startActivity(Intent(activity, AlbumWebViewActivity::class.java)
                         .putExtra("colum_id", item.id)
                         .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
                         .putExtra("tital", item?.title!!))
@@ -73,9 +72,9 @@ class ColumListFragment : BaseFragment() {
 //        var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 // 绑定布局管理器
         v?.recycler?.layoutManager = layoutManager
+//        v?.recycler?.addItemDecoration(BaseDecoration(activity!!, LinearLayoutManager.VERTICAL))
         var dp8 = UiUtil.dp2px(activity!!, 8).toInt()
-        v?.recycler?.addItemDecoration(BaseDecoration(activity!!, LinearLayoutManager.VERTICAL))
-//        v?.recycler?.addItemDecoration(GridSpacingItemDecoration(2, dp8, dp8));
+        v?.recycler?.addItemDecoration(GridSpacingItemDecoration(2, dp8, dp8));
         v?.swiper?.setOnRefreshListener {
             pageNo = 1
             initData()

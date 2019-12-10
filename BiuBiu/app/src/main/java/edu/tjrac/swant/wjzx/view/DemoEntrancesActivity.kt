@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import edu.tjrac.swant.baselib.common.base.FragmentActivity
+import edu.tjrac.swant.baselib.common.base.SingleFragmentActivity
 import edu.tjrac.swant.bluetooth.view.BLEFragment
 import edu.tjrac.swant.fingerprint.FingerPrintBaseActivity
 import edu.tjrac.swant.meitu.MeituLoginActivity
@@ -22,8 +22,8 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this,MeituMainActivity::class.java))
             }
             R.id.bt_bluetooth -> {
-                FragmentActivity.start(this,BLEFragment())
-//                startActivity(Intent(this,FragmentActivity<BLEFragment>::class.java))
+                SingleFragmentActivity.start(this,BLEFragment())
+//                startActivity(Intent(this,SingleFragmentActivity<BLEFragment>::class.java))
             }
             R.id.bt_fingerprint -> {
                 startActivity(Intent(this,FingerPrintBaseActivity::class.java))

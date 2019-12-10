@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import edu.tjrac.swant.baselib.common.adapter.FragmentsPagerAdapter
+import edu.tjrac.swant.baselib.common.adapter.V4FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.util.StringUtils
 import edu.tjrac.swant.bluetooth.bean.ScanInfo
 import edu.tjrac.swant.wjzx.R
@@ -25,7 +25,7 @@ class DevicesMoreInfoActivity : AppCompatActivity() {
     internal var scanResult: ScanResult?=null
     internal var device: BluetoothDevice?=null
     internal var infos: ArrayList<ScanInfo>?=null
-    internal var adapter: FragmentsPagerAdapter?=null
+    internal var adapter: V4FragmentsPagerAdapter?=null
 
     private var history: ScanInfoHistoryFragment? = null
     private var flags: ScanInfoFlagsAndServicesFragment? = null
@@ -50,7 +50,7 @@ class DevicesMoreInfoActivity : AppCompatActivity() {
             title = "N/A"
         }
 
-        adapter = FragmentsPagerAdapter(supportFragmentManager)
+        adapter = V4FragmentsPagerAdapter(supportFragmentManager)
         history = ScanInfoHistoryFragment(scanResult!!, infos!!)
         flags = ScanInfoFlagsAndServicesFragment(scanResult!!)
         adapter!!.addFragment(history!!, "history")

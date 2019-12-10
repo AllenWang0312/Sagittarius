@@ -13,7 +13,7 @@ import edu.tjrac.swant.meitu.net.RxUtil
 /**
  * Created by wpc on 2019-11-20.
  */
-class ColumWebViewActivity : BaseWebViewActivity() {
+class AlbumWebViewActivity : BaseWebViewActivity() {
     var model_id = 0
     var colum_id = 0
 

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/toolbar"></include>
+
+    <include layout="@layout/deliver"></include>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:gravity="top|left"
+            android:hint="请填写具体内容帮助我们了解您所遇到的问题"
+            android:background="@color/white"
+            android:textSize="16sp"
+            android:layout_height="187dp"/>
+        <!--android:textColorHint=""-->
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:text="500"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"/>
+    </FrameLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:paddingTop="20dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--android:paddingRight="16dp"-->
+        <!--android:paddingLeft="16dp"-->
+        <!--android:paddingTop="20dp"-->
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tv_image_info"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:textSize="14sp"
+        android:textColor="#A1A1A1"
+        android:gravity="center_vertical"
+        android:layout_marginTop="2dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="还可上传4张图片，单张图片最大3兆"
+        />
+
+    <!--<include layout="@layout/deliver_high"></include>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_height="55dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#303030"
+            android:layout_marginLeft="15dp"
+            android:text="@string/contact_information"
+            />
+
+        <EditText
+            android:id="@+id/et_contract"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:gravity="center_vertical"
+            android:background="@null"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginRight="15dp"
+            android:hint="@string/feed_back_contaction"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_submit"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_bt_square_bg"
+        android:text="@string/submit"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_customer_service"/>
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#127CFF"
+            />
+    </LinearLayout>
+</LinearLayout>

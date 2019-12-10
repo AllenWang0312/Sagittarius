@@ -3,6 +3,7 @@ package edu.tjrac.swant.meitu.view
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
+import com.bumptech.glide.Glide
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.image.ImagePreviewActivity
 import edu.tjrac.swant.meitu.R
@@ -11,7 +12,7 @@ import edu.tjrac.swant.meitu.bean.Album
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
 import edu.tjrac.swant.meitu.net.Net
-import kotlinx.android.synthetic.main.activity_model_info.*
+import kotlinx.android.synthetic.main.activity_album_detail.*
 
 class AlbumDetailActivity : BaseActivity() {
 
@@ -23,7 +24,14 @@ class AlbumDetailActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_colum_detail)
+        setContentView(R.layout.activity_album_detail)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
         if (intent?.hasExtra("album_id")!!) colum_id = intent.getIntExtra("album_id", 0)
         if (intent?.hasExtra("model_id")!!) model_id = intent.getIntExtra("model_id", 0)
 
@@ -42,6 +50,9 @@ class AlbumDetailActivity : BaseActivity() {
                 .compose(edu.tjrac.swant.meitu.net.RxUtil.applySchedulers())
                 .subscribe(object : NESubscriber<BR<Album>>(this) {
                     override fun onSuccess(t: BR<Album>?) {
+                        if (null != t?.data?.model) {
+                            Glide.with(mContext).load(t?.data?.model?.cover).into(iv_portrait)
+                        }
 //                             startActivity(Intent(activity!!,ImagePreviewActivity::class.java)
 //                                     .putExtra("images",t?.data))
                         if (null != t?.data?.images && t?.data?.images?.size!! > 0) {

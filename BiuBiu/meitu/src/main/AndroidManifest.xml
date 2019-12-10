@@ -18,48 +18,49 @@
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.mine.MeituVisitHistroyActivity">
-        </activity>
-        <activity android:name=".view.mine.UserInfoActivity">
-        </activity>
-        <activity android:name=".view.account.MeituSelectTabActivity">
-        </activity>
-        <activity android:name=".view.AlbumDetailActivity">
-        </activity>
+
+        <activity android:name=".view.mine.UserInfoActivity"/>
+
         <activity
             android:name=".view.account.SplashActivity"
+            android:launchMode="standard"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity> <!-- todo -->
         <!-- common -->
         <activity
             android:name="edu.tjrac.swant.image.ImagePreviewActivity"
-            android:launchMode="singleTop">
-        </activity>
-        <activity android:name=".view.account.MeituLoginActivity">
-        </activity>
-        <activity android:name=".view.mine.FeedbackListActivity">
-        </activity>
-        <activity android:name=".view.mine.MeituCollectionsActivity">
-        </activity>
+            android:launchMode="singleTop"/>
+        <activity android:name=".view.account.FeedbackListActivity"/>
+        <activity android:name=".view.mine.SettingActivity"/>
+        <!-- end common -->
+        <activity
+            android:name=".MeituMainActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".view.account.MeituLoginActivity"/>
+
+        <activity android:name=".view.mine.MeituCollectionsActivity"/>
+
         <activity android:name=".view.ModelInfoActivity">
         </activity> <!-- <activity android:name=".view.LoginActivity"/> -->
         <!-- <activity -->
         <!-- android:name=".ui.login.LoginActivity" -->
         <!-- android:label="@string/title_activity_login"/> -->
         <activity android:name=".view.MeituSearchActivity"/>
-        <activity android:name=".view.ColumWebViewActivity"/>
-        <activity
-            android:name=".MeituMainActivity"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".view.mine.SettingActivity"/>
+        <activity android:name=".view.AlbumWebViewActivity"/>
+        <activity android:name=".view.account.MeituSelectTabActivity"/>
+        <activity android:name=".view.AlbumDetailActivity"/>
+        <activity android:name=".view.mine.MeituVisitHistroyActivity"/>
+        <activity android:name=".view.FindModelActivity"></activity>
+        <activity android:name=".view.account.FeedbackActivity"></activity>
     </application>
 
 </manifest>

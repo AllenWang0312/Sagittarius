@@ -94,7 +94,11 @@ open class App : BaseApplication() {
                 needReStart = true
                 sp?.edit()?.putInt(Config.SP.LANGUAGE_SETTING, value!!)?.commit()
             }
-
+        var hot_line: String? = "18814837150"
+        @JvmStatic
+        fun getCachePath(): String {
+            return instance?.cacheDir!!.absolutePath
+        }
     }
 
 

@@ -4,8 +4,10 @@ import com.google.gson.JsonObject
 import edu.tjrac.swant.meitu.bean.*
 import edu.tjrac.swant.meitu.bean.stuct.LoginRespon
 import edu.tjrac.swant.meitu.bean.stuct.UserCenter
+import okhttp3.MultipartBody
 import retrofit2.http.*
 import rx.Observable
+import java.io.File
 import java.util.*
 
 /**
@@ -34,9 +36,14 @@ interface MeituApi {
 
     //    @FormUrlEncoded
     @GET("/v1/api/model/list")
-    fun getModelList(@Query("pageSize") pageSize: Int,
-                     @Query("pageNo") pageNo: Int): Observable<BR<ArrayList<Model>>>
-
+    fun getModelList(
+                     @Query("pageNo") pageNo: Int,
+                     @Query("pageSize") pageSize: Int): Observable<BR<ArrayList<Model>>>
+    @GET("/v1/api/model/list")
+    fun getModelList(
+            @Query("pageNo") pageNo: Int,
+            @Query("pageSize") pageSize: Int,
+            @Query("contry") contry: String): Observable<BR<ArrayList<Model>>>
 
     @GET("/v1/api/model")
     fun getModelInfo(@Query("id") model_id: Int): Observable<BR<ModelDetail>>
@@ -96,12 +103,27 @@ interface MeituApi {
     @POST("/v1/api/m/mine/info")
     fun getUserCenter(): Observable<BR<UserCenter>>
 
+    @FormUrlEncoded
+    @POST("/v1/api/file")
+    fun uploadFile(@Field("name")name:String,
+                   @Field("path")path:String,
+                   @Field("file")file: File): Observable<BR<UserCenter>>
+    @Multipart
+    @POST("v1/api/files")
+    fun uploadFiles(@Part body: Array<MultipartBody.Part>): Observable<BR<ArrayList<String>>>
+    //    @Multipart
+    @FormUrlEncoded
+    @POST("v1/api/feedback")
+    fun feedback(@Field("images") pics: ArrayList<String>?,
+                 @Field("content") message: String,
+                 @Field("mobile") mobile: String?): Observable<BR<Objects>>
 
     @GET("/v1/api/m/home/zone")
     fun getZoneHistroy(@Query("year") year: String,
                        @Query("month") month: String,
                        @Query("pageNo") pageNo: Int,
-                       @Query("pageSize") pageSize: Int): Observable<BR<ArrayList<Zone>>>
+                       @Query("pageSize") pageSize: Int,
+                       @Query("scope") scope: String?): Observable<BR<ArrayList<Zone>>>
 
     @GET("/v1/api/m/home/histroy")
     fun getVisitHistroy(@Query("pageNo") pageNo: Int,

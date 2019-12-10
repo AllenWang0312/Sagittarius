@@ -83,7 +83,7 @@ class MeituSearchActivity : BaseActivity(), View.OnClickListener {
 
 //                GalleryFragment
             } else {
-                startActivity(Intent(this, ColumWebViewActivity::class.java)
+                startActivity(Intent(this, AlbumWebViewActivity::class.java)
                         .putExtra("colum_id", item.id)
                         .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
                         .putExtra("tital", item?.title!!))

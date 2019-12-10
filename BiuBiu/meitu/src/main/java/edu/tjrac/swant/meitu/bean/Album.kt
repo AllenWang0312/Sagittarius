@@ -6,6 +6,8 @@ package edu.tjrac.swant.meitu.bean
 class Album : AlbumInfo {
     var id: Int? = 0
     var model_id: Int? = 0
+    var model: Model? = null
+
     var group_id: Int? = 0
 
     var title: String? = ""
@@ -26,13 +28,12 @@ class Album : AlbumInfo {
     var hot: Int? = 0
     var get: Boolean? = false
 
-    var cover: ImageInfo? =null
+    var cover: ImageInfo? = null
 
     override fun getAlbumCover(): String? {
         return cover?.url
 //        return Config.URL.FILE_SERVER + "/muri/" + model_id + "/" + id + "/0.jpg"
     }
-
 
 
     override fun getTitleStr(): String {

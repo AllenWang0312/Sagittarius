@@ -28,7 +28,7 @@ class ZoneListAdapter(data: MutableList<MultiItemEntity>?) : BaseMultiItemQuickA
             helper?.addOnClickListener(R.id.tv_like)
                     ?.addOnClickListener(R.id.tv_comment)
                     ?.addOnClickListener(R.id.tv_share)
-
+                    ?.addOnClickListener(R.id.iv_cover)
             var icon = helper?.getView<ImageView>(R.id.iv_icon)
             Glide.with(mContext).load(item.model?.cover)
                     .apply(RequestOptions().circleCrop()).into(icon!!)

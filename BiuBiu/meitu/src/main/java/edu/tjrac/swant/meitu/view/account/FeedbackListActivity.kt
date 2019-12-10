@@ -1,5 +1,6 @@
-package edu.tjrac.swant.meitu.view.mine
+package edu.tjrac.swant.meitu.view.account
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -22,6 +23,9 @@ class FeedbackListActivity : BaseBarActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feedback_list)
         setToolbar(findViewById(R.id.toolbar))
+        bt.setOnClickListener{
+            startActivity(Intent(this,FeedbackActivity::class.java))
+        }
         adapter = FeedbackAdapter(data)
         adapter?.setOnLoadMoreListener {
             pageNo++

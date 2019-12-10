@@ -44,7 +44,7 @@ class ModelInfoActivity : BaseActivity() {
                         .putExtra("album_id", item?.id))
 //                GalleryFragment
             } else {
-                startActivity(Intent(this, ColumWebViewActivity::class.java)
+                startActivity(Intent(this, AlbumWebViewActivity::class.java)
                         .putExtra("album_id", item?.id)
                         .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
                         .putExtra("tital", item?.title!!))

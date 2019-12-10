@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.ViewPager
-import edu.tjrac.swant.baselib.common.adapter.FragmentsPagerAdapter
+import edu.tjrac.swant.baselib.common.adapter.V4FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.baselib.common.base.BaseBarFragment
 import edu.tjrac.swant.baselib.common.base.BaseWebViewFragment
@@ -17,7 +17,7 @@ import java.util.*
 class GroupWebViewerActivity : BaseActivity() {
 
 
-    internal var adapter: FragmentsPagerAdapter?=null
+    internal var adapter: V4FragmentsPagerAdapter?=null
     internal var infos: List<WebInfo>?=null
     internal var current: BaseBarFragment?=null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +25,7 @@ class GroupWebViewerActivity : BaseActivity() {
                 setContentView(R.layout.activity_group_web_viewer);
         infos = intent.getParcelableArrayListExtra<WebInfo>("infos")
 
-        adapter = FragmentsPagerAdapter(supportFragmentManager)
+        adapter = V4FragmentsPagerAdapter(supportFragmentManager)
         for (item in infos!!) {
             adapter!!.addFragment(BaseWebViewFragment(item.url, R.layout.activity_service_text), item.title)
         }

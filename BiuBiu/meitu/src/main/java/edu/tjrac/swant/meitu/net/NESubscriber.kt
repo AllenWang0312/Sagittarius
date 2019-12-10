@@ -2,11 +2,17 @@ package edu.tjrac.swant.meitu.net
 
 
 import android.annotation.TargetApi
+import android.content.Intent
 import android.os.Build
 import com.google.gson.JsonSyntaxException
+import edu.tjrac.swant.baselib.common.base.BaseActivity
+import edu.tjrac.swant.baselib.common.base.BaseApplication
+import edu.tjrac.swant.baselib.common.base.BaseFragment
 import edu.tjrac.swant.baselib.common.base.BaseView
 import edu.tjrac.swant.baselib.util.StringUtils
 import edu.tjrac.swant.baselib.util.T
+import edu.tjrac.swant.meitu.App
+import edu.tjrac.swant.meitu.view.account.MeituLoginActivity
 import retrofit2.adapter.rxjava.HttpException
 import rx.Subscriber
 import java.net.SocketTimeoutException
@@ -74,15 +80,15 @@ open abstract class NESubscriber<O : BR<*>>(internal var view: BaseView?) : Subs
             }
             view?.showToast(message)
             if (e.code() == 401) {
-//                App.token = ""
-//                BaseApplication.instance?.exit()
-//                if(view is BaseFragment){
-//                    var context = view as BaseFragment
-//                    context?.activity?.startActivity(Intent(context?.activity, MeituLoginActivity::class.java))
-//                }else if(view is BaseActivity){
-//                    var context = view as BaseActivity
-//                    context?.startActivity(Intent(context, MeituLoginActivity::class.java))
-//                }
+                App.token = ""
+                BaseApplication.instance?.exit()
+                if(view is BaseFragment){
+                    var context = view as BaseFragment
+                    context?.activity?.startActivity(Intent(context?.activity, MeituLoginActivity::class.java))
+                }else if(view is BaseActivity){
+                    var context = view as BaseActivity
+                    context?.startActivity(Intent(context, MeituLoginActivity::class.java))
+                }
                 return
             }
             return
