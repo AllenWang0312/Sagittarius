@@ -9,7 +9,7 @@ import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.baselib.common.base.BaseApplication
 import edu.tjrac.swant.baselib.common.base.BaseFragment
 import edu.tjrac.swant.baselib.common.base.BaseView
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.baselib.util.T
 import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.view.account.MeituLoginActivity
@@ -142,10 +142,10 @@ open abstract class NESubscriber<O : BR<*>>(internal var view: BaseView?) : Subs
         if (t == null) {
             return onError(Throwable("接口错误"))
         } else {
-            if (!StringUtils.isEmpty(t.toast)) {
+            if (!SUtil.isEmpty(t.toast)) {
                 T.Companion.show(t.toast!!)
             }
-            if (StringUtils.isEmpty(t.msg)&&t.code==0) {
+            if (SUtil.isEmpty(t.msg)&&t.code==0) {
                 onSuccess(t)
             }
         }

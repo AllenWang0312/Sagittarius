@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import edu.tjrac.swant.baselib.common.adapter.ViewsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseActivity
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.Config
 import edu.tjrac.swant.meitu.MeituMainActivity
@@ -34,7 +34,7 @@ class MeituLoginActivity : BaseActivity(), View.OnClickListener {
             R.id.bt_login -> {
                 var account = login?.et_account?.text.toString()
                 var pass = login?.et_pass?.text.toString()
-                if (StringUtils.isEmpty(account) || StringUtils.isEmpty(pass)) {
+                if (SUtil.isEmpty(account) || SUtil.isEmpty(pass)) {
 
                 } else {
                     App.sp?.edit()?.putString(Config.SP.LOGIN_ACCOUNT, account)
@@ -55,7 +55,7 @@ class MeituLoginActivity : BaseActivity(), View.OnClickListener {
                 var pass = regist?.et_pass?.text.toString()
                 var repass = regist?.et_repass?.text.toString()
 
-                if (StringUtils.isEmpty(account) || StringUtils.isEmpty(pass) || StringUtils.isEmpty(repass)) {
+                if (SUtil.isEmpty(account) || SUtil.isEmpty(pass) || SUtil.isEmpty(repass)) {
 
                 } else {
                     if (pass.equals(repass)) {
@@ -107,7 +107,7 @@ class MeituLoginActivity : BaseActivity(), View.OnClickListener {
 
     companion object {
         fun onLoginSuccess(context: Activity, data: LoginRespon?) {
-            if (!StringUtils.isEmpty(data?.user?.token)) {
+            if (!SUtil.isEmpty(data?.user?.token)) {
                 App.token = data?.user?.token
             }
             App.loged = data?.user

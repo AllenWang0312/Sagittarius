@@ -2,8 +2,7 @@ package edu.tjrac.swant.wjzx.bean
 
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import edu.tjrac.swant.baselib.common.base.BaseApplication
-import edu.tjrac.swant.baselib.util.StringUtils
-import edu.tjrac.swant.wjzx.R
+import edu.tjrac.swant.baselib.util.SUtil
 
 class M(var type: Int = 0) : MultiItemEntity {
     override fun getItemType(): Int {
@@ -13,7 +12,7 @@ class M(var type: Int = 0) : MultiItemEntity {
     var title_res_id: Int = 0
     var title: String? = ""
         get() {
-            if (StringUtils.isEmpty(field)) {
+            if (SUtil.isEmpty(field)) {
                 field = BaseApplication.instance?.resources?.getString(title_res_id)
             }
             return field

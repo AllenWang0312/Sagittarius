@@ -11,7 +11,7 @@ import android.view.View
 import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.filesystem.FileSystemHelper
 import edu.tjrac.swant.filesystem.MediaUtil
 import edu.tjrac.swant.wjzx.R
@@ -142,7 +142,7 @@ class GalleryContentAdapter(
         //        this.rootName = rootName;
 
         mData = withFilter(data)
-        if (!StringUtils.isEmpty(rootName)) {
+        if (!SUtil.isEmpty(rootName)) {
             if (paths != null && paths?.size!! > 0) {
                 if (rootName != paths!![0]) {
                     dir = null
@@ -250,7 +250,7 @@ class GalleryContentAdapter(
         } else {
             helper.setAlpha(R.id.fl_root, 1f)
         }
-        if (!StringUtils.isEmpty(mFailter)) {
+        if (!SUtil.isEmpty(mFailter)) {
             if (failterMode == 1) {
                 val count = 0
                 val p = Pattern.compile(item.name)

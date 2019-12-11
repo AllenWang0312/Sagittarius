@@ -13,7 +13,7 @@ import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
 import com.luck.picture.lib.entity.LocalMedia
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.common.adapter.UploadImageAdapter
 import edu.tjrac.swant.common.bean.FileInfo
 import edu.tjrac.swant.meitu.App
@@ -47,10 +47,10 @@ class FeedbackActivity : BaseBarActivity(),View.OnClickListener {
                 if (content.isEmpty()) {
                     showToast("请填写问题描述")
                 }
-//                else if (StringUtils.isEmpty(mobile) || !StringUtils.isMobileNO(mobile)) {
+//                else if (SUtil.isEmpty(mobile) || !SUtil.isMobileNO(mobile)) {
 //                    showToast("请填写正确的手机号")
 //                }
-//                else if(null==images||StringUtils.isEmpty(images.get(0).absPath)){
+//                else if(null==images||SUtil.isEmpty(images.get(0).absPath)){
 //                    showToast("请至少添加一张问题截图哦")
 //                }else {
                 if (images.size > 1) {
@@ -234,7 +234,7 @@ class FeedbackActivity : BaseBarActivity(),View.OnClickListener {
         fun getFiles(selectList: ArrayList<FileInfo>): ArrayList<File> {
             var files = ArrayList<File>()
             for (i in selectList) {
-                if (StringUtils.isEmpty(i.absPath)) {
+                if (SUtil.isEmpty(i.absPath)) {
 
                 } else {
                     files.add(File(i.absPath))

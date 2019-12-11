@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import edu.tjrac.swant.baselib.common.base.BaseActivity
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
@@ -58,19 +58,19 @@ class ModelInfoActivity : BaseActivity() {
                 .subscribe(object : NESubscriber<BR<ModelDetail>>(this) {
                     override fun onSuccess(t: BR<ModelDetail>?) {
                         var info = t?.data?.info
-                        if (!StringUtils.isEmpty(info?.cover)) {
+                        if (!SUtil.isEmpty(info?.cover)) {
                             Glide.with(this@ModelInfoActivity).load(info?.cover).into(iv_cover)
                             var info1 = StringBuffer()
-                            if (!StringUtils.isEmpty(info?.nicknames)) info1?.append(info?.nicknames + "\n")
-                            if (!StringUtils.isEmpty(info?.jobs)) info1?.append("工作:" + info?.jobs + "\n")
-                            if (!StringUtils.isEmpty(info?.interest)) info1?.append("爱好:" + info?.interest + "\n")
-                            if (!StringUtils.isEmpty(info?.height)) info1?.append("身高:" + info?.height + "\n")
-                            if (!StringUtils.isEmpty(info?.weight)) info1?.append("体重:" + info?.weight + "\n")
-                            if (!StringUtils.isEmpty(info?.birthday)) info1?.append("生日:" + info?.birthday + "\n")
-                            if (!StringUtils.isEmpty(info?.constellation)) info1?.append("星座:" + info?.constellation + "\n")
-                            if (!StringUtils.isEmpty(info?.dimensions)) info1?.append("cup:" + info?.dimensions + "\n")
-                            if (!StringUtils.isEmpty(info?.address)) info1?.append("地址:" + info?.address + "\n")
-                            if (!StringUtils.isEmpty(info?.tags)) info1?.append("标签:" + info?.tags + "\n")
+                            if (!SUtil.isEmpty(info?.nicknames)) info1?.append(info?.nicknames + "\n")
+                            if (!SUtil.isEmpty(info?.jobs)) info1?.append("工作:" + info?.jobs + "\n")
+                            if (!SUtil.isEmpty(info?.interest)) info1?.append("爱好:" + info?.interest + "\n")
+                            if (!SUtil.isEmpty(info?.height)) info1?.append("身高:" + info?.height + "\n")
+                            if (!SUtil.isEmpty(info?.weight)) info1?.append("体重:" + info?.weight + "\n")
+                            if (!SUtil.isEmpty(info?.birthday)) info1?.append("生日:" + info?.birthday + "\n")
+                            if (!SUtil.isEmpty(info?.constellation)) info1?.append("星座:" + info?.constellation + "\n")
+                            if (!SUtil.isEmpty(info?.dimensions)) info1?.append("cup:" + info?.dimensions + "\n")
+                            if (!SUtil.isEmpty(info?.address)) info1?.append("地址:" + info?.address + "\n")
+                            if (!SUtil.isEmpty(info?.tags)) info1?.append("标签:" + info?.tags + "\n")
                             tv_info1.text = info1
                             tv_info2.text = info?.more
                         }

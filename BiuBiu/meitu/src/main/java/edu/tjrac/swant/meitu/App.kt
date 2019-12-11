@@ -8,7 +8,7 @@ import android.telephony.TelephonyManager
 import android.util.Log
 import com.google.gson.Gson
 import edu.tjrac.swant.baselib.common.base.BaseApplication
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.meitu.bean.User
 
 /**
@@ -33,7 +33,7 @@ open class App : BaseApplication() {
                 Log.i("token", value)
             }
             get() {
-                if (StringUtils.isEmpty(field)) {
+                if (SUtil.isEmpty(field)) {
                     field = sp?.getString(Config.SP.TOKEN, "")
                 }
                 return field

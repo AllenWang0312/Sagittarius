@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 
 import edu.tjrac.swant.bluetooth.BlueToothHelper
 import edu.tjrac.swant.wjzx.R
@@ -40,7 +40,7 @@ class BlueToothFlagsView : View {
         canvas.drawText("00"
                 + Integer.toBinaryString(mFlag)
                 + " = 0x"
-                + StringUtils.getHexString(mFlag, 2), padding.toFloat(), (textSize + padding).toFloat(),
+                + SUtil.getHexString(mFlag, 2), padding.toFloat(), (textSize + padding).toFloat(),
                 textPaint!!
         )
 

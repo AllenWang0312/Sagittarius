@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import edu.tjrac.swant.baselib.util.FileUtils
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.baselib.util.T
 import edu.tjrac.swant.media.rtsp.TU
 import edu.tjrac.swant.wjzx.Config
@@ -23,13 +23,13 @@ class RTSPMediaPlayerActivity : AppCompatActivity() {
     //    String path="https:// video-xz.veimg.cn/7/286/pc_hd/7_286OpMFL.mp4";
     var path = ""
         set(value) {
-            if (!StringUtils.isEmpty(value)) {
+            if (!SUtil.isEmpty(value)) {
                 field = value
                 sp?.edit()?.putString(Config.SP.CACHE_URL, value)?.commit()
             }
         }
         get() {
-            if (StringUtils.isEmpty(field)) {
+            if (SUtil.isEmpty(field)) {
                 field = sp?.getString(Config.SP.CACHE_URL, "http://ivi.bupt.edu.cn/hls/cctv1.m3u8")!!
             }
             return field
@@ -49,7 +49,7 @@ class RTSPMediaPlayerActivity : AppCompatActivity() {
 
     fun onGetPlayListSuccess(data: ArrayList<TU>) {
         playlist = data
-//        if (StringUtils.isEmpty(path)) {
+//        if (SUtil.isEmpty(path)) {
 //            path = data.get(0).url!!
 //        }
     }

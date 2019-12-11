@@ -187,20 +187,20 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
                     adapter!!.path_histroy?.push(file)
                     adapter!!.cd_dir(file)
                 } else {
-                    if (".h264".contains(StringUtils.getEndString(file.name))) {
+                    if (".h264".contains(SUtil.getEndString(file.name))) {
                         //                            startActivity(new Intent(getActivity(), H264Activity.class)
                         //                            .putExtra("path",file.getAbsoluteFile()));
 
                     }
-//                    else if (OpenGLActivity.res_type.contains(StringUtils.getEndString(file.name))) {
+//                    else if (OpenGLActivity.res_type.contains(SUtil.getEndString(file.name))) {
 //                        OpenGLActivity.start(activity!!, file.absolutePath)
-//                    } else if (GalleryAlbumActivity.res_type.contains(StringUtils.getEndString(file.name))) {
+//                    } else if (GalleryAlbumActivity.res_type.contains(SUtil.getEndString(file.name))) {
 //                        GalleryAlbumActivity.start(activity!!,
 //                                adapter!!.getItem(position)!!.getParent(), position
 //                        )
-//                    } else if (LottieViewerActivity.res_type.contains(StringUtils.getEndString(file.name))) {
+//                    } else if (LottieViewerActivity.res_type.contains(SUtil.getEndString(file.name))) {
 //                        LottieViewerActivity.start(activity!!, file.absolutePath)
-//                    } else if (MusicPlayerActivity.res_type.contains(StringUtils.getEndString(file.name))) {
+//                    } else if (MusicPlayerActivity.res_type.contains(SUtil.getEndString(file.name))) {
 //                        MusicPlayerActivity.start(activity!!,
 //                                file.absolutePath!!
 //                        )
@@ -268,7 +268,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 
 
     internal fun showAddFilePopMenu(type: MediaUtil.MediaType, dirPath: String) {
-        if (StringUtils.isEmpty(dirPath)) {
+        if (SUtil.isEmpty(dirPath)) {
             T.show(activity!!, "当前路径不可用")
         } else {
             val builder = AlertDialog.Builder(activity)
@@ -293,7 +293,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
                                 val log = EditTextDialog(activity, "文件名", "请输入文件名")
                                 log.positive = DialogInterface.OnClickListener { dialog, which ->
                                     var name = log.editText.text.toString()
-                                    if (StringUtils.isEmpty(name)) {
+                                    if (SUtil.isEmpty(name)) {
                                         name = System.currentTimeMillis().toString() + ".jpg"
 
                                     }
@@ -327,7 +327,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
         val dir = EditTextDialog(activity, "新建文件夹", "请输入文件名")
         dir.positive = DialogInterface.OnClickListener { dialog, which ->
             val name = dir.editText.text.toString()
-            if (StringUtils.isEmpty(name)) {
+            if (SUtil.isEmpty(name)) {
                 T.show(activity, "请输入文件名")
             } else {
                 val file = File(dirPath, name)
@@ -733,7 +733,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
                     R.menu.path_option, PopupMenu.OnMenuItemClickListener { item ->
                         when (item.itemId) {
                             R.id.clip -> {
-                                if (StringUtils.isEmpty(adapter!!.getCurrentPath())) {
+                                if (SUtil.isEmpty(adapter!!.getCurrentPath())) {
                                     T.show(activity!!, "当前路径不可用")
                                 } else {
                                     val cm = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -742,7 +742,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
                                 }
                             }
                             R.id.set_carry_path -> {
-                                if (StringUtils.isEmpty(adapter!!.getCurrentPath())) {
+                                if (SUtil.isEmpty(adapter!!.getCurrentPath())) {
 //                                    T.show(activity, "当前路径不可用")
                                 } else {
                                     CarryPathDialogFragment(adapter!!.getCurrentPath(), "")
@@ -819,7 +819,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 
     private fun initRePushTaks() {
         var configs = sp?.getString(Config.SP.REPUSHTASK, "")
-        if (!StringUtils.isEmpty(configs)) {
+        if (!SUtil.isEmpty(configs)) {
             try {
                 var gson =
                     Gson().fromJson<ArrayList<TaskGroup>>(configs, object : TypeToken<ArrayList<TaskGroup>>() {}.type)

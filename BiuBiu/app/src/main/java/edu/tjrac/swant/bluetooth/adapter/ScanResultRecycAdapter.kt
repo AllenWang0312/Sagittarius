@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.LinearLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.bluetooth.BlueToothHelper
 import edu.tjrac.swant.wjzx.R
 import java.util.*
@@ -42,7 +42,7 @@ class ScanResultRecycAdapter(internal var sp: SharedPreferences, data: List<Scan
         }
         helper.addOnClickListener(R.id.iv_icon)
 
-        if (StringUtils.isEmpty(device.name)) {
+        if (SUtil.isEmpty(device.name)) {
             helper.setText(R.id.tv_name, "N/A")
         } else {
             helper.setText(R.id.tv_name, device.name)

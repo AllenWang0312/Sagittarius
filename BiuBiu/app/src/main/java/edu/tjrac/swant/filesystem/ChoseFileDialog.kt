@@ -14,7 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import edu.tjrac.swant.baselib.util.Phone
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.baselib.util.T
 import edu.tjrac.swant.filesystem.adapter.DiaplayFileListAdapter
 import edu.tjrac.swant.filesystem.bean.RePushTaskInfo
@@ -41,7 +41,7 @@ class ChoseFileDialog() : DialogFragment(), View.OnClickListener {
     var query: String? = null
         set(value) {
             field = value
-            if (!StringUtils.isEmpty(value)) {
+            if (!SUtil.isEmpty(value)) {
                 var filter = mData?.filter {
                     it.name.toString().contains(value!!)
                 }

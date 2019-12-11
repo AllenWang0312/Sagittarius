@@ -3,7 +3,7 @@ package edu.tjrac.swant.meitu.net
 import com.google.gson.Gson
 import edu.tjrac.swant.baselib.common.base.CustomizeGsonConverterFactory
 import edu.tjrac.swant.baselib.common.base.net.BaseNet
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.BuildConfig
 import edu.tjrac.swant.meitu.Config
@@ -29,7 +29,7 @@ class Net : BaseNet() {
 
             var builder = originalRequest.newBuilder()
             builder.addHeader("Content-Type", "text/pain;charset=utf-8")
-            if (!StringUtils.isEmpty(App.token)) {
+            if (!SUtil.isEmpty(App.token)) {
                 builder.addHeader("token", App.token)
             }
             request = builder.url(modifiedUrl).build()

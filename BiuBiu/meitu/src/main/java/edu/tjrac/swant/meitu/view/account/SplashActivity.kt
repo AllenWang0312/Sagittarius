@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.tbruyelle.rxpermissions2.RxPermissions
 import edu.tjrac.swant.baselib.common.base.BaseActivity
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.meitu.App
 import edu.tjrac.swant.meitu.Config
 import edu.tjrac.swant.meitu.MeituMainActivity
@@ -84,7 +84,7 @@ class SplashActivity : BaseActivity() {
                     .apply(RequestOptions().circleCrop()).into(iv_cover)
             tv_name.text = App.loged?.name
         }
-        if (!StringUtils.isEmpty(App.token)) {
+        if (!SUtil.isEmpty(App.token)) {
             Net.instance.getApiService().getSplashInfo()
                     .compose(RxUtil.applySchedulers())
                     .subscribe(object : NESubscriber<BR<ArrayList<Banner>>>(this) {
@@ -106,7 +106,7 @@ class SplashActivity : BaseActivity() {
 //                            App.loged = t?.data
 //                            next = Intent(this@SplashActivity, MeituMainActivity::class.java)
 //                            MeituLoginActivity.onLoginSuccess(this@SplashActivity, t?.data)
-                            if (!StringUtils.isEmpty(t?.data?.user?.token)) {
+                            if (!SUtil.isEmpty(t?.data?.user?.token)) {
                                 App.token = t?.data?.user?.token
                             }
                             App.loged = t?.data?.user

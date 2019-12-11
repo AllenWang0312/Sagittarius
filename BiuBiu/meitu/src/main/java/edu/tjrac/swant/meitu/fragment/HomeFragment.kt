@@ -81,6 +81,12 @@ class HomeFragment : BaseFragment(), View.OnTouchListener {
                     .subscribe(object : NESubscriber<BR<HomeBean>>(this) {
                         override fun onSuccess(t: BR<HomeBean>?) {
                             head = layoutInflater.inflate(R.layout.meitu_home_head, null)
+
+                            if(t?.data?.banner?.size!!>0){
+//                                head?.banner_home?.setLayoutParams(LinearLayout.LayoutParams(DeviceUtils.getScreenWith(activity), 320 * DeviceUtils.getScreenWith(activity) / 750))
+//                                head?.banner_home?.setOnBannerClickListener(this)
+                                
+                            }
                             if (t?.data?.apps?.size!! > 0) {
                                 head?.recycler_apps?.visibility = View.VISIBLE
                                 head?.recycler_apps?.layoutManager = GridLayoutManager(activity!!, 4)

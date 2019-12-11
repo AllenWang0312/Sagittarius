@@ -5,7 +5,7 @@ import android.text.TextWatcher
 import android.widget.EditText
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.bean.Tab
 
@@ -18,7 +18,7 @@ class TabListAdapter(layoutResId: Int, data: List<Tab>?) : BaseQuickAdapter<Tab,
         var et = helper.getView<EditText>(R.id.et_name)
 
         et.hint = item.name
-        if (!StringUtils.isEmpty(item.alias)) {
+        if (!SUtil.isEmpty(item.alias)) {
             et.setText(item.alias)
         }
 

@@ -6,7 +6,7 @@ import android.view.View
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
 import edu.tjrac.swant.baselib.common.indesOf
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.adapter.ModelLiatAdapter
+import edu.tjrac.swant.meitu.adapter.ModelLiatPortraitAdapter
 import edu.tjrac.swant.meitu.bean.Model
 import edu.tjrac.swant.meitu.net.BR
 import edu.tjrac.swant.meitu.net.NESubscriber
@@ -23,7 +23,7 @@ class FindModelActivity : BaseBarActivity() {
     var address = arrayListOf("cn", "cn_tw", "cn_hk", "cn_mo","jp","kr","tha","usa")
     var pageNo = 1
     var pageSize = 20
-    var adapter: ModelLiatAdapter? = null
+    var adapter: ModelLiatPortraitAdapter? = null
     var data: ArrayList<Model>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,9 +33,8 @@ class FindModelActivity : BaseBarActivity() {
 //        adapter = ModelLiatAdapter(R.layout.item2_meitu_model, data)
 //        recycler?.layoutManager = LinearLayoutManager(mContext)
 
-
-        adapter = ModelLiatAdapter(R.layout.item_meitu_model, data)
-        recycler?.layoutManager = GridLayoutManager(mContext, 3)
+        adapter = ModelLiatPortraitAdapter(R.layout.item3_meitu_model, data)
+        recycler?.layoutManager = GridLayoutManager(mContext, 4)
         adapter?.setOnLoadMoreListener {
             pageNo++
             initData()

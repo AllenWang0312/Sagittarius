@@ -11,7 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import com.google.gson.Gson
 import edu.tjrac.swant.baselib.common.base.BaseApplication
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.filesystem.Config.SP.CARRAY_JSON
 import edu.tjrac.swant.wjzx.R
 import kotlinx.android.synthetic.main.dialog_carry_path.*
@@ -76,7 +76,7 @@ class CarryPathDialogFragment(
         builder.setPositiveButton("确定") { dialog, which ->
             val from = et_from.getText().toString().trim()
             val to = et_to.getText().toString().trim()
-            if (StringUtils.isEmpty(from) || StringUtils.isEmpty(to)) {
+            if (SUtil.isEmpty(from) || SUtil.isEmpty(to)) {
 
             } else {
                 if (from == to) {

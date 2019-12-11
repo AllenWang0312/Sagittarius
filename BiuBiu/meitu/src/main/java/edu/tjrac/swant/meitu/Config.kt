@@ -9,7 +9,7 @@ class Config {
             val HTTP = false
             val HOST = "122.51.205.29"//release
 //            val HOST = "10.10.29.249"//work
-//            val HOST = "192.168.0.100"//home
+//            val HOST = "192.168.0.102"//home
 
             val API_SERVER = if (HTTP) {
                 "https://"

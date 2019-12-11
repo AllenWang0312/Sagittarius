@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import edu.tjrac.swant.baselib.common.base.BaseActivity
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.baselib.util.UiUtil
 import edu.tjrac.swant.meitu.R
 import edu.tjrac.swant.meitu.adapter.AlbumListAdapter
@@ -31,7 +31,7 @@ class MeituSearchActivity : BaseActivity(), View.OnClickListener {
             R.id.bt_search -> {
                 pageNo=1
                 search = et_search?.text.toString()
-                if (!StringUtils.isEmpty(search)) {
+                if (!SUtil.isEmpty(search)) {
                     tag = null
                     search()
                 }
@@ -58,7 +58,7 @@ class MeituSearchActivity : BaseActivity(), View.OnClickListener {
         bt_search?.setOnClickListener(this)
         et_search?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (StringUtils.isEmpty(s.toString())) {
+                if (SUtil.isEmpty(s.toString())) {
                     data?.clear()
                     adapter?.notifyDataSetChanged()
                     recycler?.visibility = View.INVISIBLE

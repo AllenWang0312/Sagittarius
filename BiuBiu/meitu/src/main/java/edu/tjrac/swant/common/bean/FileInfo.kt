@@ -12,7 +12,7 @@ class FileInfo : Parcelable {
     var fileName: String?=""
     var url: String ?= ""
     //        File dir;
-    //        if (StringUtils.isEmpty(savePath)) {
+    //        if (SUtil.isEmpty(savePath)) {
     //            dir = new File(savePath);
     //            if (!dir.exists()) {
     //                dir.mkdirs();

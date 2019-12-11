@@ -1,9 +1,11 @@
 package edu.tjrac.swant.meitu.bean
 
+import edu.tjrac.swant.meitu.Config
+
 /**
  * Created by wpc on 2019-09-05.
  */
-class Model : ModelInfo,Tab() {
+class Model : ModelInfo, Tab() {
     override fun get(): Boolean? {
         return get
     }
@@ -14,6 +16,12 @@ class Model : ModelInfo,Tab() {
 
     override fun getCoverImg(): String? {
         return cover
+//        return Config.URL.FILE_SERVER + "/murl/cover/" + id + ".jpg"
+    }
+
+    fun getPortraitImg(): String? {
+//        return cover
+        return Config.URL.FILE_SERVER + "/murl/portrait/" + id + ".jpg"
     }
 
     override fun getHotCot(): Int? {
@@ -44,5 +52,5 @@ class Model : ModelInfo,Tab() {
 
     var tags: String? = null
 
-    var get:Boolean?=false
+    var get: Boolean? = false
 }

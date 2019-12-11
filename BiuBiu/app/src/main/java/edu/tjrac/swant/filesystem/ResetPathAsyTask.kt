@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import edu.tjrac.swant.baselib.util.FileUtils
 import edu.tjrac.swant.baselib.util.Phone
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.wjzx.R
 import java.io.File
 
@@ -24,7 +24,7 @@ class ResetPathAsyTask : AsyncTask<String, String, Int> {
         mContext = context
         map = HashMap()
         for (i in configs) {
-            if(!StringUtils.isEmpty(i.trim())){
+            if(!SUtil.isEmpty(i.trim())){
                 var items = i.split("->")
                 map?.put(items[0].trim(), items[1].trim())
             }

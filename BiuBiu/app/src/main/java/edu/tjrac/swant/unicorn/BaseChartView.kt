@@ -8,7 +8,7 @@ import android.graphics.PointF
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.unicorn.DrawUtil.drawBaseRightBottomText
 import edu.tjrac.swant.unicorn.DrawUtil.drawBaseTopCenterText
 import edu.tjrac.swant.wjzx.R
@@ -169,7 +169,7 @@ class BaseChartView @JvmOverloads constructor(context: Context, attrs: Attribute
 
 
      fun drawTitles(canvas: Canvas) {
-        if (!StringUtils.isEmpty(y_title)) {
+        if (!SUtil.isEmpty(y_title)) {
             textPaint!!.color = y_title_color
             //            L.i("drawtitles", "y:" + y_title);
 
@@ -179,7 +179,7 @@ class BaseChartView @JvmOverloads constructor(context: Context, attrs: Attribute
             p.lineTo(titleTextSize.toFloat(), paddingTop + y_length / 2 - length / 2)
             canvas.drawTextOnPath(y_title, p, 0f, 0f, textPaint!!)
         }
-        if (!StringUtils.isEmpty(x_title)) {
+        if (!SUtil.isEmpty(x_title)) {
             textPaint!!.color = x_title_color
             //            L.i("drawtitles", "x:" + x_title);
             val length = textPaint!!.measureText(x_title)

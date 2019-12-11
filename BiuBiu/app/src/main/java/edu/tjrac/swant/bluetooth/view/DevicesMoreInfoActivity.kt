@@ -13,7 +13,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import edu.tjrac.swant.baselib.common.adapter.V4FragmentsPagerAdapter
-import edu.tjrac.swant.baselib.util.StringUtils
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.bluetooth.bean.ScanInfo
 import edu.tjrac.swant.wjzx.R
 import kotlinx.android.synthetic.main.activity_devices_more_info.*
@@ -44,7 +44,7 @@ class DevicesMoreInfoActivity : AppCompatActivity() {
 
         toolbar.setNavigationIcon(R.drawable.ic_close_grey_600_24dp)
         titleColor = resources.getColor(R.color.black)
-        if (StringUtils.isEmpty(device!!.name!!)) {
+        if (SUtil.isEmpty(device!!.name!!)) {
             title = device!!.name
         } else {
             title = "N/A"
