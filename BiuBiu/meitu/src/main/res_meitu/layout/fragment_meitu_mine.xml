@@ -96,7 +96,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0\n动态" />
+                android:text="@string/news" />
 
             <TextView
                 android:id="@+id/tv_focus"
@@ -104,7 +104,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0\n关注" />
+                android:text="@string/followed" />
 
             <TextView
                 android:id="@+id/follow"
@@ -112,7 +112,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0\n粉丝" />
+                android:text="@string/fans" />
         </LinearLayout>
 
         <LinearLayout
@@ -216,7 +216,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="@dimen/bottom_nav_height"
             android:gravity="center"
-            android:text="copyright @1007991483@qq.com"
+            android:text="@string/copyright"
             android:textColor="@color/text_color_gray" />
     </LinearLayout>
 

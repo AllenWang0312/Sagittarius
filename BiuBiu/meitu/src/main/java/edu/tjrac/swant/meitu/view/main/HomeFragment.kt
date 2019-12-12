@@ -1,4 +1,4 @@
-package edu.tjrac.swant.meitu.fragment
+package edu.tjrac.swant.meitu.view.main
 
 import android.content.Intent
 import android.os.Bundle

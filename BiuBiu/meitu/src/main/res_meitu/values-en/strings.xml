@@ -1,12 +1,46 @@
 <resources>
-    <string name="app_name">BiuBiu</string>
 
+    <string name="app_name">BiuBiu</string>
+    <string name="login_account">Account</string>
+
+    <string name="login_pass">password</string>
+    <string name="login_repass">check the pass</string>
+    <string name="login_account_hint">Account/Email/Tel</string>
+
+    <string name="login_login">Sign in</string>
+    <string name="login_register">Sign up</string>
+    <string name="login_visit">Visit>></string>
+    <string name="login_remember_pass">remember pass</string>
+
+    <string name="cycler">Friends</string>
+    <string name="scope">Scope</string>
+    <string name="phone">Phone</string>
+
+    <string name="home">Home</string>
+
+    <string name="model">Model</string>
+    <string name="album">Album</string>
+    <string name="mine">Mine</string>
+
+    <string name="my_visit">Recently Viewed</string>
+    <string name="my_likes">My Collection</string>
+    <string name="my_arts">My Artwork</string>
+
+
+    <string name="test">_aboratory</string>
+    <string name="feedback">Feedback</string>
+    <string name="fans">Fans</string>
+    <string name="followed">Followed</string>
+    <string name="news">News</string>
 
     <string name="settings">Settings</string>
     <string name="night_mode">Night Mode</string>
     <string name="follow_system">Follow System</string>
     <string name="language_setting">Language Settings</string>
+
+
     <string name="zn_rcn">Chinese(Simplified)</string>
     <string name="zn_rtw">Chinese(Traditional)</string>
     <string name="en">English(America)</string>
+
 </resources>

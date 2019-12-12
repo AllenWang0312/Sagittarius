@@ -5,7 +5,7 @@ import android.view.View
 import edu.tjrac.swant.baselib.common.adapter.V4FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
 import edu.tjrac.swant.meitu.R
-import edu.tjrac.swant.meitu.fragment.AlbumCollectionFragment
+import edu.tjrac.swant.meitu.view.account.AlbumCollectionFragment
 import edu.tjrac.swant.meitu.fragment.FollowModelsFragment
 import kotlinx.android.synthetic.main.activity_meitu_collections.*
 
@@ -27,7 +27,7 @@ class MeituCollectionsActivity : BaseBarActivity() {
         } else {
             setTitle("我的收藏")
 
-            adapter?.addFragment(AlbumCollectionFragment(), resources.getString(R.string.colum))
+            adapter?.addFragment(AlbumCollectionFragment(), resources.getString(R.string.album))
         }
 
 

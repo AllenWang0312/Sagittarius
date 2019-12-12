@@ -1,4 +1,4 @@
-package edu.tjrac.swant.meitu.fragment
+package edu.tjrac.swant.meitu.view.trend
 
 import android.annotation.SuppressLint
 import android.content.Intent

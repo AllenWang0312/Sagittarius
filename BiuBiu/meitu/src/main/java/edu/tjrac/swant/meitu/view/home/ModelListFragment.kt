@@ -1,4 +1,4 @@
-package edu.tjrac.swant.meitu.fragment
+package edu.tjrac.swant.meitu.view.home
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager

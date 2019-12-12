@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:clipChildren="false"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
     <android.support.design.widget.CoordinatorLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipChildren="false"
         android:background="@color/windowBackground"
-        android:fitsSystemWindows="true">
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_collapseMode="pin">
+            <!--            app:layout_scrollFlags="scroll|enterAlways"-->
             <!--        android:translationZ="8dp"-->
 
             <LinearLayout
@@ -28,8 +30,8 @@
                 android:layout_height="48dp"
                 android:background="@drawable/card"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_scrollFlags="scroll|enterAlways">
+                android:orientation="horizontal">
+                <!--                -->
 
                 <ImageView
                     android:layout_width="12dp"
@@ -39,15 +41,16 @@
 
                 <ImageView
                     android:id="@+id/iv_portrait"
+                    android:layout_marginLeft="6dp"
                     android:layout_width="36dp"
-
                     android:layout_height="36dp"
                     android:layout_margin="6dp"></ImageView>
 
                 <include
                     layout="@layout/search_view"
                     android:layout_width="0dp"
-                    android:layout_height="28dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_height="32dp"
                     android:layout_weight="1"></include>
 
                 <ImageView
@@ -57,7 +60,7 @@
                     android:layout_marginLeft="12dp"
                     android:layout_marginRight="6dp"
                     android:padding="6dp"
-                    android:src="@drawable/ic_scan"/>
+                    android:src="@drawable/ic_scan" />
                 <!--        <ImageView-->
                 <!--            android:layout_width="36dp"-->
                 <!--            android:layout_height="36dp"-->
@@ -78,33 +81,94 @@
             android:id="@+id/vp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            >
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         </android.support.v4.view.ViewPager>
 
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/bnv"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bottom_nav_height"
-            android:layout_gravity="bottom"
-            android:background="@drawable/meitu_bottom_bg"
-            app:itemIconTint="@drawable/selector_tab_color"
-            app:itemTextColor="@drawable/selector_tab_color"
-            app:menu="@menu/bottom_navigation_tab">
-        </android.support.design.widget.BottomNavigationView>
+        <!--        <android.support.design.widget.BottomNavigationView-->
+        <!--            android:id="@+id/bnv"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="@dimen/bottom_nav_height"-->
+        <!--            android:layout_gravity="bottom"-->
+        <!--            android:background="@drawable/meitu_bottom_bg"-->
+        <!--            app:itemIconTint="@drawable/selector_tab_color"-->
+        <!--            app:itemTextColor="@drawable/selector_tab_color"-->
+        <!--            app:menu="@menu/bottom_navigation_tab">-->
+        <!--        </android.support.design.widget.BottomNavigationView>-->
+        <!--        <include-->
+        <!--            layout="@layout/buttom_bar"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="bottom"></include>-->
 
+        <!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <RadioGroup
+            android:id="@+id/rg"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary"
+            android:clipChildren="false"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/rb_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/home_foot_bar_style"
+                android:drawableTop="@drawable/selecter_home"
+                android:text="主页" />
+
+            <RadioButton
+                android:id="@+id/rb_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/home_foot_bar_style"
+                android:drawableTop="@drawable/selecter_cycler"
+                android:text="动态" />
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/cycler_bg"
+                android:padding="8dp"
+                android:src="@drawable/ic_cycler" />
+
+            <RadioButton
+                android:id="@+id/rb_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/home_foot_bar_style"
+                android:drawableTop="@drawable/selecter_camera"
+                android:text="专业摄影" />
+
+            <RadioButton
+                android:id="@+id/rb_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/home_foot_bar_style"
+                android:drawableTop="@drawable/selecter_phone"
+                android:text="手机摄影" />
+        </RadioGroup>
 
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
+
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/colorPrimary"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_meitu_main"
-        />
+        android:fitsSystemWindows="true" />
+    <!--    app:headerLayout="@layout/nav_header_meitu_main"-->
 
 </android.support.v4.widget.DrawerLayout>
 

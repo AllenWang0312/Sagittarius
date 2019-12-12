@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rg"
+    android:layout_width="match_parent"
+    android:layout_height="36dp"
+    android:background="#8888"
+    android:clipChildren="false"
+    android:orientation="horizontal">
+
+
+    <RadioButton
+        android:id="@+id/rb_1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:button="@null"
+        android:drawableTop="@drawable/selecter_home" />
+
+    <RadioButton
+        android:id="@+id/rb_2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:button="@null"
+        android:drawableTop="@drawable/selecter_cycler" />
+
+    <ImageView
+        android:layout_width="56dp"
+        android:src="@drawable/ic_cycler"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom" />
+
+    <RadioButton
+        android:id="@+id/rb_3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:button="@null"
+        android:drawableTop="@drawable/selecter_camera" />
+
+    <RadioButton
+        android:id="@+id/rb_4"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:button="@null"
+        android:drawableTop="@drawable/selecter_phone" />
+</RadioGroup>
