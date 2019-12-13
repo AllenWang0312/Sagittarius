@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="edu.tjrac.swant.wjzx">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="edu.tjrac.swant.wjzx">
     <!-- 允许程序打开网络套接字 -->
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.INTERNET"/> <!-- 允许程序设置内置sd卡的写权限 -->
@@ -15,16 +13,16 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
+<!--    android:name=".App"-->
     <application
-        android:name=".App"
         android:allowBackup="true"
         android:supportsRtl="true"
-
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <activity android:name=".view.DemoEntrancesActivity">
+        android:theme="@style/AppTheme"
+        tools:replace="android:name">
+
+        <activity android:name=".DemoEntrancesActivity">
         </activity>
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -37,27 +35,32 @@
         </provider>
 
         <activity
-            android:name=".view.MainActivity"
-            android:theme="@style/AppTheme"/> <!-- filesystem -->
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity> <!-- filesystem -->
         <activity
             android:name="edu.tjrac.swant.filesystem.FileSystemMainActivity"
             android:label="@string/file_system"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="edu.tjrac.swant.filesystem.FileSystemMainActivity"/>
-
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view.SettingActivity"/>
+<!--        <activity android:name=".view.SettingActivity"/>-->
 
         <activity android:name="edu.tjrac.swant.todo.view.WebWorkSpaceActivity">
             <intent-filter>
                 <action android:name="edu.tjrac.swant.todo.view.WebWorkSpaceActivity"/>
-
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
         <activity android:name="edu.tjrac.swant.todo.view.GroupWebViewerActivity"/>
         <activity android:name="edu.tjrac.swant.todo.view.PicInPicMarkDownActivity"/>
 

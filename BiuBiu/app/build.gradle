@@ -52,23 +52,23 @@ android {
         versionName "1.0"
 //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    signingConfigs {
-        release {
-            storeFile file('../wpc.jks')
-            storePassword "qunsi003"
-            keyAlias "pazg"
-            keyPassword "qunsi003"
-            //v2SigningEnabled false
-        }
-
-        debug {
-            storeFile file('../wpc.jks')
-            storePassword "qunsi003"
-            keyAlias "pazg"
-            keyPassword "qunsi003"
-            //v2SigningEnabled false
-        }
-    }
+//    signingConfigs {
+//        release {
+//            storeFile file('../wpc.jks')
+//            storePassword "qunsi003"
+//            keyAlias "pazg"
+//            keyPassword "qunsi003"
+//            //v2SigningEnabled false
+//        }
+//
+//        debug {
+//            storeFile file('../wpc.jks')
+//            storePassword "qunsi003"
+//            keyAlias "pazg"
+//            keyPassword "qunsi003"
+//            //v2SigningEnabled false
+//        }
+//    }
     buildTypes {
         release {
             minifyEnabled false
@@ -84,7 +84,7 @@ dependencies {
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    api 'com.android.support:multidex:1.0.2'
+    api 'com.android.support:multidex:1.0.3'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
@@ -111,6 +111,6 @@ dependencies {
 
 //    api 'com.jaeger.statusbarutil:library:1.5.1'
     api project(':kbaselib')
-
+//    api project(':biubiu')
 //    api project(':simplemediaplayer')
 }

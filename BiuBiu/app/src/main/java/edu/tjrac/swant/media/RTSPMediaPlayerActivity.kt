@@ -11,8 +11,8 @@ import edu.tjrac.swant.baselib.util.FileUtils
 import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.baselib.util.T
 import edu.tjrac.swant.media.rtsp.TU
+import edu.tjrac.swant.biubiu.net.BR
 import edu.tjrac.swant.wjzx.Config
-import edu.tjrac.swant.wjzx.Net.BR
 import edu.tjrac.swant.wjzx.R
 
 class RTSPMediaPlayerActivity : AppCompatActivity() {

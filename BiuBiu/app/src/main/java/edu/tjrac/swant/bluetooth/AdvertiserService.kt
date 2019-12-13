@@ -17,7 +17,7 @@ import android.util.Log
 import android.widget.Toast
 import edu.tjrac.swant.baselib.util.L
 import edu.tjrac.swant.wjzx.R
-import edu.tjrac.swant.wjzx.view.MainActivity
+import edu.tjrac.swant.wjzx.MainActivity
 import java.util.concurrent.TimeUnit
 
 
