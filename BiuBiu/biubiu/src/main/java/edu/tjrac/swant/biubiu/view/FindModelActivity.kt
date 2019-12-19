@@ -1,7 +1,7 @@
 package edu.tjrac.swant.biubiu.view
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
 import edu.tjrac.swant.baselib.common.indesOf

@@ -17,7 +17,7 @@
 package edu.tjrac.swant.recorder
 
 import android.os.Build
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import android.util.Size
 import java.lang.Long.signum
 

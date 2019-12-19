@@ -3,10 +3,12 @@ package edu.tjrac.swant.biubiu
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.ViewPager
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
+import androidx.viewpager.widget.ViewPager
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import edu.tjrac.swant.baselib.common.adapter.V4FragmentsPagerAdapter
@@ -25,7 +27,6 @@ import edu.tjrac.swant.biubiu.view.home.ScopeFragments
 import edu.tjrac.swant.biubiu.view.main.HomeFragment
 import edu.tjrac.swant.biubiu.view.mine.MeituCollectionsActivity
 import edu.tjrac.swant.biubiu.view.mine.MeituVisitHistroyActivity
-import edu.tjrac.swant.biubiu.view.mine.SettingActivity
 import edu.tjrac.swant.biubiu.view.phone.PhoneFragments
 import edu.tjrac.swant.biubiu.view.trend.TrendFragments
 import kotlinx.android.synthetic.main.activity_meitu_main.*
@@ -44,6 +45,7 @@ import kotlinx.android.synthetic.main.search_view.*
 
 
 @SuppressLint("RestrictedApi")
+@Route(path = "/biubiu/main" )
 class MeituMainActivity : BaseFragmentActivity(),
 //        BottomNavigationView.OnNavigationItemSelectedListener,
         ViewPager.OnPageChangeListener, View.OnClickListener {
@@ -72,8 +74,17 @@ class MeituMainActivity : BaseFragmentActivity(),
             R.id.fl_feedback -> {
                 startActivity(Intent(this, FeedbackListActivity::class.java))
             }
+            R.id.fl_test->{
+//                ARouter.getInstance().build("/demo","app")
+//                        .navigation()
+                ARouter.getInstance().build("/app/main")
+                        .withString("fragment","bluetooth")
+                        .navigation()
+            }
             R.id.iv_setting -> {
-                startActivity(Intent(this, SettingActivity::class.java))
+                ARouter.getInstance().build("/biubiu/setting")
+                        .navigation()
+//                startActivity(Intent(this, SettingActivity::class.java))
             }
 //            R.id.iv_cover -> {
 //                startActivity(Intent(activity!!, UserInfoActivity::class.java))
@@ -206,6 +217,7 @@ class MeituMainActivity : BaseFragmentActivity(),
         nav_head?.iv_setting?.setOnClickListener(this)
         nav_head?.iv_cover?.setOnClickListener(this)
         nav_head?.fl_test?.setOnClickListener(this)
+
     }
 
 

@@ -32,7 +32,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import android.util.Log
 import android.util.Size
 import android.util.SparseIntArray

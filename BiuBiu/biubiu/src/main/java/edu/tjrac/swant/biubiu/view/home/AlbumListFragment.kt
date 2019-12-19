@@ -1,7 +1,7 @@
 package edu.tjrac.swant.biubiu.view.home
 
 import android.os.Bundle
-import android.support.v7.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

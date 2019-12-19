@@ -2,7 +2,7 @@ package edu.tjrac.swant.common.view
 
 import android.content.Context
 import android.graphics.Typeface
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.util.AttributeSet
 import android.util.Log
 import android.widget.RelativeLayout

@@ -6,12 +6,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import edu.tjrac.swant.fingerprint.core.FingerprintCore;
 import edu.tjrac.swant.wjzx.R;
 

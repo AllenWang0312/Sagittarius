@@ -14,8 +14,8 @@ import com.amap.api.maps.AMap
 import com.amap.api.maps.CameraUpdateFactory
 import com.amap.api.maps.UiSettings
 import com.amap.api.maps.model.*
+import edu.tjrac.swant.Config
 import edu.tjrac.swant.baselib.common.base.BaseFragment
-import edu.tjrac.swant.wjzx.Config
 import edu.tjrac.swant.wjzx.NearUser
 import edu.tjrac.swant.wjzx.R
 import edu.tjrac.swant.wjzx.Random

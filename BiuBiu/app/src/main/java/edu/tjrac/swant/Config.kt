@@ -1,8 +1,6 @@
-package edu.tjrac.swant.wjzx
+package edu.tjrac.swant
 
 open class Config {
-
-
 
     companion object {
 

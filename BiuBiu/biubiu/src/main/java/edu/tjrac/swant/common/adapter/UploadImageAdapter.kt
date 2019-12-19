@@ -1,6 +1,6 @@
 package edu.tjrac.swant.common.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView

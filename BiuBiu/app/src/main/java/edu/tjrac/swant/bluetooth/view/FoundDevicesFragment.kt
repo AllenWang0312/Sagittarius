@@ -3,7 +3,6 @@ package edu.tjrac.swant.bluetooth.view
 //import kotlinx.android.synthetic.main.found_devices_filters.*
 import android.Manifest
 import android.annotation.SuppressLint
-import android.annotation.TargetApi
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.le.*
@@ -13,31 +12,30 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.support.annotation.RequiresApi
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.PopupMenu
 import android.widget.PopupWindow
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import edu.tjrac.swant.baselib.common.base.BaseFragment
 import edu.tjrac.swant.baselib.common.recycler.BaseDecoration
 import edu.tjrac.swant.bluetooth.BlueToothHelper
 import edu.tjrac.swant.bluetooth.adapter.ScanResultRecycAdapter
 import edu.tjrac.swant.bluetooth.bean.ScanInfo
 import edu.tjrac.swant.wjzx.R
-import kotlinx.android.synthetic.main.found_swiper_recycler.*
+import kotlinx.android.synthetic.main.found_swiper_recycler.view.*
 import java.util.*
 
 /**
  * Created by wpc on 2018/1/31 0031.
  */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-@SuppressLint("ValidFragment")
 class FoundDevicesFragment(private val parent: BLEFragment,
         //    CardView found_head;
                            internal var adapter: BluetoothAdapter, title: String) : BaseFragment() {
@@ -54,8 +52,9 @@ class FoundDevicesFragment(private val parent: BLEFragment,
 
     internal var handler = Handler()
 
-    private val callback = object : ScanCallback() {
-        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    private val callback = @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    object : ScanCallback() {
+
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             val address = result.device.address
             //            String name = result.getDevice().getName();
@@ -96,10 +95,10 @@ class FoundDevicesFragment(private val parent: BLEFragment,
             val action = intent.action
             val device = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
             if (BluetoothAdapter.ACTION_DISCOVERY_STARTED === action) {
-                swiper.setRefreshing(true)
-                parent.scan!!.setTitle("stop scanning")
+                v?.swiper?.setRefreshing(true)
+                parent.scan?.setTitle("stop scanning")
             } else if (BluetoothDevice.ACTION_BOND_STATE_CHANGED === action) {
-                found_adapter!!.notifyItemChanged(found_flags.indexOf(device.address))
+                found_adapter?.notifyItemChanged(found_flags.indexOf(device.address))
             } else if (BluetoothDevice.ACTION_FOUND === action) {
 
                 //                if (!found_devices.contains(device)) {
@@ -107,8 +106,8 @@ class FoundDevicesFragment(private val parent: BLEFragment,
                 //                    found_adapter.notifyItemInserted(found_devices.size() - 1);
                 //                }
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED === action) {
-                parent.scan!!.setTitle("ic_scan")
-                swiper.setRefreshing(false)
+                parent.scan?.setTitle("ic_scan")
+                v?.swiper?.setRefreshing(false)
             }//            else if (BluetoothDevice.ACTION_ACL_CONNECTED == action) {
             //                //从Intent得到blueDevice对象
             //                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
@@ -126,12 +125,12 @@ class FoundDevicesFragment(private val parent: BLEFragment,
             //            }
         }
     }
-    internal var filterView: PopupWindow?=null
+    var filterView: PopupWindow?=null
+var v:View?=null
 
-    @TargetApi(Build.VERSION_CODES.M)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.found_swiper_recycler, container, false)
-        sp = activity!!.getSharedPreferences("bluetooth", MODE_PRIVATE)
+        v = inflater.inflate(R.layout.found_swiper_recycler, container, false)
+        sp = activity?.getSharedPreferences("bluetooth", MODE_PRIVATE)
         scanner = adapter.bluetoothLeScanner
 //        this.title = title
         initRecycView()
@@ -144,30 +143,30 @@ class FoundDevicesFragment(private val parent: BLEFragment,
         filter.addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED)
         filter.addAction(BluetoothDevice.ACTION_FOUND)
         filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)
-        activity!!.registerReceiver(BLEReceiver, filter)
+        activity?.registerReceiver(BLEReceiver, filter)
 
-        return view
+        return v
     }
 
     private fun initRecycView() {
-        recycler.setLayoutManager(LinearLayoutManager(activity))
+        v?.recycler?.setLayoutManager(LinearLayoutManager(activity))
         found_adapter = ScanResultRecycAdapter(sp!!, found_devices)
-        recycler.addItemDecoration(BaseDecoration(activity!!, LinearLayoutManager.VERTICAL))
+        v?.recycler?.addItemDecoration(BaseDecoration(activity!!, LinearLayoutManager.VERTICAL))
 
-        found_adapter!!.setOnItemClickListener { adapter, view, position ->
-            if (found_adapter!!.expendIndex == position) {
-                found_adapter!!.setExpendItem(-1)
+        found_adapter?.setOnItemClickListener { adapter, view, position ->
+            if (found_adapter?.expendIndex == position) {
+                found_adapter?.setExpendItem(-1)
             } else {
-                found_adapter!!.setExpendItem(position)
+                found_adapter?.setExpendItem(position)
             }
         }
-        found_adapter!!.setOnItemChildClickListener { ad, view, position ->
+        found_adapter?.setOnItemChildClickListener { ad, view, position ->
             val device = found_devices[position].device
             val address = device.address
             if (view.id == R.id.iv_options) {
                 val popupMenu = PopupMenu(activity, view)
                 //将指定的菜单布局进行加载
-                activity!!.menuInflater.inflate(R.menu.connect, popupMenu.menu)
+                activity?.menuInflater?.inflate(R.menu.connect, popupMenu.menu)
                 popupMenu.setOnMenuItemClickListener { item ->
                     if (item.itemId == R.id.connect_phy) {
 
@@ -185,14 +184,14 @@ class FoundDevicesFragment(private val parent: BLEFragment,
                 //                    Map<String, ?> configs = sp.getAll();
                 //                    L.i("keysets",configs.keySet().toString());
 
-                if (sp!!.getBoolean(address, false) == true) {
-                    sp!!.edit().putBoolean(address, false).commit()
+                if (sp?.getBoolean(address, false) == true) {
+                    sp?.edit()?.putBoolean(address, false)?.commit()
                 } else {
-                    sp!!.edit().putBoolean(address, true).commit()
+                    sp?.edit()?.putBoolean(address, true)?.commit()
                 }
 
-                found_adapter!!.notifyItemChanged(position)
-//                L.i("favourite", sp!!.getBoolean(address, false).toString())
+                found_adapter?.notifyItemChanged(position)
+//                L.i("favourite", sp?.getBoolean(address, false).toString())
             } else if (view.id == R.id.bt_more) {
                 stopScanning()
                 DevicesMoreInfoActivity.start(activity!!, found_devices[position], scaninfo!![address]!!)
@@ -200,31 +199,31 @@ class FoundDevicesFragment(private val parent: BLEFragment,
                 parent.connect(device)
             }
         }
-        swiper.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener { scanDevices() })
-        found_adapter!!.bindToRecyclerView(recycler)
-        recycler.setAdapter(found_adapter)
+        v?.swiper?.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener { scanDevices() })
+        found_adapter?.bindToRecyclerView(v?.recycler)
+        v?.recycler?.setAdapter(found_adapter)
     }
 
     private fun initFilterView() {
         val filter_view = LayoutInflater.from(activity).inflate(R.layout.found_filter_view, null)
         filter_view.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         filterView = PopupWindow(activity)
-        filterView!!.isFocusable = true
-        filterView!!.width = ViewGroup.LayoutParams.MATCH_PARENT
+        filterView?.isFocusable = true
+        filterView?.width = ViewGroup.LayoutParams.MATCH_PARENT
         //        filterView.setWindowLayoutType(ViewGroup.LayoutParams.MATCH_PARENT);
-        filterView!!.isOutsideTouchable = true
-        filterView!!.setBackgroundDrawable(activity!!.resources.getDrawable(R.drawable.card))
+        filterView?.isOutsideTouchable = true
+        filterView?.setBackgroundDrawable(activity?.resources?.getDrawable(R.drawable.card))
 
-        filterView!!.elevation = 4f
-        filterView!!.contentView = filter_view
-        filterView!!.setOnDismissListener { cb_filter.setChecked(false) }
-        cb_filter?.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+        filterView?.elevation = 4f
+        filterView?.contentView = filter_view
+        filterView?.setOnDismissListener { v?.cb_filter?.setChecked(false) }
+        v?.cb_filter?.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                filterView!!.showAsDropDown(cb_filter)
+                filterView?.showAsDropDown(v?.cb_filter)
                 changeWindowAlfa(0.8f)
 
             } else {
-                filterView!!.dismiss()
+                filterView?.dismiss()
                 changeWindowAlfa(1f)
             }
         })
@@ -239,8 +238,8 @@ class FoundDevicesFragment(private val parent: BLEFragment,
                 更改屏幕窗口透明度
              */
     internal fun changeWindowAlfa(alfa: Float) {
-        val params = activity!!.window.attributes
-        params.alpha = alfa
+        val params = activity?.window?.attributes
+        params?.alpha = alfa
         activity!!.window.attributes = params
     }
 
@@ -252,8 +251,8 @@ class FoundDevicesFragment(private val parent: BLEFragment,
     @SuppressLint("MissingPermission")
     fun scanDevices() {
         if (adapter.isEnabled) {
-            if (!swiper.isRefreshing) {
-                swiper.isRefreshing = true
+            if (! v?.swiper?.isRefreshing!!) {
+                v?.swiper?.isRefreshing = true
             }
 //            L.i("start Scan")
             if (ContextCompat.checkSelfPermission(activity!!, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -265,11 +264,11 @@ class FoundDevicesFragment(private val parent: BLEFragment,
                 //                adapter.startDiscovery();
                 //方法二
                 scanner = adapter.bluetoothLeScanner
-                parent.scan!!.setTitle("stop scanning")
+                parent.scan?.setTitle("stop scanning")
                 if (filter == null) {
-                    scanner!!.startScan(callback)
+                    scanner?.startScan(callback)
                 } else {
-                    scanner!!.startScan(filter!!, setting!!, callback!!)
+                    scanner?.startScan(filter!!, setting!!, callback!!)
                 }
                 //                handler.postDelayed(new Runnable() {
                 //                    @Override
@@ -291,7 +290,7 @@ class FoundDevicesFragment(private val parent: BLEFragment,
     }
 
     fun stopScanning() {
-        swiper.setRefreshing(false)
+        v?.swiper?.setRefreshing(false)
         scanner!!.stopScan(callback)
         parent.scan!!.setTitle("ic_scan")
     }

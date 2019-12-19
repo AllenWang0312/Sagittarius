@@ -2,10 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.alibaba.arouter'
+
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '29.0.2'
+    compileSdkVersion compile_version
+    buildToolsVersion build_version
 
     lintOptions {
         abortOnError false
@@ -43,14 +45,25 @@ android {
 
     defaultConfig {
         applicationId "edu.tjrac.swant.wjzx"
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion min_version
+        targetSdkVersion target_version
 
         multiDexEnabled true
 
         versionCode 1
         versionName "1.0"
 //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //arouter
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+//            }
+//        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        //arouter end
     }
 //    signingConfigs {
 //        release {
@@ -77,21 +90,29 @@ android {
     }
 }
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
 dependencies {
     testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
 
-    api 'com.android.support:multidex:1.0.3'
+
+    api 'androidx.multidex:multidex:2.0.1'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation "com.android.support:cardview-v7:$androidSupportVersion"
-    implementation "com.android.support:support-annotations:$androidSupportVersion"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 
     implementation "com.github.bumptech.glide:glide:$glide"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide"
@@ -106,11 +127,16 @@ dependencies {
     implementation 'com.wonderkiln:camerakit:0.13.1'
 
 
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
     implementation 'com.airbnb.android:lottie:2.5.4'
 
 //    api 'com.jaeger.statusbarutil:library:1.5.1'
+    implementation project(':libs')
     api project(':kbaselib')
-//    api project(':biubiu')
+
+    api project(':amap')
+    if(isUserModule.toBoolean()) {
+        implementation project(':biubiu')
+    }
 //    api project(':simplemediaplayer')
 }

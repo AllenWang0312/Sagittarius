@@ -2,7 +2,7 @@ package edu.tjrac.swant.biubiu.view.account
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher

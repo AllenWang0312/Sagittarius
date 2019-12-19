@@ -1,7 +1,7 @@
 package edu.tjrac.swant.biubiu.view.mine
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
 import edu.tjrac.swant.biubiu.R

@@ -3,9 +3,10 @@ package edu.tjrac.swant.biubiu.view.mine
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.support.v7.app.AppCompatDelegate
 import android.view.View
 import android.widget.RadioButton
+import androidx.appcompat.app.AppCompatDelegate
+import com.alibaba.android.arouter.facade.annotation.Route
 import edu.tjrac.swant.baselib.common.base.BaseApplication
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
 import edu.tjrac.swant.biubiu.BiuBiuApp
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
 import java.util.*
 
 
+@Route(path = "/biubiu/setting")
 class SettingActivity : BaseBarActivity() {
 
     //    var sp: SharedPreferences? = null

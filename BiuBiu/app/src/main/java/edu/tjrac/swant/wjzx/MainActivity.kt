@@ -2,14 +2,16 @@ package edu.tjrac.swant.wjzx
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.alibaba.android.arouter.facade.annotation.Route
 import edu.tjrac.swant.assistant.AssistantFragment
 import edu.tjrac.swant.baselib.common.base.BaseActivity
+import edu.tjrac.swant.bluetooth.view.BLEFragment
 import edu.tjrac.swant.map.MapFragment
 import edu.tjrac.swant.todo.view.WebWorkSpaceActivity
 import edu.tjrac.swant.wjzx.adapter.MainManuAdapter
@@ -18,19 +20,17 @@ import edu.tjrac.swant.wjzx.view.fragment.NoteFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_nav_head.view.*
 
+@Route(path = "/app/main")
 class MainActivity : BaseActivity() {
 
     var nav_recycler: RecyclerView? = null
     var nav_data: ArrayList<M>? = ArrayList()
     var nav_adapter: MainManuAdapter? = null
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         nav_recycler = nav_view.getHeaderView(0) as RecyclerView
         nav_recycler?.layoutManager = LinearLayoutManager(this)
         nav_adapter = MainManuAdapter(nav_data!!)
@@ -49,46 +49,7 @@ class MainActivity : BaseActivity() {
         nav_adapter?.setOnItemClickListener { adapter, view, position ->
             var item = nav_adapter?.getItem(position)
 
-            when (item?.title_res_id) {
-                R.string.assistant->{
-                    if(assistantFragment==null){
-                        assistantFragment= AssistantFragment()
-                    }
-                    changeFragment(nowFragment, assistantFragment!!)
-                }
-                R.string.map -> {
-                    if (mapFragment == null) {
-                        mapFragment = MapFragment()
-                    }
-                    changeFragment(nowFragment, mapFragment!!)
-                }
-                R.string.note -> {
-                    if (noteFragment == null) {
-                        noteFragment = NoteFragment()
-                    }
-                    changeFragment(nowFragment, noteFragment!!)
-                }
-
-                R.string.notice -> {
-
-                }
-                R.string.file_system -> {
-                    startActivity(Intent("edu.tjrac.swant.filesystem.FileSystemMainActivity"))
-                }
-                R.string.todo -> {
-//                    startActivity(Intent("edu.tjrac.swant.todo.view.WebWorkSpaceActivity"))
-                    WebWorkSpaceActivity.debugStart(this)
-                }
-//                R.string.sort_files -> {
-//
-//                }
-                R.string.settings -> {
-//                    startActivity(Intent(this, SettingActivity::class.java))
-                }
-//                R.string.meitu -> {
-//                    startActivity(Intent(this, MeituMainActivity::class.java))
-//                }
-            }
+            selectFragment(item?.title_res_id!!)
 //            nav_recycler?.post {
 //                nav_adapter?.selectPosition = position
 //            }
@@ -113,17 +74,70 @@ class MainActivity : BaseActivity() {
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        if (noteFragment == null) {
-            noteFragment = NoteFragment()
-        }
-        changeFragment(nowFragment, noteFragment!!)
+//        if (noteFragment == null) {
+//            noteFragment = NoteFragment()
+//        }
+//        changeFragment(nowFragment, noteFragment!!)
+        selectFragment(R.string.bluetooth)
     }
 
-    var assistantFragment: Fragment? = null
+    private fun selectFragment(title: Int) {
+        when(title){
+            R.string.bluetooth->{
+                if(bleFragment==null){
+                    bleFragment= BLEFragment()
+                }
+                changeFragment(nowFragment, bleFragment!!)
+            }
+            R.string.assistant->{
+                if(assistantFragment==null){
+                    assistantFragment= AssistantFragment()
+                }
+                changeFragment(nowFragment, assistantFragment!!)
+            }
+            R.string.map -> {
+                if (mapFragment == null) {
+                    mapFragment = MapFragment()
+                }
+                changeFragment(nowFragment, mapFragment!!)
+            }
+            R.string.note -> {
+                if (noteFragment == null) {
+                    noteFragment = NoteFragment()
+                }
+                changeFragment(nowFragment, noteFragment!!)
+            }
+
+            R.string.notice -> {
+
+            }
+            R.string.file_system -> {
+                startActivity(Intent("edu.tjrac.swant.filesystem.FileSystemMainActivity"))
+            }
+            R.string.todo -> {
+                //                    startActivity(Intent("edu.tjrac.swant.todo.view.WebWorkSpaceActivity"))
+                WebWorkSpaceActivity.debugStart(this)
+            }
+//                R.string.sort_files -> {
+//
+//                }
+            R.string.settings -> {
+                //                    startActivity(Intent(this, SettingActivity::class.java))
+            }
+//                R.string.meitu -> {
+//                    startActivity(Intent(this, MeituMainActivity::class.java))
+//                }
+        }
+
+    }
+
     var nowFragment: Fragment? = null
+
+    var assistantFragment: Fragment? = null
     var mapFragment: Fragment? = null
     var noteFragment: Fragment? = null
 //    var galleryFragment: Fragment? = null
+    var bleFragment:Fragment?=null
 
 
     private fun changeFragment(fromFragment: Fragment?, toFragment: Fragment) {
@@ -193,6 +207,7 @@ class MainActivity : BaseActivity() {
                         R.drawable.ic_lightbulb_outline_white_24dp
                 )
         )
+        nav_data?.add(M(1,R.string.bluetooth,R.drawable.ic_launch_grey_600_24dp))
         nav_data?.add(M(1,R.string.meitu,R.drawable.ic_launch_grey_600_24dp))
         nav_data?.add(M(-1))
 //        nav_data?.add(M(1, R.string.settings, R.drawable.))

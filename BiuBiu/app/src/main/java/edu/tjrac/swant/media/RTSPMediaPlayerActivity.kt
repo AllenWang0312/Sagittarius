@@ -4,7 +4,7 @@ package edu.tjrac.swant.media
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import edu.tjrac.swant.baselib.util.FileUtils
@@ -12,7 +12,7 @@ import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.baselib.util.T
 import edu.tjrac.swant.media.rtsp.TU
 import edu.tjrac.swant.biubiu.net.BR
-import edu.tjrac.swant.wjzx.Config
+import edu.tjrac.swant.Config
 import edu.tjrac.swant.wjzx.R
 
 class RTSPMediaPlayerActivity : AppCompatActivity() {

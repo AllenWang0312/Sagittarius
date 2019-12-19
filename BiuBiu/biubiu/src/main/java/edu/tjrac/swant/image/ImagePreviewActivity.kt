@@ -4,9 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.SharedElementCallback
-import android.support.v4.view.ViewPager
+import androidx.core.app.ActivityCompat
+import androidx.core.app.SharedElementCallback
+import androidx.viewpager.widget.ViewPager
 import android.view.View
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
 import edu.tjrac.swant.biubiu.R

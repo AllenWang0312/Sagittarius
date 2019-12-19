@@ -1,7 +1,7 @@
 package edu.tjrac.swant.biubiu.view.account
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +29,7 @@ class AlbumCollectionFragment : BaseFragment() {
         v = inflater.inflate(R.layout.fragment_follow_models, container, false)
         adapter = AlbumListAdapter(R.layout.item2_meitu_colum, data)
         adapter?.onItemClickListener = AlbumListClickListener(activity!!)
-                v . recycler . layoutManager = LinearLayoutManager (activity!!)
+                v . recycler . layoutManager = LinearLayoutManager(activity!!)
                 v . recycler . adapter = adapter
                 Net.instance.getApiService().getFavouriteColumsList()
                         .compose(edu.tjrac.swant.biubiu.net.RxUtil.applySchedulers())

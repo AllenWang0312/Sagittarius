@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '29.0.2'
+    compileSdkVersion compile_version
+    buildToolsVersion build_version
 
     defaultConfig {
-        minSdkVersion minSdkVersion
-        targetSdkVersion targetSdkVersion
+        minSdkVersion min_version
+        targetSdkVersion target_version
         versionCode 1
         versionName "1.0"
     }
@@ -23,9 +23,9 @@ dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':ucrop')
     //noinspection GradleCompatible
-    implementation "com.android.support:appcompat-v7:$androidSupportVersion"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     //noinspection GradleCompatible
-    implementation "com.android.support:recyclerview-v7:$androidSupportVersion"
 
     implementation "com.github.bumptech.glide:glide:$glide"
 

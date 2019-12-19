@@ -6,8 +6,8 @@ import android.app.Dialog
 import android.bluetooth.le.ScanResult
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import android.support.v4.app.DialogFragment
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.DialogFragment
 import android.util.SparseArray
 import android.view.LayoutInflater
 

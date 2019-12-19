@@ -1,2 +1,2 @@
-include ':app', ':biubiu', 'kbaselib', 'amap','picture_library','ucrop'
+include ':app', ':biubiu', ':libs', 'kbaselib', 'amap','picture_library','ucrop'
 //':simplemediaplayer',

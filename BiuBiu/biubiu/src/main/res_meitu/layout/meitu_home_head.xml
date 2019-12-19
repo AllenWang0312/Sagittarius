@@ -11,10 +11,10 @@
         android:layout_height="36dp"
         android:visibility="gone"></FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_apps"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
     <FrameLayout
         android:id="@+id/fl_com_head"
@@ -37,12 +37,12 @@
             android:text="更多>>" />
     </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_companys"
         android:layout_width="match_parent"
         android:layout_height="120dp">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <FrameLayout
         android:id="@+id/fl_mol_head"
@@ -65,12 +65,12 @@
             android:text="更多>" />
     </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_models"
         android:layout_width="match_parent"
         android:layout_height="180dp">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <FrameLayout
         android:layout_width="match_parent"

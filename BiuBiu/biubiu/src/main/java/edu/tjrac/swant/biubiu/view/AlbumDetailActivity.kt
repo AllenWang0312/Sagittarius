@@ -2,7 +2,7 @@ package edu.tjrac.swant.biubiu.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.image.ImagePreviewActivity

@@ -39,7 +39,7 @@
     </FrameLayout>
 
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:paddingTop="20dp"
         android:paddingBottom="2dp"
         android:paddingLeft="18dp"
@@ -51,7 +51,7 @@
         <!--android:paddingRight="16dp"-->
         <!--android:paddingLeft="16dp"-->
         <!--android:paddingTop="20dp"-->
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/tv_image_info"

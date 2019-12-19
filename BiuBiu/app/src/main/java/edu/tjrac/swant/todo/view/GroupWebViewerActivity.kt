@@ -3,7 +3,7 @@ package edu.tjrac.swant.todo.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import edu.tjrac.swant.baselib.common.adapter.V4FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.baselib.common.base.BaseBarFragment

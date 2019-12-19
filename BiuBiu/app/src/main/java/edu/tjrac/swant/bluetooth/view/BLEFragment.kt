@@ -11,7 +11,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.support.annotation.RequiresApi
 import android.util.Log
 import android.view.*
 import android.widget.TextView
@@ -19,26 +18,21 @@ import edu.tjrac.swant.baselib.common.base.BaseFragment
 import edu.tjrac.swant.baselib.util.T
 import edu.tjrac.swant.bluetooth.BlueToothHelper
 import edu.tjrac.swant.bluetooth.adapter.BLEFragmentsPagerAdapter
-
 import edu.tjrac.swant.wjzx.R
 import kotlinx.android.synthetic.main.fragment_ble.view.*
 import java.io.IOException
 import java.util.*
 
-/**
- * Created by wpc on 2018/1/25 0025.
- */
-
 class BLEFragment : BaseFragment() {
 
     //    @BindView(R.id.tab_layout) TabLayout mTabLayout;
     //    @BindView(R.id.vp) ViewPager mVp;
-    internal var content_adapter: BLEFragmentsPagerAdapter?=null
+    internal var content_adapter: BLEFragmentsPagerAdapter? = null
     //    @BindView(R.id.rssi) RSSIView mRSSIView;
     internal var adapter: BluetoothAdapter? = null
     //    BluetoothLeScanner scanner;
     //首先获取BluetoothManager
-    internal var bluetoothManager: BluetoothManager?=null
+    internal var bluetoothManager: BluetoothManager? = null
     private var mBluetoothGatt: BluetoothGatt? = null
 
 
@@ -57,14 +51,14 @@ class BLEFragment : BaseFragment() {
                 connectedDevices.add(device)
 
 //                L.i("RSSI:" + device.address, intent.extras.getShort(BluetoothDevice.EXTRA_RSSI).toString() + "")
-                content_adapter!!.addFragment(ConnectDeviceFragment(this@BLEFragment,
-                        found!!.found_devices[found!!.found_flags.indexOf(device.address)])
+                content_adapter?.addFragment(ConnectDeviceFragment(this@BLEFragment,
+                        found?.found_devices!![found?.found_flags?.indexOf(device.address)!!])
                 )
-                content_adapter!!.notifyDataSetChanged()
+                content_adapter?.notifyDataSetChanged()
                 refeshTitle(device)
 
             } else if (BluetoothDevice.ACTION_ACL_DISCONNECTED === action) {
-                content_adapter!!.remove(device.address)
+                content_adapter?.remove(device.address)
             }
         }
     }
@@ -122,19 +116,18 @@ class BLEFragment : BaseFragment() {
         }
     }
 
-    internal var found: FoundDevicesFragment?=null
-    internal var bond: BondDevicesFragment?=null
-    internal var advertiser: AdvertiserFragment?=null
+    var found: FoundDevicesFragment? = null
+    var bond: BondDevicesFragment? = null
+    var advertiser: AdvertiserFragment? = null
 
-    lateinit var v:View
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    var v: View?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
         BlueToothHelper.initRes(activity!!)
-        bluetoothManager = activity!!.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-      v = inflater.inflate(R.layout.fragment_ble, container, false)
+        bluetoothManager = activity?.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        v = inflater.inflate(R.layout.fragment_ble, container, false)
 
-        adapter = bluetoothManager!!.adapter
+        adapter = bluetoothManager?.adapter
 
         //        adapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -146,7 +139,7 @@ class BLEFragment : BaseFragment() {
         val filter = IntentFilter()
         filter.addAction(BluetoothDevice.ACTION_ACL_CONNECTED)
         filter.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED)
-        activity!!.registerReceiver(connectReceiver, filter)
+        activity?.registerReceiver(connectReceiver, filter)
 
         //        found_head= (CardView) LayoutInflater.from(getActivity()).inflate(R.layout.found_devices_filters, null);
         //        cb_found_head = (CheckBox) found_head.findViewById(R.id.cb_filter);
@@ -161,17 +154,17 @@ class BLEFragment : BaseFragment() {
 
         //        View connectDeviceView = LayoutInflater.from(getActivity()).inflate(R.layout.connected_device_view, null);
 
-        content_adapter = BLEFragmentsPagerAdapter(activity, this, childFragmentManager, v.tab_layout)
+        content_adapter = BLEFragmentsPagerAdapter(activity, this, childFragmentManager, v?.tab_layout)
         found = FoundDevicesFragment(this, adapter!!, "found")
-        content_adapter!!.addFragment(found)
+        content_adapter?.addFragment(found)
         bond = BondDevicesFragment(this, adapter!!, "bond")
-        content_adapter!!.addFragment(bond)
+        content_adapter?.addFragment(bond)
         advertiser = AdvertiserFragment("advertiser")
-        content_adapter!!.addFragment(advertiser)
+        content_adapter?.addFragment(advertiser)
         //        content_adapter.addView(found, "Found");
 
         if (adapter == null) {
-            T.show( "BlueTooth is unable")
+            T.show("BlueTooth is unable")
         } else {
             //            View advertiser = LayoutInflater.from(getActivity()).inflate(R.layout.ble_advertiser, null);
             //            content_adapter.addView(advertiser, "advertiser");
@@ -179,10 +172,10 @@ class BLEFragment : BaseFragment() {
         //        ImageView imageView = new ImageView(getActivity());
         //        imageView.setImageResource(R.drawable.__leak_canary_icon);
         //        content_adapter.addView(imageView, "Image");
-       v. vp.setAdapter(content_adapter)
-       v. vp.setOffscreenPageLimit(4)
-      v.  tab_layout.setupWithViewPager(v.vp)
-        return view
+        v?.vp?.adapter = content_adapter
+        v?.vp?.offscreenPageLimit = 4
+        v?.tab_layout?.setupWithViewPager(v?.vp)
+        return v
     }
 
     private var mBluetoothSocket: BluetoothSocket? = null
@@ -197,14 +190,14 @@ class BLEFragment : BaseFragment() {
             //通过反射得到bltSocket对象，与uuid进行连接得到的结果一样，但这里不提倡用反射的方法
             //mBluetoothSocket = (BluetoothSocket) btDev.getClass().getMethod("createRfcommSocket", new Class[]{int.class}).invoke(btDev, 1);
             //在建立之前调用
-                if (adapter!!.isDiscovering)
+                if (adapter?.isDiscovering!!)
                 //停止搜索
-                    adapter!!.cancelDiscovery()
+                    adapter?.cancelDiscovery()
             //如果当前socket处于非连接状态则调用连接
-            if (!mBluetoothSocket!!.isConnected) {
+            if (!mBluetoothSocket?.isConnected!!) {
                 //你应当确保在调用connect()时设备没有执行搜索设备的操作。
                 // 如果搜索设备也在同时进行，那么将会显著地降低连接速率，并很大程度上会连接失败。
-                mBluetoothSocket!!.connect()
+                mBluetoothSocket?.connect()
             }
             Log.d("blueTooth", "已经链接")
             if (handler == null) return
@@ -216,11 +209,10 @@ class BLEFragment : BaseFragment() {
         } catch (e: Exception) {
             Log.e("blueTooth", "...链接失败")
             try {
-                mBluetoothSocket!!.close()
+                mBluetoothSocket?.close()
             } catch (e1: IOException) {
                 e1.printStackTrace()
             }
-
             e.printStackTrace()
         }
 
@@ -228,9 +220,9 @@ class BLEFragment : BaseFragment() {
 
     //4.x
     fun connect(address: String): Boolean {
-        val device = adapter!!.getRemoteDevice(address)
+        val device = adapter?.getRemoteDevice(address)
         if (device == null) {
-            connect(device)
+            connect(device!!)
         }
         return false
     }
@@ -314,42 +306,43 @@ class BLEFragment : BaseFragment() {
 
     fun refeshTitle(device: BluetoothDevice) {
         val position = connectedDevices.indexOf(device)
-        val tab =v. tab_layout.getTabAt(position + 3)
+        val tab = v?.tab_layout?.getTabAt(position + 3)
         val tab_view = LayoutInflater.from(activity).inflate(R.layout.title_connected_device, null)
         (tab_view.findViewById<View>(R.id.name) as TextView).text = device.name
         (tab_view.findViewById<View>(R.id.address) as TextView).text = device.address
         tab_view.findViewById<View>(R.id.iv_close).setOnClickListener { disconnect(device) }
-        tab!!.setCustomView(tab_view)
+        tab?.setCustomView(tab_view)
     }
 
     override fun onResume() {
-        if (adapter!!.isEnabled) {
+        if (adapter?.isEnabled!!) {
 
         } else {
             val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             enableBtIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            activity!!.startActivity(enableBtIntent)
+            activity?.startActivity(enableBtIntent)
             //            T.show(getActivity(), "请打开蓝牙");
             //            adapter.enable();
         }
         super.onResume()
     }
 
-    internal var scan: MenuItem?=null
+    internal var scan: MenuItem? = null
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater!!.inflate(R.menu.bluetooth, menu)
-        scan = menu!!.findItem(R.id.ble_scan)
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater?.inflate(R.menu.bluetooth, menu)
+        scan = menu?.findItem(R.id.ble_scan)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item!!.itemId) {
-            R.id.ble_scan -> when (scan!!.title.toString()) {
-                "ic_scan" -> found!!.scanDevices()
-                "stop scanning" -> found!!.stopScanning()
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            R.id.ble_scan -> when (scan?.title.toString()) {
+                "ic_scan" -> found?.scanDevices()
+                "stop scanning" -> found?.stopScanning()
                 "disconnect" -> {
                 }
             }//                        adapter.cancelDiscovery();
@@ -362,7 +355,7 @@ class BLEFragment : BaseFragment() {
     }
 
     override fun onBack() {
-        activity!!.onBackPressed()
+        activity?.onBackPressed()
     }
 
 //    override fun backable(): Boolean {
@@ -383,7 +376,7 @@ class BLEFragment : BaseFragment() {
     }
 
     override fun onDestroy() {
-        activity!!.unregisterReceiver(connectReceiver)
+        activity?.unregisterReceiver(connectReceiver)
         super.onDestroy()
     }
 }

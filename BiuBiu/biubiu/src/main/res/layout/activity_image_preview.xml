@@ -7,13 +7,13 @@
     android:layout_height="match_parent"
     android:background="@color/card_back"
     tools:context="edu.tjrac.swant.image.ImagePreviewActivity">
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
-    </android.support.v4.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
     <LinearLayout
         android:id="@+id/ll_toolbar"
         android:layout_width="match_parent"

@@ -10,13 +10,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             >
-        </android.support.design.widget.TabLayout>
+        </com.google.android.material.tabs.TabLayout>
 <!--        <edu.tjrac.swant.common.view.ColorfulTabRelativeLayoutveLayout-->
 <!--            android:id="@+id/tab"-->
 <!--            android:layout_width="wrap_content"-->
@@ -30,7 +30,7 @@
             android:layout_height="36dp"/>
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,5 +38,5 @@
         >
 
 
-    </android.support.v4.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
 </LinearLayout>

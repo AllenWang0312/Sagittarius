@@ -4,7 +4,7 @@ import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * Created by wpc on 2018/1/31 0031.

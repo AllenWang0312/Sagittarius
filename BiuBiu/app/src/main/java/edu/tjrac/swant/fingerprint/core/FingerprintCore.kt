@@ -17,8 +17,6 @@ import java.lang.ref.WeakReference
  * Created by popfisher on 2016/11/7.
  */
 @TargetApi(Build.VERSION_CODES.M)
-@SuppressLint("MissingPermission")
-
 class FingerprintCore(context: Context) {
     private var mState = NONE
 
@@ -35,7 +33,7 @@ class FingerprintCore(context: Context) {
     val isAuthenticating: Boolean
         get() = mState == AUTHENTICATING
 
-    private val mFailedRetryRunnable = Runnable { startAuthenticate(mCryptoObjectCreator!!.cryptoObject) }
+    private val mFailedRetryRunnable = Runnable { startAuthenticate(mCryptoObjectCreator?.cryptoObject!!) }
 
     /**
      * 时候有指纹识别硬件支持
@@ -44,7 +42,7 @@ class FingerprintCore(context: Context) {
     val isHardwareDetected: Boolean
         get() {
             try {
-                return mFingerprintManager!!.isHardwareDetected
+                return mFingerprintManager?.isHardwareDetected!!
             } catch (e: SecurityException) {
             } catch (e: Throwable) {
             }
@@ -60,7 +58,7 @@ class FingerprintCore(context: Context) {
     val isHasEnrolledFingerprints: Boolean
         get() {
             try {
-                return mFingerprintManager!!.hasEnrolledFingerprints()
+                return mFingerprintManager?.hasEnrolledFingerprints()!!
             } catch (e: SecurityException) {
             } catch (e: Throwable) {
             }
@@ -109,7 +107,7 @@ class FingerprintCore(context: Context) {
     }
 
     fun startAuthenticate() {
-        startAuthenticate(mCryptoObjectCreator!!.cryptoObject)
+        startAuthenticate(mCryptoObjectCreator?.cryptoObject!!)
     }
 
     @SuppressLint("MissingPermission")
@@ -117,11 +115,11 @@ class FingerprintCore(context: Context) {
         prepareData()
         mState = AUTHENTICATING
         try {
-            mFingerprintManager!!.authenticate(cryptoObject, mCancellationSignal, 0, mAuthCallback!!, null)
+            mFingerprintManager?.authenticate(cryptoObject, mCancellationSignal, 0, mAuthCallback!!, null)
             notifyStartAuthenticateResult(true, "")
         } catch (e: SecurityException) {
             try {
-                mFingerprintManager!!.authenticate(null, mCancellationSignal, 0, mAuthCallback!!, null)
+                mFingerprintManager?.authenticate(null, mCancellationSignal, 0, mAuthCallback!!, null)
                 notifyStartAuthenticateResult(true, "")
             } catch (e2: SecurityException) {
                 notifyStartAuthenticateResult(false, Log.getStackTraceString(e2))
@@ -138,13 +136,13 @@ class FingerprintCore(context: Context) {
     private fun notifyStartAuthenticateResult(isSuccess: Boolean, exceptionMsg: String) {
         if (isSuccess) {
 //            FPLog.log("start authenticate...")
-            if (mFpResultListener!!.get() != null) {
-                mFpResultListener!!.get()?.onStartAuthenticateResult(true)
+            if (mFpResultListener?.get() != null) {
+                mFpResultListener?.get()?.onStartAuthenticateResult(true)
             }
         } else {
 //            FPLog.log("startListening, Exception$exceptionMsg")
-            if (mFpResultListener!!.get() != null) {
-                mFpResultListener!!.get()?.onStartAuthenticateResult(false)
+            if (mFpResultListener?.get() != null) {
+                mFpResultListener?.get()?.onStartAuthenticateResult(false)
             }
         }
     }
@@ -152,22 +150,22 @@ class FingerprintCore(context: Context) {
     private fun notifyAuthenticationSucceeded() {
 //        FPLog.log("onAuthenticationSucceeded")
         mFailedTimes = 0
-        if (null != mFpResultListener && null != mFpResultListener!!.get()) {
-            mFpResultListener!!.get()?.onAuthenticateSuccess()
+        if (null != mFpResultListener && null != mFpResultListener?.get()) {
+            mFpResultListener?.get()?.onAuthenticateSuccess()
         }
     }
 
     private fun notifyAuthenticationError(errMsgId: Int, errString: CharSequence) {
 //        FPLog.log("onAuthenticationError, errId:$errMsgId, err:$errString, retry after 30 seconds")
-        if (null != mFpResultListener && null != mFpResultListener!!.get()) {
-            mFpResultListener!!.get()?.onAuthenticateError(errMsgId)
+        if (null != mFpResultListener && null != mFpResultListener?.get()) {
+            mFpResultListener?.get()?.onAuthenticateError(errMsgId)
         }
     }
 
     private fun notifyAuthenticationFailed(msgId: Int, errString: String) {
 //        FPLog.log("onAuthenticationFailed, msdId: $msgId errString: $errString")
-        if (null != mFpResultListener && null != mFpResultListener!!.get()) {
-            mFpResultListener!!.get()?.onAuthenticateFailed(msgId)
+        if (null != mFpResultListener && null != mFpResultListener?.get()) {
+            mFpResultListener?.get()?.onAuthenticateFailed(msgId)
         }
     }
 
@@ -209,7 +207,7 @@ class FingerprintCore(context: Context) {
         if (mCancellationSignal != null && mState != CANCEL) {
 //            FPLog.log("cancelAuthenticate...")
             mState = CANCEL
-            mCancellationSignal!!.cancel()
+            mCancellationSignal?.cancel()
             mCancellationSignal = null
         }
     }
@@ -223,8 +221,8 @@ class FingerprintCore(context: Context) {
         }
 //        FPLog.log("onFailedRetry: msgId $msgId helpString: $helpString")
         cancelAuthenticate()
-        mHandler!!.removeCallbacks(mFailedRetryRunnable)
-        mHandler!!.postDelayed(mFailedRetryRunnable, 300) // 每次重试间隔一会儿再启动
+        mHandler?.removeCallbacks(mFailedRetryRunnable)
+        mHandler?.postDelayed(mFailedRetryRunnable, 300) // 每次重试间隔一会儿再启动
     }
 
     fun onDestroy() {
@@ -235,7 +233,7 @@ class FingerprintCore(context: Context) {
         mCancellationSignal = null
         mFingerprintManager = null
         if (mCryptoObjectCreator != null) {
-            mCryptoObjectCreator!!.onDestroy()
+            mCryptoObjectCreator?.onDestroy()
             mCryptoObjectCreator = null
         }
     }

@@ -2,8 +2,8 @@ package edu.tjrac.swant.biubiu
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.view.ViewPager
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.viewpager.widget.ViewPager
 import android.view.MenuItem
 import edu.tjrac.swant.baselib.common.adapter.V4FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseActivity

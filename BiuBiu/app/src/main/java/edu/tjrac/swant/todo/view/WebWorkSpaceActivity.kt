@@ -3,7 +3,7 @@ package edu.tjrac.swant.todo.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.todo.adapter.WebWorkGroupAdapter
 import edu.tjrac.swant.todo.bean.WebInfo

@@ -5,7 +5,7 @@
 <!--android:layout_width="match_parent"-->
 <!--android:layout_height="match_parent"-->
 <!--&gt;-->
-<android.support.design.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -27,20 +27,20 @@
     <!--ads:adUnitId="@string/banner_ad_unit_id">-->
     <!--</com.google.android.gms.ads.AdView>-->
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swiper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_gallery_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="24dp"
                 >
-        </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
     <!--<edu.tjrac.swant.unicorn.common.views.StateImageView-->
@@ -64,7 +64,7 @@
                 <!--app:srcCompat="@drawable/ic_polymer_white_24dp"-->
                 <!--app:fabSize="mini"/>-->
         <!--@drawable/ic_shuffle_white_24dp-->
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_reset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                 android:layout_weight="1"
                 ></View>
 
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_sort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                 app:srcCompat="@drawable/ic_import_export_white_24dp"
                 app:fabSize="mini"/>
 
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
     <include layout="@layout/gallery_bottom_sheet"></include>
 
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         <!--<android.support.design.widget.NavigationView-->
         <!--android:id="@+id/nav_view"-->

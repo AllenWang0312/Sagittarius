@@ -8,10 +8,6 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.os.IBinder
 import android.provider.MediaStore
-import android.support.design.widget.BottomSheetBehavior
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.PopupMenu
 import android.util.Log
 import android.view.*
 import android.view.inputmethod.EditorInfo
@@ -19,9 +15,14 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.SearchView
+import androidx.appcompat.widget.PopupMenu
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import edu.tjrac.swant.Config
 import edu.tjrac.swant.baselib.common.base.BaseFragment
 import edu.tjrac.swant.baselib.uncom.CameraUtil
 import edu.tjrac.swant.baselib.util.*
@@ -30,7 +31,6 @@ import edu.tjrac.swant.filesystem.adapter.ClipBoardRecycAdapter
 import edu.tjrac.swant.filesystem.adapter.GalleryContentAdapter
 import edu.tjrac.swant.filesystem.bean.RePushTaskInfo
 import edu.tjrac.swant.filesystem.bean.TaskGroup
-import edu.tjrac.swant.wjzx.Config
 import edu.tjrac.swant.wjzx.R
 import kotlinx.android.synthetic.main.fragment_gallery.*
 import kotlinx.android.synthetic.main.gallery_bottom_sheet.*
@@ -91,24 +91,24 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 
     private val mItemSelectedCallback = object : GalleryContentAdapter.HasItemSelectedCallback {
         override fun onItemSelected() {
-            activity!!.runOnUiThread {
-                cut!!.isVisible = true
-                copy!!.isVisible = true
-                delete!!.isVisible = true
-                paste!!.isVisible = true
+            activity?.runOnUiThread {
+                cut?.isVisible = true
+                copy?.isVisible = true
+                delete?.isVisible = true
+                paste?.isVisible = true
                 //                    rename.setVisible(true);
-                search!!.isVisible = false
+                search?.isVisible = false
             }
         }
 
         override fun onNothingSelected() {
-            activity!!.runOnUiThread {
-                cut!!.isVisible = false
-                copy!!.isVisible = false
-                delete!!.isVisible = false
-                paste!!.isVisible = false
+            activity?.runOnUiThread {
+                cut?.isVisible = false
+                copy?.isVisible = false
+                delete?.isVisible = false
+                paste?.isVisible = false
                 //                    rename.setVisible(false);
-                search!!.isVisible = true
+                search?.isVisible = true
             }
 
         }
@@ -116,15 +116,15 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
-        sp = activity!!.getSharedPreferences(Config.SP.GallerySetting, Context.MODE_PRIVATE)
+        sp = activity?.getSharedPreferences(Config.SP.GallerySetting, Context.MODE_PRIVATE)
 
         val view = inflater.inflate(R.layout.fragment_gallery, container, false)
 
         mBottomSheetBehavior = BottomSheetBehavior.from<LinearLayout>(view.ll_bottom)
 
-        mBottomSheetBehavior!!.state = BottomSheetBehavior.STATE_COLLAPSED
+        mBottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
 
-        mBottomSheetBehavior!!.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+        mBottomSheetBehavior?.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
 
             }
@@ -152,13 +152,13 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         swiper.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener {
             if (adapter != null) {
-                adapter!!.notifyDataSetChanged()
+                adapter?.notifyDataSetChanged()
                 swiper.setRefreshing(false)
             }
         })
         adapter = GalleryContentAdapter(cut_paths!!, copy_paths!!)
 
-        filter = object : RecycItemFilter<File>(rv_gallery_content, adapter!!.data) {
+        filter = object : RecycItemFilter<File>(rv_gallery_content, adapter?.data) {
             override fun equal(data: File, filter: String): Boolean {
                 return data.name.contains(filter)
             }
@@ -171,21 +171,21 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
         rv_gallery_content.setLayoutManager(GridLayoutManager(activity, 3))
         //            Log.i("info", "portrait");
         //        }
-        adapter!!.bindToRecyclerView(rv_gallery_content)
-        adapter!!.bindToPathRecyc(rv_paths)
-        adapter!!.onItemLongClickListener = BaseQuickAdapter.OnItemLongClickListener { ad, view, position ->
-            adapter!!.switchCheckState(null)
+        adapter?.bindToRecyclerView(rv_gallery_content)
+        adapter?.bindToPathRecyc(rv_paths)
+        adapter?.onItemLongClickListener = BaseQuickAdapter.OnItemLongClickListener { ad, view, position ->
+            adapter?.switchCheckState(null)
             false
         }
-        adapter!!.setOnItemClickListener { ad, view, position ->
-            if (adapter!!.showCheckBox) {
-                adapter!!.switchItem(position)
+        adapter?.setOnItemClickListener { ad, view, position ->
+            if (adapter?.showCheckBox!!) {
+                adapter?.switchItem(position)
             } else {
-                val file = adapter!!.getItem(position)
-                if (file!!.isDirectory) {
+                val file = adapter?.getItem(position)
+                if (file?.isDirectory!!) {
                     backable = true
-                    adapter!!.path_histroy?.push(file)
-                    adapter!!.cd_dir(file)
+                    adapter?.path_histroy?.push(file)
+                    adapter?.cd_dir(file)
                 } else {
                     if (".h264".contains(SUtil.getEndString(file.name))) {
                         //                            startActivity(new Intent(getActivity(), H264Activity.class)
@@ -193,21 +193,21 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 
                     }
 //                    else if (OpenGLActivity.res_type.contains(SUtil.getEndString(file.name))) {
-//                        OpenGLActivity.start(activity!!, file.absolutePath)
+//                        OpenGLActivity.start(activity?, file.absolutePath)
 //                    } else if (GalleryAlbumActivity.res_type.contains(SUtil.getEndString(file.name))) {
-//                        GalleryAlbumActivity.start(activity!!,
-//                                adapter!!.getItem(position)!!.getParent(), position
+//                        GalleryAlbumActivity.start(activity?,
+//                                adapter?.getItem(position)?.getParent(), position
 //                        )
 //                    } else if (LottieViewerActivity.res_type.contains(SUtil.getEndString(file.name))) {
-//                        LottieViewerActivity.start(activity!!, file.absolutePath)
+//                        LottieViewerActivity.start(activity?, file.absolutePath)
 //                    } else if (MusicPlayerActivity.res_type.contains(SUtil.getEndString(file.name))) {
-//                        MusicPlayerActivity.start(activity!!,
-//                                file.absolutePath!!
+//                        MusicPlayerActivity.start(activity?,
+//                                file.absolutePath?
 //                        )
 //                    }
                     else {
-                        val file1 = adapter!!.getItem(position)
-                        Log.i("open file", file1!!.absolutePath)
+                        val file1 = adapter?.getItem(position)
+                        Log.i("open file", file1?.absolutePath)
                         FileUtils.openFile(activity, file1)
                     }//                        else if(MediaPlayerActivity.){
                     //
@@ -215,27 +215,27 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
                 }
             }
         }
-        adapter!!.setSelectedCallback(mItemSelectedCallback)
+        adapter?.setSelectedCallback(mItemSelectedCallback)
         //       rv_gallery_content.setLayoutManager(new );
         rv_gallery_content.setAdapter(adapter)
 
 
         //剪切adapter
         clipAdapter = ClipBoardRecycAdapter(clipboardData)
-        recycler!!.layoutManager = GridLayoutManager(activity, 5)
+        recycler?.layoutManager = GridLayoutManager(activity, 5)
 
-        clipAdapter!!.bindToRecyclerView(recycler)
-        clipAdapter!!.setEmptyView(R.layout.empty)
+        clipAdapter?.bindToRecyclerView(recycler)
+        clipAdapter?.setEmptyView(R.layout.empty)
         //            recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        clipAdapter!!.setOnItemClickListener { ad, view, position ->
+        clipAdapter?.setOnItemClickListener { ad, view, position ->
             //                    clipboardData.remove(position);
-            clipAdapter!!.remove(position)
-            clipAdapter!!.notifyItemRemoved(position)
-            adapter!!.notifyDataSetChanged()
+            clipAdapter?.remove(position)
+            clipAdapter?.notifyItemRemoved(position)
+            adapter?.notifyDataSetChanged()
             notifyClipBoardCountChanged()
         }
-        clipAdapter!!.bindToPathsType(cut_paths, copy_paths)
-        recycler!!.adapter = clipAdapter
+        clipAdapter?.bindToPathsType(cut_paths, copy_paths)
+        recycler?.adapter = clipAdapter
 
 //        fab_tasks.setOnClickListener(this)
         fab_reset.setOnClickListener(this)
@@ -344,7 +344,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
                         }
 
                     }
-                    adapter!!.notifyDataSetChanged()
+                    adapter?.notifyDataSetChanged()
                 }
 
             }
@@ -372,9 +372,9 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 
         } else {
             getClipboardData()
-            clipAdapter!!.notifyDataSetChanged()
+            clipAdapter?.notifyDataSetChanged()
         }
-        mBottomSheetBehavior!!.state = BottomSheetBehavior.STATE_EXPANDED
+        mBottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
         //        mPopupWindow.showAsDropDown(fab);
     }
 
@@ -402,8 +402,8 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
             //                    clipboardData.add(value);
             //                }
             //            }
-            clipboardData.addAll(cut_paths!!.keys)
-            clipboardData.addAll(copy_paths!!.keys)
+            clipboardData.addAll(cut_paths?.keys!!)
+            clipboardData.addAll(copy_paths?.keys!!)
 
         }
     }
@@ -412,7 +412,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 
     private fun initGalleryInfos(type: MediaUtil.MediaType) {
         this.type = type
-        adapter!!.setMediaType(type)
+        adapter?.setMediaType(type)
 
         //        infos.clear();
         var typeString = ""
@@ -421,10 +421,10 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
         when (type) {
             MediaUtil.MediaType.file -> {
                 val file = File(Phone.SDCardPath)
-                adapter!!.path_histroy?.clear()
-                adapter!!.path_histroy?.push(file)
-                adapter!!.setDatas("本地文件", file)
-                adapter!!.notifyDataSetChanged()
+                adapter?.path_histroy?.clear()
+                adapter?.path_histroy?.push(file)
+                adapter?.setDatas("本地文件", file)
+                adapter?.notifyDataSetChanged()
                 return
             }
             MediaUtil.MediaType.image -> {
@@ -440,8 +440,8 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
                 typeString = "音乐"
             }
         }
-        val contentResolver = activity!!.contentResolver
-        val cursor = contentResolver.query(uri!!, null, null, null, null)
+        val contentResolver = activity?.contentResolver
+        val cursor = contentResolver?.query(uri!!, null, null, null, null)
         if (cursor == null || cursor.count <= 0) {
             return  // 没有图片
         }
@@ -457,9 +457,9 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
                 } else {
                     gallerys.add(file.parentFile)
                 }
-                adapter!!.setDatas(typeString, gallerys)
-                adapter!!.path_histroy?.push(adapter!!.getPaths(gallerys))
-                adapter!!.notifyDataSetChanged()
+                adapter?.setDatas(typeString, gallerys)
+                adapter?.path_histroy?.push(adapter?.getPaths(gallerys))
+                adapter?.notifyDataSetChanged()
             }
         }
         //        getActivity().bindService(
@@ -486,42 +486,42 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 
     internal var searchview: SearchView? = null
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        activity!!.menuInflater.inflate(R.menu.gallery, menu)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        activity?.menuInflater?.inflate(R.menu.gallery, menu)
         this.menu = menu
-        copy = menu!!.findItem(R.id.copy)
-        cut = menu.findItem(R.id.cut)
-        paste = menu.findItem(R.id.paste)
-        delete = menu.findItem(R.id.delete)
+        copy = menu?.findItem(R.id.copy)
+        cut = menu?.findItem(R.id.cut)
+        paste = menu?.findItem(R.id.paste)
+        delete = menu?.findItem(R.id.delete)
         //        rename = menu.findItem(R.id.rename_files);
-        search = menu.findItem(R.id.search)
-        searchview = search!!.actionView as SearchView
-        searchview!!.imeOptions = EditorInfo.IME_ACTION_NEXT
-        searchview!!.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        search = menu?.findItem(R.id.search)
+        searchview = search?.actionView as SearchView
+        searchview?.imeOptions = EditorInfo.IME_ACTION_NEXT
+        searchview?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                adapter!!.setFailter(newText, 0)
-                filter!!.find(newText)
+                adapter?.setFailter(newText, 0)
+                filter?.find(newText)
 
                 return false
             }
         })
-        searchview!!.setOnKeyListener { v, keyCode, event ->
+        searchview?.setOnKeyListener { v, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN) {
-                filter!!.skipToNext()
+                filter?.skipToNext()
             }
             true
         }
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        val paths = adapter!!.selectedFilesPath
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val paths = adapter?.selectedFilesPath
 
-        when (item!!.itemId) {
+        when (item?.itemId) {
             //            case R.id.sort:
             //                String[] sortType = getActivity().getResources().getStringArray(R.array.sorttype);
             //                String[] oradition = getActivity().getResources().getStringArray(R.array.sortoradition);
@@ -551,32 +551,32 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
             //                builder.create().show();
             //                break;
             R.id.cut -> {
-                cut_paths!!.putAll(paths)
-                adapter!!.unSelectAll()
+                cut_paths?.putAll(paths!!)
+                adapter?.unSelectAll()
                 notifyClipBoardCountChanged()
-                if (mBottomSheetBehavior!!.state == BottomSheetBehavior.STATE_EXPANDED) {
+                if (mBottomSheetBehavior?.state == BottomSheetBehavior.STATE_EXPANDED) {
                     if (clipAdapter != null) {
                         getClipboardData()
-                        clipAdapter!!.notifyDataSetChanged()
+                        clipAdapter?.notifyDataSetChanged()
                     }
                 }
             }
             R.id.copy -> {
-                copy_paths!!.putAll(paths)
-                adapter!!.unSelectAll()
+                copy_paths?.putAll(paths!!)
+                adapter?.unSelectAll()
                 notifyClipBoardCountChanged()
             }
             R.id.paste -> {
 //                AsyPasteThread().execute()
             }
             R.id.delete -> {
-                val selectFiles = adapter!!.selectedFilesPath.keys
+                val selectFiles = adapter?.selectedFilesPath?.keys!!
                 for (file in selectFiles) {
                     val f = File(file)
                     if (f.exists()) {
                         f.delete()
-                        val position = adapter!!.remove(file)
-                        adapter!!.notifyItemRemoved(position)
+                        val position = adapter?.remove(file)
+                        adapter?.notifyItemRemoved(position!!)
 //                        Log.i("file is delete", f.absolutePath)
                     }
                 }
@@ -597,8 +597,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
             val finalI = i
             button.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
-                    activity!!.getSharedPreferences(Config.SP.GallerySetting, Context.MODE_PRIVATE)
-                        .edit().putInt(key, finalI).commit()
+                    activity?.getSharedPreferences(Config.SP.GallerySetting, Context.MODE_PRIVATE)?.edit()?.putInt(key, finalI)?.commit()
                 }
             }
             left.addView(button)
@@ -606,7 +605,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
     }
 
     private fun notifyClipBoardCountChanged() {
-        val i = cut_paths!!.size + copy_paths!!.size
+        val i = cut_paths?.size!! + copy_paths?.size!!
         if (i == 0) {
             tv_clipfile_size.setVisibility(View.GONE)
         } else {
@@ -623,10 +622,10 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
     var backable = false
 
     override fun onBack() {
-        if (mBottomSheetBehavior!!.state == BottomSheetBehavior.STATE_EXPANDED) {
-            mBottomSheetBehavior!!.setState(BottomSheetBehavior.STATE_COLLAPSED)
+        if (mBottomSheetBehavior?.state == BottomSheetBehavior.STATE_EXPANDED) {
+            mBottomSheetBehavior?.setState(BottomSheetBehavior.STATE_COLLAPSED)
         } else {
-            backable = adapter!!.back()
+            backable = adapter?.back()!!
         }
     }
     var config = File(Phone.SDCardPath + RESET_PATH_SETTING_PATH)
@@ -655,7 +654,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 //                    if (rePushTasks == null) {
 //                        rePushTasks = ArrayList()
 //                    }
-//                    var edit = EditTextDialog(activity!!, "新建分组", "请输入分组名")
+//                    var edit = EditTextDialog(activity?, "新建分组", "请输入分组名")
 //                    edit.setPositive { dialog, which ->
 //                        rePushTasks?.add(TaskGroup(edit.editText.text.toString()))
 //                        adapter.notifyDataSetChanged()
@@ -666,14 +665,14 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 //                    savePushTask()
 //                }
 //                foot.bt_run.setOnClickListener {
-//                    var asyTask = RePushTask(activity!!, map(rePushTasks!!))
+//                    var asyTask = RePushTask(activity?, map(rePushTasks?))
 //                    asyTask.execute()
 //                }
 //                pop.layoutManager = LinearLayoutManager(activity)
 //                adapter.addFooterView(foot)
 //
 //                pop.adapter = adapter
-//                var popWin = PopupWindow(pop, UiUtil.getScreenWidth(activity!!), 400);
+//                var popWin = PopupWindow(pop, UiUtil.getScreenWidth(activity?), 400);
 //                //            mPopupWindow.setAnimationStyle(R.style.popup_window_anim);
 //                popWin.setBackgroundDrawable(ColorDrawable(Color.parseColor("#F8F8F8")))
 //                popWin.isFocusable = true
@@ -733,19 +732,19 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
                     R.menu.path_option, PopupMenu.OnMenuItemClickListener { item ->
                         when (item.itemId) {
                             R.id.clip -> {
-                                if (SUtil.isEmpty(adapter!!.getCurrentPath())) {
+                                if (SUtil.isEmpty(adapter?.getCurrentPath())) {
                                     T.show(activity!!, "当前路径不可用")
                                 } else {
                                     val cm = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                                     cm.text = adapter!!.currentDirPath
-                                    T.show(activity, "已复制当前路径: \n " + adapter!!.currentDirPath)
+                                    T.show(activity, "已复制当前路径: \n " + adapter?.currentDirPath)
                                 }
                             }
                             R.id.set_carry_path -> {
-                                if (SUtil.isEmpty(adapter!!.getCurrentPath())) {
+                                if (SUtil.isEmpty(adapter?.getCurrentPath())) {
 //                                    T.show(activity, "当前路径不可用")
                                 } else {
-                                    CarryPathDialogFragment(adapter!!.getCurrentPath(), "")
+                                    CarryPathDialogFragment(adapter?.getCurrentPath()!!, "")
                                         .show(childFragmentManager, "carry_path")
 
                                     //                                            ClipboardManager cm = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
@@ -762,10 +761,10 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 
             R.id.fab ->
                 //显示剪切板
-                if (mBottomSheetBehavior!!.state == BottomSheetBehavior.STATE_COLLAPSED) {
+                if (mBottomSheetBehavior?.state == BottomSheetBehavior.STATE_COLLAPSED) {
                     showPopView()
                 } else {
-                    mBottomSheetBehavior!!.setState(BottomSheetBehavior.STATE_COLLAPSED)
+                    mBottomSheetBehavior?.setState(BottomSheetBehavior.STATE_COLLAPSED)
                 }
 
 
@@ -773,23 +772,23 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
                 R.menu.layouttype, PopupMenu.OnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.action_headline -> {
-                            adapter!!.setLayoutType(0)
+                            adapter?.setLayoutType(0)
                             fab_left.setImageResource(types[0])
                         }
                         R.id.action_list -> {
-                            adapter!!.setLayoutType(1)
+                            adapter?.setLayoutType(1)
                             fab_left.setImageResource(types[1])
                         }
                         R.id.action_module -> {
-                            adapter!!.setLayoutType(2)
+                            adapter?.setLayoutType(2)
                             fab_left.setImageResource(types[2])
                         }
                     }//                                        init
                     false
                 })
             R.id.fab_add -> when (type) {
-                MediaUtil.MediaType.file -> showAddFilePopMenu(MediaUtil.MediaType.file, adapter!!.getCurrentPath())
-                MediaUtil.MediaType.image -> showAddFilePopMenu(MediaUtil.MediaType.image, adapter!!.getCurrentPath())
+                MediaUtil.MediaType.file -> showAddFilePopMenu(MediaUtil.MediaType.file, adapter?.getCurrentPath()!!)
+                MediaUtil.MediaType.image -> showAddFilePopMenu(MediaUtil.MediaType.image, adapter?.getCurrentPath()!!)
                 MediaUtil.MediaType.music -> {
                 }
                 MediaUtil.MediaType.video -> {
@@ -843,20 +842,20 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
         }
 
         override fun doInBackground(vararg integers: Int?): String? {
-//            val file = File(adapter!!.currentPath)
-//            val cut_keys = cut_paths!!.keys
-//            val copy_keys = copy_paths!!.keys
+//            val file = File(adapter?.currentPath)
+//            val cut_keys = cut_paths?.keys
+//            val copy_keys = copy_paths?.keys
 //            for (item in cut_keys) {
 //
 //                val file1 = File(item)
-//                file1.renameTo(File(adapter!!.currentPath, file1.name))
+//                file1.renameTo(File(adapter?.currentPath, file1.name))
 //            }
 //            for (item in copy_keys) {
 //                val file1 = File(item)
 //                if (file1.isDirectory) {
-//                    FileUtils.copyFolder(item, adapter!!.currentPath)
+//                    FileUtils.copyFolder(item, adapter?.currentPath)
 //                } else {
-//                    FileUtils.copyFile(item, adapter!!.currentPath)
+//                    FileUtils.copyFile(item, adapter?.currentPath)
 //                }
 //            }
             return null

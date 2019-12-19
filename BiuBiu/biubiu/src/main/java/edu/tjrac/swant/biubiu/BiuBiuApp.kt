@@ -3,9 +3,10 @@ package edu.tjrac.swant.biubiu
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import android.support.v7.app.AppCompatDelegate
 import android.telephony.TelephonyManager
 import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
+import com.alibaba.android.arouter.launcher.ARouter
 import com.google.gson.Gson
 import edu.tjrac.swant.baselib.common.base.BaseApplication
 import edu.tjrac.swant.baselib.util.SUtil
@@ -108,6 +109,12 @@ open class BiuBiuApp : BaseApplication() {
 
         var tm = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
         device = tm.getDeviceId()
+
+        if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+            ARouter.openLog();     // 打印日志
+            ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        }
+        ARouter.init(this);
 
         super.onCreate()
         if (isNightMode!!) {

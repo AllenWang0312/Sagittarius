@@ -1,7 +1,7 @@
 package edu.tjrac.swant.biubiu.view
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.baselib.util.SUtil

@@ -1,11 +1,11 @@
-package edu.tjrac.swant.wjzx
+package edu.tjrac.swant
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.support.v7.app.AppCompatDelegate
-import edu.tjrac.swant.baselib.common.base.BaseApplication
+import androidx.appcompat.app.AppCompatDelegate
+import edu.tjrac.swant.biubiu.BiuBiuApp
 
-class App : BaseApplication() {
+class App : BiuBiuApp() {
     companion object {
 
         var context: Context? = null
