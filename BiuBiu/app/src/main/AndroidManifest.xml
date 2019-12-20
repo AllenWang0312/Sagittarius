@@ -44,9 +44,12 @@
 
         </activity> <!-- filesystem -->
 
-        <activity android:name="edu.tjrac.swant.DemoEntrancesActivity"></activity>
+        <activity android:name="edu.tjrac.swant.DemoEntrancesActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog"></activity>
+
         <activity android:name="edu.tjrac.swant.fingerprint.FingerPrintBaseActivity"></activity>
         <activity android:name="edu.tjrac.swant.baselib.common.base.SingleFragmentActivity"></activity>
+        <activity android:name="edu.tjrac.swant.tensorflow.TensorFlowActivity"></activity>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="edu.tjrac.swant.wjzx.provider"

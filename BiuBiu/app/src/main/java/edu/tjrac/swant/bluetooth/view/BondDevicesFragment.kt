@@ -27,29 +27,29 @@ class BondDevicesFragment(private val parent: BLEFragment, private val adapter: 
 //        this.title = title
 //    }
 
-    internal var bound_adapter: BoundedDevicesAdapter? = null
+    var bound_adapter: BoundedDevicesAdapter? = null
 
-    internal var bounded_devices: Set<BluetoothDevice>? = null
-     var devices: List<BluetoothDevice> = ArrayList()
-var v:View?=null
+    var bounded_devices: Set<BluetoothDevice>? = null
+    var devices: List<BluetoothDevice> = ArrayList()
+    var v: View? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-         v = inflater.inflate(R.layout.bond_swiper_recycler, container, false)
+        v = inflater.inflate(R.layout.bond_swiper_recycler, container, false)
 
         //        L.i("bounded devices", bounded_devices.toString());
-        v?.swiper!!.setOnRefreshListener { initData() }
-        v?.recycler!!.layoutManager = LinearLayoutManager(activity)
+        v?.swiper?.setOnRefreshListener { initData() }
+        v?.recycler?.layoutManager = LinearLayoutManager(activity)
 
         bound_adapter = BoundedDevicesAdapter(devices)
-        bound_adapter!!.onItemChildClickListener = BaseQuickAdapter.OnItemChildClickListener { adapter, view, position ->
+        bound_adapter?.onItemChildClickListener = BaseQuickAdapter.OnItemChildClickListener { adapter, view, position ->
             if (view.id == R.id.iv_options) {
 
             } else {
 
             }
         }
-        bound_adapter!!.bindToRecyclerView(recycler)
-        bound_adapter!!.setEmptyView(R.layout.empty)
-        recycler!!.adapter = bound_adapter
+        bound_adapter?.bindToRecyclerView( v?.recycler)
+        bound_adapter?.setEmptyView(R.layout.empty)
+        v?.recycler?.adapter = bound_adapter
         initData()
         return view
     }
@@ -57,11 +57,11 @@ var v:View?=null
     internal fun initData() {
         bounded_devices = adapter.bondedDevices
         devices = ArrayUtil<BluetoothDevice>().asArray(bounded_devices)
-        bound_adapter!!.notifyDataSetChanged()
+        bound_adapter?.notifyDataSetChanged()
         //        if(bound_adapter.getEmptyViewCount()>0){
 
         //        }
-        swiper!!.isRefreshing = false
+        v?.swiper?.isRefreshing = false
     }
 
     override fun onBack() {

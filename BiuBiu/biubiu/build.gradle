@@ -52,7 +52,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            useProguard proguard
+            minifyEnabled proguard
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            useProguard proguard
+            minifyEnabled proguard
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

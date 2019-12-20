@@ -39,4 +39,11 @@ class M(var type: Int = 0) : MultiItemEntity {
         this.accent_icon_res = accent_icon_res
         checkedable = true
     }
+    constructor(type: Int, title_res_id: Int, icon_res: Int?, accent_icon_res: Int?,checkedable:Boolean?) : this() {
+        this.type = type
+        this.title_res_id = title_res_id
+        this.icon_res = icon_res
+        this.accent_icon_res = accent_icon_res
+        this.checkedable = this.checkedable
+    }
 }

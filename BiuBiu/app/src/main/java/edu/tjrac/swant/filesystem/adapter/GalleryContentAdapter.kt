@@ -16,6 +16,7 @@ import edu.tjrac.swant.filesystem.FileSystemHelper
 import edu.tjrac.swant.filesystem.MediaUtil
 import edu.tjrac.swant.wjzx.R
 import java.io.File
+import java.text.Collator
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.collections.ArrayList
@@ -25,8 +26,8 @@ import kotlin.collections.ArrayList
  */
 
 class GalleryContentAdapter(
-    internal var cut_paths: HashMap<String, Long>,
-    internal var copy_paths: HashMap<String, Long>
+        internal var cut_paths: HashMap<String, Long>,
+        internal var copy_paths: HashMap<String, Long>
 ) : BaseQuickAdapter<File, BaseViewHolder>(R.layout.item_gallery) {
 
     private val instance: GalleryContentAdapter? = null
@@ -36,7 +37,7 @@ class GalleryContentAdapter(
 
     internal var checkedItemIndex = HashMap<String, Long>()
 
-    internal var pathRecyc: RecyclerView?=null
+    internal var pathRecyc: RecyclerView? = null
 
 
     //    @Override
@@ -44,13 +45,30 @@ class GalleryContentAdapter(
     //        super.bindToRecyclerView(recyclerView);
     //    }
 
+    fun sortBy(refresh:Boolean) {
+        val cmp = Collator.getInstance(Locale.CHINA)
+        mData?.sortWith(object : Comparator<File> {
+            override fun compare(f1: File?, f2: File?): Int {
+                if (cmp.compare(f1?.name, f2?.name) > 0) {
+                    return 1
+                } else if (cmp.compare(f1?.name, f2?.name) < 0) {
+                    return -1
+                }
+                return 0
+            }
+        })
+        if(refresh){
+            notifyDataSetChanged()
+        }
+    }
+
     internal var paths: ArrayList<String>? = ArrayList()
     internal var failterMode = 1//1模糊匹配 0精准
-    internal var mFailter: String?=""
+    internal var mFailter: String? = ""
 
     internal var pathRecycAdapter = PathRecycAdapter(paths)
 
-    var currentDir: File?=null
+    var currentDir: File? = null
         get() = if (dir != null) {
             dir!!
         } else mData[0].parentFile
@@ -60,7 +78,7 @@ class GalleryContentAdapter(
             dir!!.absolutePath
         } else mData[0].parent
 
-    internal var media_type: MediaUtil.MediaType?=null
+    internal var media_type: MediaUtil.MediaType? = null
 
     //    public ArrayList<File> getSelectedFiles() {
     //        ArrayList<File> list = new ArrayList<>();
@@ -106,7 +124,7 @@ class GalleryContentAdapter(
 
     fun setDatas(rootName: String?, file: Any?) {
         if (file is File) {
-            this.setDatas(rootName,file)
+            this.setDatas(rootName, file)
         } else if (file is String) {
             this.setDatas(rootName, file)
         }
@@ -116,6 +134,7 @@ class GalleryContentAdapter(
     fun setDatas(rootName: String?, p: String?) {
         dir = null
         mData = getFiles(p!!)
+        sortBy(false)
         notifyDataSetChanged()
         if (rootName != null) {
             paths?.clear()
@@ -154,6 +173,7 @@ class GalleryContentAdapter(
             pathRecycAdapter.notifyDataSetChanged()
 
         }
+        sortBy(false)
         notifyDataSetChanged()
         if (rootName != null) {
             pathRecycAdapter.notifyDataSetChanged()
@@ -204,6 +224,7 @@ class GalleryContentAdapter(
         }
         paths?.add(file.name)
         pathRecycAdapter.notifyDataSetChanged()
+        sortBy(false)
         notifyDataSetChanged()
     }
 
@@ -290,7 +311,7 @@ class GalleryContentAdapter(
         if (checkedItemIndex.keys.contains(path)) {
             checkedItemIndex.remove(path)
         } else {
-            checkedItemIndex.put(path!!,System.currentTimeMillis())
+            checkedItemIndex.put(path!!, System.currentTimeMillis())
         }
 
         notifyItemChanged(position)
@@ -400,7 +421,7 @@ class GalleryContentAdapter(
 
     companion object {
 
-        internal var currentPath: String=""
+        internal var currentPath: String = ""
 
 
         private fun getFiles(paths: String): List<File> {

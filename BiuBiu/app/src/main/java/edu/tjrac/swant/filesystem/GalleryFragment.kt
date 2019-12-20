@@ -45,25 +45,6 @@ import kotlin.collections.ArrayList
  */
 
 class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickListener {
-
-
-    //    @BindView(R.id.fab_sort) FloatingActionButton fab_sort;
-    //    @BindView(R.id.fab_content) FloatingActionButton fab_content;
-    //    @BindView(R.id.fab_left) FloatingActionButton fab_left;
-    //    @BindView(R.id.fab) FloatingActionButton fab;
-    //    @BindView(R.id.fab_add) FloatingActionButton fab_add;
-    //    @BindView(R.id.fab_more) FloatingActionButton fab_more;
-
-    //    @BindView(R.id.et_search) EditText et_search;
-    //    @BindView(R.id.iv_search) ImageView iv_search;
-    //    @BindView(R.id.rv_paths) RecyclerView rv_paths;
-    //    @BindView(R.id.rv_gallery_content) RecyclerView rv_gallery_content;
-    //    @BindView(R.id.tv_clipfile_size) TextView tv_clipfile_size;
-    //    @BindView(R.id.swiper) SwipeRefreshLayout swiper;
-
-    //    @BindView(R.id.drawer_layout) DrawerLayout drawer;
-    //    @BindView(R.id.nav_view) NavigationView navigationView;
-    //    @BindView(R.id.ll_bottom) View ll_bottom;
     private var mBottomSheetBehavior: BottomSheetBehavior<LinearLayout>? = null
 
     private val types = intArrayOf(

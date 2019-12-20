@@ -75,10 +75,7 @@ class MeituMainActivity : BaseFragmentActivity(),
                 startActivity(Intent(this, FeedbackListActivity::class.java))
             }
             R.id.fl_test->{
-//                ARouter.getInstance().build("/demo","app")
-//                        .navigation()
-                ARouter.getInstance().build("/app/main")
-                        .withString("fragment","bluetooth")
+                ARouter.getInstance().build("/app/demo")
                         .navigation()
             }
             R.id.iv_setting -> {
@@ -130,6 +127,7 @@ class MeituMainActivity : BaseFragmentActivity(),
 
                     override fun onError(e: Throwable?) {
                         super.onError(e)
+                        onGetUserInfoSuccess(null)
                     }
 
                 })

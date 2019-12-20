@@ -8,7 +8,9 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import edu.tjrac.swant.assistant.AssistantFragment
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.bluetooth.view.BLEFragment
@@ -27,9 +29,14 @@ class MainActivity : BaseActivity() {
     var nav_data: ArrayList<M>? = ArrayList()
     var nav_adapter: MainManuAdapter? = null
 
+    @JvmField
+    @Autowired(name = "fragment")
+    var selected:Int?=R.string.map
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        ARouter.getInstance().inject(this)
 
         nav_recycler = nav_view.getHeaderView(0) as RecyclerView
         nav_recycler?.layoutManager = LinearLayoutManager(this)
@@ -78,7 +85,8 @@ class MainActivity : BaseActivity() {
 //            noteFragment = NoteFragment()
 //        }
 //        changeFragment(nowFragment, noteFragment!!)
-        selectFragment(R.string.bluetooth)
+        selectFragment(selected!!)
+        nav_adapter?.select(selected!!)
     }
 
     private fun selectFragment(title: Int) {
@@ -164,23 +172,7 @@ class MainActivity : BaseActivity() {
         if (!nav_data?.isEmpty()!!) {
             nav_data?.clear()
         }
-
-        nav_data?.add(
-                M(
-                        1,
-                        R.string.note,
-                        R.drawable.ic_lightbulb_outline_grey_600_24dp,
-                        R.drawable.ic_lightbulb_outline_white_24dp
-                )
-        )
-        nav_data?.add(
-                M(
-                        1,
-                        R.string.notice,
-                        R.drawable.ic_notifications_none_grey_600_24dp,
-                        R.drawable.ic_notifications_none_white_24dp
-                )
-        )
+        nav_data?.add(M(1,R.string.bluetooth,R.drawable.ic_bluetooth_grey_600_24dp,R.drawable.ic_bluetooth_white_24dp))
         nav_data?.add(
                 M(
                         1,
@@ -189,6 +181,35 @@ class MainActivity : BaseActivity() {
                         R.drawable.ic_map_white_24dp
                 )
         )
+        nav_data?.add(
+                M(
+                        1,
+                        R.string.note,
+                        R.drawable.ic_lightbulb_outline_grey_600_24dp,
+                        R.drawable.ic_lightbulb_outline_white_24dp,
+                        false
+                )
+        )
+        nav_data?.add(
+                M(
+                        1,
+                        R.string.notice,
+                        R.drawable.ic_notifications_none_grey_600_24dp,
+                        R.drawable.ic_notifications_none_white_24dp,
+                        false
+                )
+        )
+
+        nav_data?.add(
+                M(
+                        1,
+                        R.string.assistant,
+                        R.drawable.ic_lightbulb_outline_grey_600_24dp,
+                        R.drawable.ic_lightbulb_outline_white_24dp,
+                        false
+                )
+        )
+
         nav_data?.add(M(0))
 
         for (tag in tags!!) {
@@ -199,16 +220,8 @@ class MainActivity : BaseActivity() {
         nav_data?.add(M(1, R.string.file_system, R.drawable.ic_launch_grey_600_24dp))
         nav_data?.add(M(1, R.string.todo, R.drawable.ic_launch_grey_600_24dp))
         nav_data?.add(M(-1))
-        nav_data?.add(
-                M(
-                        1,
-                        R.string.assistant,
-                        R.drawable.ic_lightbulb_outline_grey_600_24dp,
-                        R.drawable.ic_lightbulb_outline_white_24dp
-                )
-        )
-        nav_data?.add(M(1,R.string.bluetooth,R.drawable.ic_launch_grey_600_24dp))
-        nav_data?.add(M(1,R.string.meitu,R.drawable.ic_launch_grey_600_24dp))
+
+//        nav_data?.add(M(1,R.string.meitu,R.drawable.ic_launch_grey_600_24dp))
         nav_data?.add(M(-1))
 //        nav_data?.add(M(1, R.string.settings, R.drawable.))
         nav_data?.add(M(1, R.string.help_feedback, R.drawable.ic_help_outline_grey_600_24dp))

@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
  */
 
 public class Config {
-
+    public static final String support_doc_type=".gif.jpg.jpeg.png.bmp";
     public static final String support_image_type=".gif.jpg.jpeg.png.bmp";
     public static final String support_music_type=".mp3";
     public static final String support_video_type=".mp4";

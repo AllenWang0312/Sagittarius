@@ -45,6 +45,13 @@ class MeituLoginActivity : BaseActivity(), View.OnClickListener {
                                 override fun onSuccess(t: BR<LoginRespon>?) {
                                     onLoginSuccess(this@MeituLoginActivity, t?.data)
                                 }
+
+                                override fun onError(e: Throwable?) {
+                                    super.onError(e)
+                                    BiuBiuApp.loged = null
+                                    BiuBiuApp.token = ""
+
+                                }
                             })
                 }
             }

@@ -3,25 +3,25 @@ package edu.tjrac.swant.filesystem
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
-
-import java.io.File
-import java.util.ArrayList
-import java.util.HashMap
-
 import edu.tjrac.swant.baselib.util.FileUtils.extensionName
 import edu.tjrac.swant.filesystem.bean.MediaInfo
+import java.io.File
+import java.util.*
 
 /**
  * Created by wpc on 2018/1/25 0025.
  */
 
 object MediaUtil {
-
+    enum class MediaType {
+        all, file, doc, image, music, video
+    }
 
     fun getMediaMaps(context: Context, type: MediaType): HashMap<String, ArrayList<String>>? {
         val map = HashMap<String, ArrayList<String>>()
         var media_type: Uri? = null
         when (type) {
+            MediaUtil.MediaType.doc -> media_type = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             MediaUtil.MediaType.image -> media_type = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             MediaUtil.MediaType.video -> media_type = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
             MediaUtil.MediaType.music -> media_type = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
@@ -33,24 +33,17 @@ object MediaUtil {
         }
         while (cursor.moveToNext()) {
             val index = cursor
-                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
             val path = cursor.getString(index) // 文件地址
             val file = File(path)
             if (!map.keys.contains(file.parent)) {
-                map?.set(file.parent,ArrayList())
+                map?.set(file.parent, ArrayList())
             }
             map[file.parent]!!.add(file.absolutePath)
         }
         return map
     }
 
-    /**
-     * Created by wpc on 2018/1/5.
-     */
-
-    enum class MediaType {
-        all, file, image, music, video
-    }
 
     fun getMediaDirs(context: Context, type: MediaType): List<String> {
         val paths = ArrayList<String>()
@@ -86,7 +79,7 @@ object MediaUtil {
             }
             while (cursor.moveToNext()) {
                 val index = cursor
-                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                        .getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
                 val path = cursor.getString(index) // 文件地址
                 val file = File(path)
                 if (file.exists()) {
@@ -107,14 +100,14 @@ object MediaUtil {
         }
         val contentResolver = context.contentResolver
         val cursor = contentResolver.query(
-            media_type!!,
-            arrayOf(
-                MediaStore.Images.Media.DATA,
-                MediaStore.Images.Media.SIZE,
-                MediaStore.Images.Media.DISPLAY_NAME,
-                MediaStore.Images.Media.WIDTH,
-                MediaStore.Images.Media.HEIGHT
-            ), null, null, null
+                media_type!!,
+                arrayOf(
+                        MediaStore.Images.Media.DATA,
+                        MediaStore.Images.Media.SIZE,
+                        MediaStore.Images.Media.DISPLAY_NAME,
+                        MediaStore.Images.Media.WIDTH,
+                        MediaStore.Images.Media.HEIGHT
+                ), null, null, null
         )
         if (cursor == null || cursor.count <= 0) {
             return null // 没有图片
@@ -122,14 +115,14 @@ object MediaUtil {
         while (cursor.moveToNext()) {
 
             uris.add(
-                MediaInfo(
-                    type,
-                    cursor.getString(2),
-                    cursor.getString(0),
-                    cursor.getLong(1),
-                    cursor.getInt(3),
-                    cursor.getInt(4)
-                )
+                    MediaInfo(
+                            type,
+                            cursor.getString(2),
+                            cursor.getString(0),
+                            cursor.getLong(1),
+                            cursor.getInt(3),
+                            cursor.getInt(4)
+                    )
 
 
             )

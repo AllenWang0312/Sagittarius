@@ -1,18 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.tjrac.swant.DemoEntrancesActivity">
-    <TextView android:text="网络相关"/>
+
+    <TextView android:text="文件操作" />
 
 
-    <TextView android:text="传感器相关"/>
     <TableRow>
-        <Button android:id="@+id/bt_bluetooth" android:text="蓝牙"/>
-        <Button android:id="@+id/bt_fingerprint" android:text="指纹"/>
+        <Button
+            android:id="@+id/bt_file_system"
+            android:text="文件系统" />
+    </TableRow>
+    <TextView android:text="网络相关" />
 
+
+    <TextView android:text="传感器相关" />
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/bt_bluetooth"
+            android:text="蓝牙" />
+
+        <Button
+            android:id="@+id/bt_fingerprint"
+            android:text="指纹" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/bt_tf_camera"
+            android:text="智能相机" />
+
+        <Button
+            android:id="@+id/bt_ar_solar"
+            android:text="AR solar gallery" />
+
+        <Button
+            android:id="@+id/bt_camerax"
+            android:text="camera_x" />
     </TableRow>
 </TableLayout>

@@ -22,19 +22,29 @@ class MainManuAdapter(data: ArrayList<M>?) : BaseMultiItemQuickAdapter<M, BaseVi
             field = value
         }
 
+    fun select(resId: Int) {
+        for (i in 0 until mData.size!!) {
+            if (mData[i].title_res_id == resId) {
+                selectPosition = i + headerViewsCount
+                notifyDataSetChanged()
+            }
+        }
+    }
+
     override fun convert(helper: BaseViewHolder?, item: M?) {
         if (item?.type == 1) {
             helper?.setText(R.id.tv_title, item.title)
+            var ll_menu = helper?.getView<FrameLayout>(R.id.ll_menu)
             if (item?.checkedable) {
-                var ll_menu = helper?.getView<FrameLayout>(R.id.ll_menu)
+                helper?.setTextColor(R.id.tv_title, mContext?.resources?.getColor(R.color.text_color_primary)!!)
                 val states = StateListDrawable()
                 states.addState(
-                    intArrayOf(-android.R.attr.state_checked),
-                    mContext.resources.getDrawable(item.icon_res!!)
+                        intArrayOf(-android.R.attr.state_checked),
+                        mContext.resources.getDrawable(item.icon_res!!)
                 )
                 states.addState(
-                    intArrayOf(android.R.attr.state_checked),
-                    mContext.resources.getDrawable(item.accent_icon_res!!)
+                        intArrayOf(android.R.attr.state_checked),
+                        mContext.resources.getDrawable(item.accent_icon_res!!)
                 )
                 helper?.setImageDrawable(R.id.iv_icon, states)
                 var selected = helper?.position == selectPosition
@@ -50,6 +60,7 @@ class MainManuAdapter(data: ArrayList<M>?) : BaseMultiItemQuickAdapter<M, BaseVi
 
 
             } else {
+                helper?.setTextColor(R.id.tv_title, mContext?.resources?.getColor(R.color.text_color_summary)!!)
                 helper?.setImageDrawable(R.id.iv_icon, mContext.resources.getDrawable(item.icon_res!!))
             }
         }
