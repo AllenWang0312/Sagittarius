@@ -18,7 +18,6 @@ package edu.tjrac.swant.tensorflow;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import androidx.core.os.TraceCompat;
 import android.util.Log;
 
 import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
@@ -27,10 +26,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Vector;
+
+import androidx.core.os.TraceCompat;
 
 /**
  * Created by amitshekhar on 06/03/17.
@@ -166,12 +166,9 @@ public class TensorFlowImageClassifier implements Classifier {
         PriorityQueue<Recognition> pq =
                 new PriorityQueue<Recognition>(
                         3,
-                        new Comparator<Recognition>() {
-                            @Override
-                            public int compare(Recognition lhs, Recognition rhs) {
-                                // Intentionally reversed to put high confidence at the head of the queue.
-                                return Float.compare(rhs.getConfidence(), lhs.getConfidence());
-                            }
+                        (lhs, rhs) -> {
+                            // Intentionally reversed to put high confidence at the head of the queue.
+                            return Float.compare(rhs.getConfidence(), lhs.getConfidence());
                         });
         for (int i = 0; i < outputs.length; ++i) {
             if (outputs[i] > THRESHOLD) {

@@ -136,9 +136,9 @@ dependencies {
 
 //    api 'com.jaeger.statusbarutil:library:1.5.1'
     implementation project(':libs')
-    api project(':kbaselib')
+    implementation project(':kbaselib')
 
-    api project(':amap')
+    implementation project(':amap')
     if(isUserModule.toBoolean()) {
         implementation project(':biubiu')
     }

@@ -98,10 +98,9 @@ public interface Classifier {
             }
 
             if (location != null) {
-                resultString += location + " ";
+                resultString += location;
             }
-
-            return resultString.trim();
+            return resultString + "\n".trim();
         }
     }
 

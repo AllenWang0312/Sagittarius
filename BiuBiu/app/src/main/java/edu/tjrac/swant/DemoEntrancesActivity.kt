@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import edu.tjrac.swant.baselib.common.base.BaseWebViewActivity
 import edu.tjrac.swant.fingerprint.FingerPrintBaseActivity
 import edu.tjrac.swant.tensorflow.TensorFlowActivity
 import edu.tjrac.swant.wjzx.R
@@ -35,6 +36,10 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.bt_fingerprint -> {
                 startActivity(Intent(this, FingerPrintBaseActivity::class.java))
+            }
+            R.id.bt_web_fengniao -> {
+                startActivity(Intent(this, BaseWebViewActivity::class.java)
+                        .putExtra("url", "https://m.fengniao.com/"))
             }
         }
     }
