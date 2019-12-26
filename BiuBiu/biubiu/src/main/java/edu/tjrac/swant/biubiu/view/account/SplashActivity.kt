@@ -27,7 +27,7 @@ import java.util.*
 
 class SplashActivity : BaseActivity() {
     var sp: SharedPreferences? = null
-    var waitTime = 5;
+    var waitTime =3;
 
     var timer = Timer()
     override fun onResume() {

@@ -50,7 +50,9 @@
     <TextView android:text="webview" />
 
     <TableRow>
-
+        <Button
+            android:id="@+id/bt_web_scheme"
+            android:text="webview|scheme跳转"></Button>
         <Button
             android:id="@+id/bt_web_fengniao"
             android:text="webview|蜂鸟摄影"></Button>

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import edu.tjrac.swant.baselib.common.base.BaseWebViewActivity
+import edu.tjrac.swant.baselib.util.IntentUtil
 import edu.tjrac.swant.fingerprint.FingerPrintBaseActivity
 import edu.tjrac.swant.tensorflow.TensorFlowActivity
 import edu.tjrac.swant.wjzx.R
@@ -41,6 +42,9 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, BaseWebViewActivity::class.java)
                         .putExtra("url", "https://m.fengniao.com/"))
             }
+            R.id.bt_web_scheme->{
+                startActivity(IntentUtil.openUrlWithSystemChrome("xianzhilms://test.report.com/index.html?lms=3"))
+            }
         }
     }
 
@@ -52,6 +56,9 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
         bt_tf_camera?.setOnClickListener(this)
         bt_ar_solar?.setOnClickListener(this)
         bt_file_system?.setOnClickListener(this)
+
+        bt_web_fengniao?.setOnClickListener(this)
+        bt_web_scheme?.setOnClickListener(this)
     }
 
 }
