@@ -43,7 +43,8 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
                         .putExtra("url", "https://m.fengniao.com/"))
             }
             R.id.bt_web_scheme->{
-                startActivity(IntentUtil.openUrlWithSystemChrome("xianzhilms://test.report.com/index.html?lms=3"))
+//                startActivity(IntentUtil.openUrlWithSystemChrome("xianzhilms://test.report.com/index.html?lms=3"))
+                startActivity(IntentUtil.openUrlWithSystemChrome("xianzhilms://wj.qq.com/s2/5112378/27bc?id=26&type=questionnaire"))
             }
         }
     }

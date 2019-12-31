@@ -21,7 +21,7 @@ class ScopeFragments : BaseFragment() {
         adapter = V4FragmentsPagerAdapter(childFragmentManager)
 
         adapter?.addFragment(AlbumListFragment(), "私房")
-//        adapter?.addFragment(AlbumListFragment(), "风景")
+        adapter?.addFragment(AlbumListFragment("fengniao","travel"), "蜂鸟|旅行")
 //        adapter?.addFragment(TrendFragment("follow"), "follow")
 //        adapter?.addFragment(HomeFragment(), "home_home")
 

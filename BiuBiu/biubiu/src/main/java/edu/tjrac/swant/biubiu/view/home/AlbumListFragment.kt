@@ -1,12 +1,14 @@
 package edu.tjrac.swant.biubiu.view.home
 
 import android.os.Bundle
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.gson.JsonObject
 import edu.tjrac.swant.baselib.common.base.BaseFragment
 import edu.tjrac.swant.baselib.common.recycler.GridSpacingItemDecoration
+import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.baselib.util.UiUtil
 import edu.tjrac.swant.biubiu.R
 import edu.tjrac.swant.biubiu.adapter.AlbumListAdapter
@@ -20,7 +22,14 @@ import kotlinx.android.synthetic.main.swiper_recycler_view.view.*
 /**
  * Created by wpc on 2019-09-05.
  */
-class AlbumListFragment : BaseFragment() {
+class AlbumListFragment() : BaseFragment() {
+    var platform: String? = null
+    var column: String? = null
+
+    constructor(platform: String, column: String) : this() {
+        this.platform = platform
+        this.column = column
+    }
 
     var data: ArrayList<Album>? = ArrayList()
     var adapter: AlbumListAdapter? = null
@@ -34,7 +43,7 @@ class AlbumListFragment : BaseFragment() {
 
         adapter = AlbumListAdapter(R.layout.item_meitu_colum, data!!)
 
-        adapter?.setOnItemClickListener (AlbumListClickListener(activity!!))
+        adapter?.setOnItemClickListener(AlbumListClickListener(activity!!))
 //        adapter?.setOnItemChildClickListener { ad, view, position ->
 //            var item = data?.get(position)
 //            var request = HashMap<String, String>()
@@ -78,7 +87,13 @@ class AlbumListFragment : BaseFragment() {
             data?.clear()
             adapter?.notifyDataSetChanged()
         }
-        Net.instance.getApiService().getColumList(pageSize, pageNo)
+        var map = JsonObject()
+        map.addProperty("pageSize", pageSize)
+        map.addProperty("pageNo", pageNo)
+        if (!SUtil.isEmpty(platform)) map.addProperty("platform", platform)
+        if (!SUtil.isEmpty(column)) map.addProperty("column", column)
+
+        Net.instance.getApiService().getColumList(map)
                 .compose(edu.tjrac.swant.biubiu.net.RxUtil.applySchedulers())
                 .subscribe(object : NESubscriber<BR<ArrayList<Album>>>(this) {
                     override fun onSuccess(t: BR<ArrayList<Album>>?) {
