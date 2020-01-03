@@ -30,6 +30,8 @@ class Album : AlbumInfo {
 
     var cover: ImageInfo? = null
 
+    var cloumn: String? = ""
+
     override fun getAlbumCover(): String? {
         return cover?.url
 //        return Config.URL.FILE_SERVER + "/muri/" + model_id + "/" + id + "/0.jpg"

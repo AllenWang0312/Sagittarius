@@ -13,20 +13,27 @@ import edu.tjrac.swant.biubiu.view.AlbumWebViewActivity
  */
 open class AlbumListClickListener(
         var context: Activity
-) : BaseQuickAdapter.OnItemClickListener{
+) : BaseQuickAdapter.OnItemClickListener {
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-        var item=adapter?.getItem(position)
-        if(item is Album){
-            if (item.get!!){
+        var item = adapter?.getItem(position)
+        if (item is Album) {
+            if (item.get!!) {
                 context.startActivity(Intent(context, AlbumDetailActivity::class.java)
-                        .putExtra("model_id",item.model_id)
-                        .putExtra("id",item.id))
+                        .putExtra("model_id", item.model_id)
+                        .putExtra("id", item.id))
 
 //                GalleryFragment
-            }else{
+            } else {
                 context.startActivity(Intent(context, AlbumWebViewActivity::class.java)
-                        .putExtra("album_id",item.id)
-                        .putExtra("url", "https://m.meituri.com/a/" + item?.id + "/")
+                        .putExtra("album_id", item.id)
+
+                        .putExtra("url",
+                                if (item.cloumn.equals("travel")) {
+                                    "http://travel.fengniao.com/slide/535/" + item?.id + "_1.html"
+                                } else {
+                                    "https://m.meituri.com/a/" + item?.id + "/"
+                                })
+
                         .putExtra("tital", item?.title!!))
 
             }

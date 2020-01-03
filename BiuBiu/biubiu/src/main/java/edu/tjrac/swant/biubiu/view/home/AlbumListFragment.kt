@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.google.gson.JsonObject
 import edu.tjrac.swant.baselib.common.base.BaseFragment
 import edu.tjrac.swant.baselib.common.recycler.GridSpacingItemDecoration
 import edu.tjrac.swant.baselib.util.SUtil
@@ -87,11 +86,12 @@ class AlbumListFragment() : BaseFragment() {
             data?.clear()
             adapter?.notifyDataSetChanged()
         }
-        var map = JsonObject()
-        map.addProperty("pageSize", pageSize)
-        map.addProperty("pageNo", pageNo)
-        if (!SUtil.isEmpty(platform)) map.addProperty("platform", platform)
-        if (!SUtil.isEmpty(column)) map.addProperty("column", column)
+        var map = HashMap<String, String>()
+        map.set("pageSize", "" + pageSize)
+        map.set("pageNo", "" + pageNo)
+
+        if (!SUtil.isEmpty(platform)) map.set("platform", platform!!)
+        if (!SUtil.isEmpty(column)) map.set("column", column!!)
 
         Net.instance.getApiService().getColumList(map)
                 .compose(edu.tjrac.swant.biubiu.net.RxUtil.applySchedulers())
@@ -101,12 +101,10 @@ class AlbumListFragment() : BaseFragment() {
                             onGetDataSuccess(t?.data!!)
                         }
                     }
-
                     override fun onError(e: Throwable?) {
                         super.onError(e)
 //                    adapter.loadMoreEnd()
                     }
-
                     override fun onCompleted() {
                         super.onCompleted()
                         if (v?.swiper?.isRefreshing!!) {

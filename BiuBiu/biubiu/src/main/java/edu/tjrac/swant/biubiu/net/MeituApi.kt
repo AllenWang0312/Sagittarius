@@ -64,7 +64,7 @@ interface MeituApi {
                      @Query("pageNo") pageNo: Int
                     ): Observable<BR<ArrayList<Album>>>
     @GET("/v1/api/album/list")
-    fun getColumList(@QueryMap map: JsonObject): Observable<BR<ArrayList<Album>>>
+    fun getColumList(@QueryMap map: HashMap<String,String>): Observable<BR<ArrayList<Album>>>
 
     @GET("/v1/api/tag/hot")
     fun getHotTags(): Observable<BR<ArrayList<Tags>>>

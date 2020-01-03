@@ -1,5 +1,5 @@
 
-if(isUserModule.toBoolean()){
+if(asGroup.toBoolean()){
     apply plugin: 'com.android.library'
 }else{
     apply plugin: 'com.android.application'
@@ -22,7 +22,7 @@ android {
             res.srcDirs += 'src/main/res_material'
             res.srcDirs += 'src/main/res_taopiaopiao'
 
-            if (isUserModule.toBoolean()) {
+            if (asGroup.toBoolean()) {
                 manifest.srcFile 'src/main/release/AndroidManifest.xml'
             }  else {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
