@@ -6,10 +6,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import edu.tjrac.swant.baselib.common.base.BaseWebViewActivity
+import com.google.ar.sceneform.samples.solarsystem.SolarActivity
 import edu.tjrac.swant.baselib.util.IntentUtil
 import edu.tjrac.swant.fingerprint.FingerPrintBaseActivity
+import edu.tjrac.swant.recorder.Camera2VideoActivity
 import edu.tjrac.swant.tensorflow.TensorFlowActivity
+import edu.tjrac.swant.webview.ChromeActivity
 import edu.tjrac.swant.wjzx.R
 import kotlinx.android.synthetic.main.activity_demo_entrances.*
 
@@ -25,8 +27,11 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
             R.id.bt_tf_camera -> {
                 startActivity(Intent(this, TensorFlowActivity::class.java))
             }
-            R.id.bt_ar_solar -> {
-
+            R.id.bt_camera2->{
+                startActivity(Intent(this, Camera2VideoActivity::class.java))
+            }
+            R.id.bt_ar_solar->{
+                startActivity(Intent(this, SolarActivity::class.java))
             }
             R.id.bt_bluetooth -> {
 //                SingleFragmentActivity.start(this, BLEFragment())
@@ -38,9 +43,13 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
             R.id.bt_fingerprint -> {
                 startActivity(Intent(this, FingerPrintBaseActivity::class.java))
             }
-            R.id.bt_web_fengniao -> {
-                startActivity(Intent(this, BaseWebViewActivity::class.java)
-                        .putExtra("url", "https://m.fengniao.com/"))
+
+
+
+            R.id.bt_web_home -> {
+                startActivity(Intent(this, ChromeActivity::class.java)
+//                        .putExtra("url", "https://m.fengniao.com/")
+                )
             }
             R.id.bt_web_scheme->{
 //                startActivity(IntentUtil.openUrlWithSystemChrome("xianzhilms://test.report.com/index.html?lms=3"))
@@ -52,14 +61,16 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_demo_entrances)
-        bt_bluetooth.setOnClickListener(this)
-        bt_fingerprint.setOnClickListener(this)
+
+        bt_bluetooth?.setOnClickListener(this)
+        bt_fingerprint?.setOnClickListener(this)
         bt_tf_camera?.setOnClickListener(this)
         bt_ar_solar?.setOnClickListener(this)
         bt_file_system?.setOnClickListener(this)
-
-        bt_web_fengniao?.setOnClickListener(this)
+        bt_camera2?.setOnClickListener(this)
+        bt_web_home?.setOnClickListener(this)
         bt_web_scheme?.setOnClickListener(this)
+
     }
 
 }

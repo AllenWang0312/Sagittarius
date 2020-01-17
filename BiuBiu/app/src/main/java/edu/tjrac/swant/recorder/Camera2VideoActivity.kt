@@ -32,7 +32,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import androidx.annotation.RequiresApi
 import android.util.Log
 import android.util.Size
 import android.util.SparseIntArray
@@ -40,6 +39,7 @@ import android.view.Surface
 import android.view.TextureView
 import android.view.View
 import android.widget.Button
+import androidx.annotation.RequiresApi
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.wjzx.R
 import java.io.IOException
@@ -57,6 +57,7 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
     private val FRAGMENT_DIALOG = "dialog"
     private val SENSOR_ORIENTATION_DEFAULT_DEGREES = 90
     private val SENSOR_ORIENTATION_INVERSE_DEGREES = 270
+
     private val DEFAULT_ORIENTATIONS = SparseIntArray().apply {
         append(Surface.ROTATION_0, 90)
         append(Surface.ROTATION_90, 0)
@@ -84,9 +85,13 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
             configureTransform(width, height)
         }
 
-        override fun onSurfaceTextureDestroyed(surfaceTexture: SurfaceTexture) = true
+        override fun onSurfaceTextureDestroyed(surfaceTexture: SurfaceTexture):Boolean{
+            return true
+        }
 
-        override fun onSurfaceTextureUpdated(surfaceTexture: SurfaceTexture) = Unit
+        override fun onSurfaceTextureUpdated(surfaceTexture: SurfaceTexture){
+
+        }
 
     }
 
@@ -103,7 +108,7 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
     /**
      * A reference to the opened [android.hardware.camera2.CameraDevice].
      */
-     var cameraDevice: CameraDevice? = null
+    var cameraDevice: CameraDevice? = null
 
     /**
      * A reference to the current [android.hardware.camera2.CameraCaptureSession] for
@@ -173,8 +178,8 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
         override fun onError(c: CameraDevice, error: Int) {
             cameraOpenCloseLock.release()
             cameraDevice?.close()
-           cameraDevice = null
-          finish()
+            cameraDevice = null
+            finish()
         }
 
     }
@@ -188,12 +193,12 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_camera2_video)
-        textureView =findViewById(R.id.texture)
-        videoButton =findViewById<Button>(R.id.video).also {
+        setContentView(R.layout.activity_camera2_video)
+        textureView = findViewById(R.id.texture)
+        videoButton = findViewById<Button>(R.id.video).also {
             it.setOnClickListener(this)
         }
-        findViewById<View>(R.id.info).setOnClickListener(this)
+        findViewById<View>(R.id.video).setOnClickListener(this)
     }
 
 
@@ -267,8 +272,8 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
 
             // Choose the sizes for camera preview and video recording
             val characteristics = manager.getCameraCharacteristics(cameraId)
-            val map = characteristics.get(SCALER_STREAM_CONFIGURATION_MAP) ?:
-                    throw RuntimeException("Cannot get available preview/video sizes")
+            val map = characteristics.get(SCALER_STREAM_CONFIGURATION_MAP)
+                    ?: throw RuntimeException("Cannot get available preview/video sizes")
             sensorOrientation = characteristics.get(SENSOR_ORIENTATION)!!
             videoSize = chooseVideoSize(map.getOutputSizes(MediaRecorder::class.java))
             previewSize = chooseOptimalSize(map.getOutputSizes(SurfaceTexture::class.java),
@@ -288,7 +293,7 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
         } catch (e: NullPointerException) {
             // Currently an NPE is thrown when the Camera2API is used but not supported on the
             // device this code runs.
-          showToast(getString(R.string.camera_error))
+            showToast(getString(R.string.camera_error))
         } catch (e: InterruptedException) {
             throw RuntimeException("Interrupted while trying to lock camera opening.")
         }
@@ -464,20 +469,20 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
             cameraDevice?.createCaptureSession(surfaces,
                     object : CameraCaptureSession.StateCallback() {
 
-                override fun onConfigured(cameraCaptureSession: CameraCaptureSession) {
-                    captureSession = cameraCaptureSession
-                    updatePreview()
-                   runOnUiThread {
-                        videoButton.setText(R.string.stop)
-                        isRecordingVideo = true
-                        mediaRecorder?.start()
-                    }
-                }
+                        override fun onConfigured(cameraCaptureSession: CameraCaptureSession) {
+                            captureSession = cameraCaptureSession
+                            updatePreview()
+                            runOnUiThread {
+                                videoButton.setText(R.string.stop)
+                                isRecordingVideo = true
+                                mediaRecorder?.start()
+                            }
+                        }
 
-                override fun onConfigureFailed(cameraCaptureSession: CameraCaptureSession) {
-                  showToast("Failed")
-                }
-            }, backgroundHandler)
+                        override fun onConfigureFailed(cameraCaptureSession: CameraCaptureSession) {
+                            showToast("Failed")
+                        }
+                    }, backgroundHandler)
         } catch (e: CameraAccessException) {
             Log.e(TAG, e.toString())
         } catch (e: IOException) {
@@ -499,7 +504,7 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
             reset()
         }
 
-     showToast("Video saved: $nextVideoAbsolutePath")
+        showToast("Video saved: $nextVideoAbsolutePath")
         nextVideoAbsolutePath = null
         startPreview()
     }
@@ -512,7 +517,8 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
      * @return The video size
      */
     private fun chooseVideoSize(choices: Array<Size>) = choices.firstOrNull {
-        it.width == it.height * 4 / 3 && it.width <= 1080 } ?: choices[choices.size - 1]
+        it.width == it.height * 4 / 3 && it.width <= 1080
+    } ?: choices[choices.size - 1]
 
     /**
      * Given [choices] of [Size]s supported by a camera, chooses the smallest one whose
@@ -536,7 +542,8 @@ class Camera2VideoActivity : BaseActivity(), View.OnClickListener
         val w = aspectRatio.width
         val h = aspectRatio.height
         val bigEnough = choices.filter {
-            it.height == it.width * h / w && it.width >= width && it.height >= height }
+            it.height == it.width * h / w && it.width >= width && it.height >= height
+        }
 
         // Pick the smallest of those, assuming we found any
         return if (bigEnough.isNotEmpty()) {

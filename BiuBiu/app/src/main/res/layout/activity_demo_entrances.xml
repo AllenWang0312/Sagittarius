@@ -1,60 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="edu.tjrac.swant.DemoEntrancesActivity">
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
 
-    <TextView android:text="文件操作" />
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:padding="4dp"
+            android:layout_height="wrap_content"
+            android:text="传感器相关" />
+
+        <com.zhy.view.flowlayout.FlowLayout
+            android:id="@+id/flow_zsd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            zhy:max_select="-1">
+
+            <Button
+                android:id="@+id/bt_bluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="蓝牙" />
+
+            <Button
+                android:id="@+id/bt_fingerprint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="指纹" />
+
+            <Button
+                android:id="@+id/bt_camera2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="camera2">
+
+            </Button>
+
+            <Button
+                android:id="@+id/bt_camerax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="camera_x" />
 
 
-    <TableRow>
+        </com.zhy.view.flowlayout.FlowLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:padding="4dp"
+            android:layout_height="wrap_content"
+            android:text="AR core" />
+        <com.zhy.view.flowlayout.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            zhy:max_select="-1">
+            <Button
+                android:id="@+id/bt_ar_solar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AR solar gallery" />
 
-        <Button
-            android:id="@+id/bt_file_system"
-            android:text="文件系统" />
-    </TableRow>
+        </com.zhy.view.flowlayout.FlowLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:padding="4dp"
+            android:layout_height="wrap_content"
+            android:text="tensorflow" />
 
-    <TextView android:text="网络相关" />
+        <com.zhy.view.flowlayout.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            zhy:max_select="-1">
+
+            <Button
+                android:id="@+id/bt_tf_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="智能相机" />
+
+        </com.zhy.view.flowlayout.FlowLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="文件操作" />
+
+        <com.zhy.view.flowlayout.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            zhy:max_select="-1">
+
+            <Button
+                android:id="@+id/bt_file_system"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="文件系统" />
+        </com.zhy.view.flowlayout.FlowLayout>
 
 
-    <TextView android:text="传感器相关" />
+        <TextView
+            android:padding="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="webview" />
 
-    <TableRow>
+        <com.zhy.view.flowlayout.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            zhy:max_select="-1">
 
-        <Button
-            android:id="@+id/bt_bluetooth"
-            android:text="蓝牙" />
+            <Button
+                android:id="@+id/bt_web_scheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="webview|scheme跳转"></Button>
 
-        <Button
-            android:id="@+id/bt_fingerprint"
-            android:text="指纹" />
-    </TableRow>
+            <Button
+                android:id="@+id/bt_web_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="webview|home">
+            </Button>
+        </com.zhy.view.flowlayout.FlowLayout>
+    </LinearLayout>
 
-    <TableRow>
 
-        <Button
-            android:id="@+id/bt_tf_camera"
-            android:text="智能相机" />
-
-        <Button
-            android:id="@+id/bt_ar_solar"
-            android:text="AR solar gallery" />
-
-        <Button
-            android:id="@+id/bt_camerax"
-            android:text="camera_x" />
-    </TableRow>
-
-    <TextView android:text="webview" />
-
-    <TableRow>
-        <Button
-            android:id="@+id/bt_web_scheme"
-            android:text="webview|scheme跳转"></Button>
-        <Button
-            android:id="@+id/bt_web_fengniao"
-            android:text="webview|蜂鸟摄影"></Button>
-    </TableRow>
-</TableLayout>
+</androidx.core.widget.NestedScrollView>

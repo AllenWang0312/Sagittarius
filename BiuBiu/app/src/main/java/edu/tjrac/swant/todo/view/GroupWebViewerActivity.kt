@@ -7,7 +7,7 @@ import androidx.viewpager.widget.ViewPager
 import edu.tjrac.swant.baselib.common.adapter.V4FragmentsPagerAdapter
 import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.baselib.common.base.BaseBarFragment
-import edu.tjrac.swant.baselib.common.base.BaseWebViewFragment
+import edu.tjrac.swant.baselib.common.base.BaseToolbarWebViewFragment
 import edu.tjrac.swant.todo.adapter.GroupWebViewPageTransation
 import edu.tjrac.swant.todo.bean.WebInfo
 import edu.tjrac.swant.wjzx.R
@@ -27,7 +27,7 @@ class GroupWebViewerActivity : BaseActivity() {
 
         adapter = V4FragmentsPagerAdapter(supportFragmentManager)
         for (item in infos!!) {
-            adapter!!.addFragment(BaseWebViewFragment(item.url, R.layout.activity_service_text), item.title)
+            adapter!!.addFragment(BaseToolbarWebViewFragment(item.url, R.layout.activity_service_text), item.title)
         }
         viewpager.setOffscreenPageLimit(infos!!.size)
 

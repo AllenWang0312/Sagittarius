@@ -1,4 +1,4 @@
-if (asGroup.toBoolean()) {
+if (asModule.toBoolean()) {
     apply plugin: 'com.android.library'
 } else {
     apply plugin: 'com.android.application'
@@ -29,7 +29,7 @@ android {
     sourceSets {
         main {
 
-            if (asGroup.toBoolean()) {
+            if (asModule.toBoolean()) {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/release/AndroidManifest.xml'

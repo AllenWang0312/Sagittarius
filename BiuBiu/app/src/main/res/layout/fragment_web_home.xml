@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.tjrac.swant.webview.BaseWebFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <edu.tjrac.swant.baselib.common.widget.StatusBarPlaceHolderView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </edu.tjrac.swant.baselib.common.widget.StatusBarPlaceHolderView>
+
+        <include layout="@layout/toolbar"></include>
+
+        <WebView
+            android:id="@+id/web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           >
+        </WebView>
+
+    </LinearLayout>
+</FrameLayout>
+
