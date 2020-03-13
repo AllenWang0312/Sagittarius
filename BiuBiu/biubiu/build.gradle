@@ -16,19 +16,16 @@ android {
     buildToolsVersion build_version
     sourceSets {
 //        main.assets.srcDirs += 'src/main/assets_tensorflow'
-
         main {
             res.srcDirs += 'src/main/res_meitu'
             res.srcDirs += 'src/main/res_material'
             res.srcDirs += 'src/main/res_taopiaopiao'
-
             if (asModule.toBoolean()) {
                 manifest.srcFile 'src/main/release/AndroidManifest.xml'
             }  else {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             }
         }
-
     }
 
     defaultConfig {

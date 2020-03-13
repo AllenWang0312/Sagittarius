@@ -67,7 +67,7 @@
             android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
         <activity android:name="edu.tjrac.swant.fingerprint.FingerPrintBaseActivity" />
         <activity android:name="edu.tjrac.swant.baselib.common.base.SingleFragmentActivity" />
-        <activity android:name="edu.tjrac.swant.tensorflow.TensorFlowActivity" />
+        <activity android:name="com.mindorks.tensorflowexample.TensorFlowActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

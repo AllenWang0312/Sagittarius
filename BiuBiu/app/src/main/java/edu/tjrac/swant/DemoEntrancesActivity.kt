@@ -10,7 +10,7 @@ import com.google.ar.sceneform.samples.solarsystem.SolarActivity
 import edu.tjrac.swant.baselib.util.IntentUtil
 import edu.tjrac.swant.fingerprint.FingerPrintBaseActivity
 import edu.tjrac.swant.recorder.Camera2VideoActivity
-import edu.tjrac.swant.tensorflow.TensorFlowActivity
+import com.mindorks.tensorflowexample.TensorFlowActivity
 import edu.tjrac.swant.webview.ChromeActivity
 import edu.tjrac.swant.wjzx.R
 import kotlinx.android.synthetic.main.activity_demo_entrances.*

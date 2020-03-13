@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package edu.tjrac.swant.tensorflow;
+package com.mindorks.tensorflowexample;
 
 import android.graphics.Bitmap;
 import android.graphics.RectF;
