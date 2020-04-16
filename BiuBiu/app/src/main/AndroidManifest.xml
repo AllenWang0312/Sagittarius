@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.tjrac.swant.wjzx">
+<!--    android:installLocation="preferExternal"auto-->
+
     <!--
      "AR Required" apps must declare minSdkVersion ≥ 24.
         "AR Optional" apps must declare minSdkVersion ≥ 14
