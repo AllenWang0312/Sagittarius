@@ -39,7 +39,7 @@ class ZoneListAdapter(data: MutableList<MultiItemEntity>?) : BaseMultiItemQuickA
             var ll_content = helper?.getView<LinearLayout>(R.id.ll_content)
             if (null != item?.album?.images && item?.album?.images?.size!! > 0) {
                 var dp4 = UiUtil.dp2px(mContext, 4).toInt()
-                UiUtil.inflateGallery(mContext, ll_content, dp4, item.album?.images!!)
+//                UiUtil.inflateGallery(mContext, ll_content, dp4, item.album?.images!!)
             }
         }
     }

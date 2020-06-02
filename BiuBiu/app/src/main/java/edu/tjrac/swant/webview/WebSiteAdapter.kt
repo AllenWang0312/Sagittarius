@@ -19,7 +19,7 @@ class WebSiteAdapter(data: MutableList<MultiItemEntity>?) : BaseMultiItemQuickAd
 
     }
 
-    override fun convert(helper: BaseViewHolder?, item: MultiItemEntity?) {
+    override fun convert(helper: BaseViewHolder, item: MultiItemEntity?) {
         if (item is Website) {
             helper?.setText(R.id.tv_name, item?.name)
 //                ?.setText(R.id.iv_icon,item?.icon_url)

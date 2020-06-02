@@ -1,2 +1,6 @@
-include ':app', ':biubiu', ':libs', ':biubiu_launcher', 'kbaselib', 'amap','picture_library','ucrop'
+include ':app', ':biubiu',   'kbaselib', 'amap',':libs'
+//,'picture_library','ucrop',
+//':biubiu_launcher',
 //':simplemediaplayer',
+include ':tensorflow'
+include ':ar'

@@ -41,7 +41,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="false"
-        tools:ignore="GoogleAppIndexingWarning">
+        >
+<!--        tools:ignore="GoogleAppIndexingWarning"-->
+
         <activity android:name="edu.tjrac.swant.webview.ChromeActivity"></activity>
         <activity android:name="edu.tjrac.swant.webview.BaseWebFragment" />
         <!--
@@ -57,19 +59,18 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-
         </activity> <!-- filesystem -->
         <activity
             android:name="edu.tjrac.swant.DemoEntrancesActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
+             >
+<!--            android:theme="@style/Theme.AppCompat.DayNight.Dialog"-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name="edu.tjrac.swant.fingerprint.FingerPrintBaseActivity" />
         <activity android:name="edu.tjrac.swant.baselib.common.base.SingleFragmentActivity" />
-        <activity android:name="com.mindorks.tensorflowexample.TensorFlowActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -107,8 +108,9 @@
 
         <activity
             android:name="edu.tjrac.swant.media.RTSPMediaPlayerActivity"
-            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.Translucent" />
+<!--        android:screenOrientation="landscape"-->
+
 
         <receiver android:name="edu.tjrac.swant.media.MediaKeyReceiver">
             <intent-filter>
@@ -117,7 +119,6 @@
         </receiver>
 
         <activity android:name="edu.tjrac.swant.recorder.Camera2VideoActivity" />
-        <activity android:name="com.google.ar.sceneform.samples.solarsystem.SolarActivity" />
     </application>
 
 </manifest>

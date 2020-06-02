@@ -31,7 +31,7 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, Camera2VideoActivity::class.java))
             }
             R.id.bt_ar_solar->{
-                startActivity(Intent(this, SolarActivity::class.java))
+                startActivity(Intent(this, com.google.ar.sceneform.samples.solarsystem.SolarActivity::class.java))
             }
             R.id.bt_bluetooth -> {
 //                SingleFragmentActivity.start(this, BLEFragment())

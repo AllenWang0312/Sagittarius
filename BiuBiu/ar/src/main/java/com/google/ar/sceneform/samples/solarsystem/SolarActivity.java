@@ -50,7 +50,7 @@ import java.util.concurrent.ExecutionException;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import edu.tjrac.swant.wjzx.R;
+import edu.tjrac.swant.ar.R;
 
 /**
  * This is a simple example that shows how to create an augmented reality (AR) application using the

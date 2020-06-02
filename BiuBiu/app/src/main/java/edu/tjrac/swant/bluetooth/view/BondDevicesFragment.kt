@@ -26,7 +26,6 @@ class BondDevicesFragment(private val parent: BLEFragment, private val adapter: 
 //    init {
 //        this.title = title
 //    }
-
     var bound_adapter: BoundedDevicesAdapter? = null
 
     var bounded_devices: Set<BluetoothDevice>? = null

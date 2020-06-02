@@ -29,7 +29,7 @@ import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.ViewRenderable;
 
 import androidx.annotation.RequiresApi;
-import edu.tjrac.swant.wjzx.R;
+import edu.tjrac.swant.ar.R;
 
 /**
  * Node that represents a planet.

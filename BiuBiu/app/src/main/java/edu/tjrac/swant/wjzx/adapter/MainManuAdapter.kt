@@ -31,7 +31,7 @@ class MainManuAdapter(data: ArrayList<M>?) : BaseMultiItemQuickAdapter<M, BaseVi
         }
     }
 
-    override fun convert(helper: BaseViewHolder?, item: M?) {
+    override fun convert(helper: BaseViewHolder, item: M?) {
         if (item?.type == 1) {
             helper?.setText(R.id.tv_title, item.title)
             var ll_menu = helper?.getView<FrameLayout>(R.id.ll_menu)

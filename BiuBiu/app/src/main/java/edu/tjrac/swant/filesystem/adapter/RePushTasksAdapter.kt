@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.item_sub_repush_task.view.*
 class RePushTasksAdapter(data: MutableList<TaskGroup>?) :
     BaseQuickAdapter<TaskGroup, BaseViewHolder>(R.layout.item_repush_task, data) {
 
-    override fun convert(helper: BaseViewHolder?, item: TaskGroup?) {
+    override fun convert(helper: BaseViewHolder, item: TaskGroup?) {
         helper?.addOnClickListener(R.id.iv_add)
         helper?.setText(R.id.tv_name, item?.name)
         var ll_childs = helper?.getView<LinearLayout>(R.id.ll_childs)

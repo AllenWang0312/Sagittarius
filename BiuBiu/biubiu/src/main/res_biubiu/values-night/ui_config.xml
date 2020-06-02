@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    bilibili-->
+    <color name="windowBackground">#2B2B2B</color>
+    <color name="colorPrimaryDark">#3B3B3B</color>
+    <color name="colorPrimary">#3B3B3B</color>
+    <!--    <color name="colorAccent">#B35F76</color>-->
+    <color name="editBackground">#333333</color>
+    <!--    #373737-->
+
+    <!--google keep-->
+    <!--    <color name="colorPrimary">#2C2C2C</color>-->
+    <!--    <color name="colorPrimaryDark">#232323</color>-->
+    <color name="colorPrimaryLight">#474747</color>
+    <!--<color name="colorAccent">#5C38FF</color>-->
+
+    <color name="colorNormal">#979BA6</color>
+    <!--    <color name="windowBackground">#1e1c2a</color>-->
+
+    <color name="colorAccent">#FF52A0</color>
+    <!--    <color name="windowBackground">#FAFAFA</color>-->
+    <!--    <color name="editBackground">#F5F5F5</color>-->
+
+    <color name="clickable_text_color">#FF52A0</color>
+    <color name="button_positive_start_color">#FD4698</color>
+    <color name="button_positive_end_color">#FC54A0</color>
+    <color name="button_positive_color">#FF52A0</color>
+    <color name="button_unable_color">#FB79B4</color>
+
+    <color name="icon_color">#8a8a8a</color>
+    <color name="text_color_primary">#ffffff</color>//默认文字颜色
+    <color name="text_color_summary">#696870</color>
+    <color name="status_bar_color">@color/colorPrimaryDark</color>//夜间模式 文字颜色
+
+    <color name="footBarBG">#ffffff</color>//导航栏
+
+    <color name="toolbar_deliver_color">#D3D3D3</color>//分割线
+
+    <color name="divide_color">#F8F9FD</color>
+    <color name="login_divide_color">#19000000</color>
+    <!--#19000000#F8F9FD-->
+    <color name="color_content_bg">#f5f5f5</color>//背景色
+
+    <color name="tab_indicatar_color">@color/colorAccent</color>
+    //tablayout
+    <dimen name="tab_indicatar_size">1dp</dimen>
+
+    <color name="tab_bg">#ffffff</color>
+    <dimen name="tabLayoutHeight">40dp</dimen>
+
+    <color name="tab_text_accent_color">@color/colorAccent</color>//tablayout text 选中
+    <color name="tab_text_default_color">#9b9b9b</color>
+
+
+    <color name="text_color_gray">#9b9b9b</color>
+    <color name="text_color_hint">#9b9b9b</color>
+
+    //dimen
+    <dimen name="actionBarSize">48dp</dimen>
+    <dimen name="footBarSize">55dp</dimen>
+    <dimen name="footBarTransZ">8dp</dimen>
+
+    //title
+    <dimen name="title_text_size">17sp</dimen>
+    <color name="title_text_color">#303030</color>
+    <color name="title_text_color_white">#EAFEFF</color>
+    //button
+    <dimen name="button_radius">20dp</dimen>
+    <dimen name="button_height">36dp</dimen>
+
+    <dimen name="big_button_radius">5dp</dimen>
+    <dimen name="big_button_height">40dp</dimen>
+
+    <!--<color name="button_positive_startcolor">#E04040</color>-->
+    <!--<color name="button_positive_endcolor">#f05050</color>-->
+
+
+    // text
+
+    <dimen name="Lv1TextSize">17dp</dimen>
+    <color name="Lv1TextColor">#101010</color>
+
+    <dimen name="Lv2TextSize">14dp</dimen>
+    <color name="Lv2TextColor">#333333</color>
+
+    <dimen name="Lv3TextSize">14dp</dimen>
+    <color name="Lv3TextColor">#666666</color>
+
+    <dimen name="dialog_padding_hro">16dp</dimen>
+    <dimen name="dialog_padding_vert">8dp</dimen>
+
+
+<!--    <style name="home_foot_bar_style">//for radiobutton-->
+<!--        &lt;!&ndash;<item name="android:layout_width">wrap_content</item>&ndash;&gt;-->
+<!--        &lt;!&ndash;<item name="android:layout_height">match_parent</item>&ndash;&gt;-->
+<!--        &lt;!&ndash;<item name="android:layout_weight">1</item>&ndash;&gt;-->
+<!--        <item name="android:background">@null</item>-->
+<!--        <item name="android:button">@null</item>-->
+<!--        <item name="android:gravity">center</item>-->
+<!--        <item name="android:paddingTop">4dp</item>-->
+<!--        <item name="android:textColor">@drawable/tab_text_color_select</item>-->
+<!--        <item name="android:textSize">10dp</item>-->
+<!--    </style>-->
+
+    <style name="button_positive_gradient_style">//positive 按钮 带渐变
+        <item name="android:background">@drawable/shape_bt_pos_grad_bg</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="button_positive_style">//positive 按钮
+        <item name="android:background">@drawable/shape_bt_positive_bg_selecter</item>
+        <item name="android:textColor">@drawable/button_positive_text_color_selecter</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="button_neutral_style">//中性 按钮
+        <item name="android:background">@drawable/shape_bt_neutral_bg_selecter</item>
+        <item name="android:textColor">@drawable/button_neutral_text_color_selecter</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="button_positive_square_style">//positive 方形按钮
+        <item name="android:textColor">@drawable/button_positive_text_color_selecter</item>
+        <item name="android:background">@drawable/bt_positive_square_bg_selecter</item>
+        <!--<item name="android:background">@drawable/bt_positive_square_bg_selecter</item>-->
+    </style>
+
+
+    <style name="small_button_positive_style">
+        <item name="android:background">@drawable/shape_sm_bt_positive_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="button_second_style">
+        <item name="android:background">@drawable/shape_bt_second_bg</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="button_gray_stroke_style">
+        <item name="android:background">@drawable/shape_bt_gray_stroke_bg</item>
+        <item name="android:textColor">#333333</item>
+
+    </style>
+
+    <style name="button_negative_style">
+        <item name="android:background">@drawable/shape_bt_negative_bg</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="small_button_nagetive_style">
+        <item name="android:background">@drawable/shape_sm_bt_negative_bg</item>
+        <item name="android:textColor">#868686</item>
+    </style>
+
+    //MyDialogStyle
+
+    <style name="default_dialog_style" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>//dialog背景
+        <!--<item name="android:windowFrame">@null</item>//dialog 前景-->
+        <!--<item name="android:windowNoTitle">true</item>//不要title-->
+        <!--<item name="android:windowIsFloating">true</item>//false 会全屏-->
+        <!--<item name="android:windowIsTranslucent">true</item>//window透明-->
+        <!--<item name="android:windowContentOverlay">@null</item>-->
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>-->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="progress">
+        <!--<item name="android:colorAccent">@color/white</item>-->
+    </style>
+</resources>

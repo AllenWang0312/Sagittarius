@@ -25,7 +25,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.wonderkiln.camerakit.*
-import edu.tjrac.swant.wjzx.R
+import edu.tjrac.swant.tensorflow.R
 import java.util.concurrent.Executors
 
 
