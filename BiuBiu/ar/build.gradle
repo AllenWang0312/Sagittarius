@@ -1,18 +1,29 @@
-apply plugin: 'com.android.library'
+if(application.equals("ar")){
+    apply plugin: 'com.android.application'
+}else{
+    apply plugin: 'com.android.library'
+}
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-
+    compileSdkVersion compile_version
+    buildToolsVersion build_version
     sourceSets{
-        main.assets.srcDirs += 'src/main/assets_solar'
-        main.res.srcDirs += 'src/main/res_solar'
+        main{
+            assets.srcDirs += 'src/main/assets_solar'
+            res.srcDirs += 'src/main/res_solar'
+            if (application.equals("ar")) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }  else {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }
+        }
     }
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 29
+        minSdkVersion min_version
+        targetSdkVersion target_version
         versionCode 1
         versionName "1.0"
 
@@ -44,8 +55,9 @@ dependencies {
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation "com.google.ar.sceneform:core:1.14.0"
+    implementation "com.google.ar.sceneform:core:1.17.0"
     implementation 'com.google.android.material:material:1.1.0'
+    implementation project(':kbaselib')
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'

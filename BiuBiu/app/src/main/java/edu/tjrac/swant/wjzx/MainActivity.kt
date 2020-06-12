@@ -93,7 +93,7 @@ class MainActivity : BaseActivity() {
         when(title){
             R.string.bluetooth->{
                 if(bleFragment==null){
-                    bleFragment= BLEFragment()
+                    bleFragment= edu.tjrac.swant.bluetooth.view.BLEFragment()
                 }
                 changeFragment(nowFragment, bleFragment!!)
             }

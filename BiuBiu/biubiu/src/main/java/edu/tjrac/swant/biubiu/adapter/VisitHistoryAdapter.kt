@@ -11,7 +11,7 @@ import edu.tjrac.swant.biubiu.bean.VisitHistroy
 class VisitHistoryAdapter(data: MutableList<VisitHistroy>?)
     : BaseQuickAdapter<VisitHistroy, BaseViewHolder>(R.layout.item_visit_histroy, data) {
 
-    override fun convert(helper: BaseViewHolder?, item: VisitHistroy?) {
+    override fun convert(helper: BaseViewHolder, item: VisitHistroy?) {
 //        if(null!=item?.album){
 //            helper?.setText(R.id.tv_name, item?.album?.title)
 //            Glide.with(mContext).load(item?.album?.getAlbumCover())

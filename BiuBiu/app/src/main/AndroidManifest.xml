@@ -18,8 +18,7 @@
     <uses-feature
         android:name="android.hardware.camera.ar"
         android:required="true" /> <!-- 允许程序打开网络套接字 -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序设置内置sd卡的写权限 -->
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序获取网络状态 -->
@@ -59,6 +58,9 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme">
+<intent-filter>
+    <action android:name="edu.tjrac.swant.wjzx.MainActivity"></action>
+</intent-filter>
         </activity> <!-- filesystem -->
         <activity
             android:name="edu.tjrac.swant.DemoEntrancesActivity"

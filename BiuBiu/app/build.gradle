@@ -1,8 +1,8 @@
-//if (application.equals("app")) {
-apply plugin: 'com.android.application'
-//}else {
-//    apply plugin: 'com.android.library'
-//}
+if (application.equals("app")) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -19,7 +19,6 @@ android {
     }
     sourceSets {
 //                main.assets.srcDirs += 'src/main/assets_tensorflow'
-        main.res.srcDirs += 'src/main/res_bluetooth'
         main.res.srcDirs += 'src/main/res_fingerprint'
 
 //        main.assets.srcDirs += 'src/main/assets_solar'
@@ -52,6 +51,9 @@ android {
 
     defaultConfig {
         applicationId "edu.tjrac.swant.wjzx"
+        manifestPlaceholders = [
+                PKG_NAME:applicationId
+        ]
         minSdkVersion min_version
         targetSdkVersion target_version
 
@@ -108,6 +110,9 @@ kapt {
 }
 
 dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    api 'androidx.multidex:multidex:2.0.1'
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.annotation:annotation:1.1.0'
@@ -116,18 +121,13 @@ dependencies {
 
     implementation 'com.hyman:flowlayout-lib:1.1.2'
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     kapt 'com.alibaba:arouter-compiler:1.2.2'
-    api 'androidx.multidex:multidex:2.0.1'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-
 
 //    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
@@ -140,7 +140,6 @@ dependencies {
     //6.0权限管理
 
 
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
     implementation 'com.airbnb.android:lottie:2.5.4'
 
 //    api 'com.jaeger.statusbarutil:library:1.5.1'
@@ -153,6 +152,7 @@ dependencies {
 
     implementation project(':amap')
 
+    implementation project(':bluetooth')
     implementation project(':tensorflow')
     implementation project(':ar')
 //    api project(':simplemediaplayer')

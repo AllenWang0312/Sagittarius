@@ -9,10 +9,10 @@ import edu.tjrac.swant.biubiu.bean.Feedback
  * Created by wpc on 2019-11-18.
  */
 class FeedbackAdapter(data: ArrayList<Feedback>?) : BaseQuickAdapter<Feedback, BaseViewHolder>(R.layout.item_meitu_feedback, data) {
-    override fun convert(helper: BaseViewHolder?, item: Feedback?) {
+    override fun convert(helper: BaseViewHolder, item: Feedback?) {
 
-        helper?.setText(R.id.tv_content, item?.content)
-        helper?.setText(R.id.tv_like, "likes:" + item?.likes)
+        helper.setText(R.id.tv_content, item?.content)
+        helper.setText(R.id.tv_like, "likes:" + item?.likes)
 
     }
 

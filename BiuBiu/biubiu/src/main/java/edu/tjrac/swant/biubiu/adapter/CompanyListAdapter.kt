@@ -13,12 +13,12 @@ import edu.tjrac.swant.biubiu.bean.Company
  */
 class CompanyListAdapter(layoutResId: Int, data: MutableList<Company>?) : BaseQuickAdapter<Company, BaseViewHolder>(layoutResId, data) {
 
-    override fun convert(helper: BaseViewHolder?, item: Company?) {
+    override fun convert(helper: BaseViewHolder, item: Company?) {
         if(!SUtil.isEmpty(item?.logo)){
-            var iv_cover=helper?.getView<ImageView>(R.id.iv_cover)
+            var iv_cover=helper.getView<ImageView>(R.id.iv_cover)
             Glide.with(mContext).load(item?.logo).into(iv_cover!!)
         }
-        helper?.setText(R.id.tv_name, item?.name)
+        helper.setText(R.id.tv_name, item?.name)
 
     }
 

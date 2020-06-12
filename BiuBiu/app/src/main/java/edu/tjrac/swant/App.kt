@@ -3,6 +3,7 @@ package edu.tjrac.swant
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.multidex.MultiDex
 import edu.tjrac.swant.biubiu.BiuBiuApp
 
 class App : BiuBiuApp() {
@@ -55,6 +56,10 @@ class App : BiuBiuApp() {
             }
     }
 
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(context)
+    }
 
     override fun onCreate() {
         super.onCreate()

@@ -21,7 +21,7 @@ class ZoneListAdapter(data: MutableList<MultiItemEntity>?) : BaseMultiItemQuickA
         addItemType(1, R.layout.item_zone_cyc_album_kuan)
     }
 
-    override fun convert(helper: BaseViewHolder?, item: MultiItemEntity?) {
+    override fun convert(helper: BaseViewHolder, item: MultiItemEntity?) {
         if (item is ZoneTitle) {
             helper?.setText(R.id.tv_title, item.title)
         } else if (item is Zone) {

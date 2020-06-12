@@ -15,7 +15,7 @@ import edu.tjrac.swant.biubiu.R
  */
 class ImageAdapter(data: MutableList<String>?) : BaseQuickAdapter<String, BaseViewHolder>(
         R.layout.iv_100dp, data) {
-    override fun convert(helper: BaseViewHolder?, item: String?) {
+    override fun convert(helper: BaseViewHolder, item: String?) {
         var iv_cover = helper?.getView<ImageView>(R.id.iv)
         if(iv_cover!=null)
             Glide.with(mContext).load(item)
