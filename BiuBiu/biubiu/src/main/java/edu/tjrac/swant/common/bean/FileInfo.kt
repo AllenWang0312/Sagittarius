@@ -3,30 +3,35 @@ package edu.tjrac.swant.common.bean
 import android.os.Parcel
 import android.os.Parcelable
 
-import edu.tjrac.swant.biubiu.BiuBiuApp
+import edu.tjrac.swant.baselib.common.base.BaseApplication
+import org.json.JSONObject
 
 import java.io.File
+import java.io.Serializable
 
-class FileInfo : Parcelable {
+class FileInfo :Serializable, Parcelable ,JSONObject{
+    //    val PictureConfig.TYPE_IMAGE = 1
+//    val PictureConfig.TYPE_VIDEO = 2
+//    val PictureConfig.TYPE_AUDIO = 3
     var type = 0
-    var fileName: String?=""
-    var url: String ?= ""
+    var fileName: String? = ""
+    var url: String? = ""//文件是否上传成功依据
     //        File dir;
-    //        if (SUtil.isEmpty(savePath)) {
+    //        if (StringUtils.isEmpty(savePath)) {
     //            dir = new File(savePath);
     //            if (!dir.exists()) {
     //                dir.mkdirs();
     //            }
     //
     //        }
-    var savePath: String?=""
-    var absPath: String ?= ""
+    var savePath: String? = ""
+    var absPath: String? = ""
 
     constructor(fileName: String, url: String, cachePath: String?) {
         this.fileName = fileName
         this.url = url
         if (cachePath == null) {
-            savePath = BiuBiuApp.getCachePath()
+            savePath = BaseApplication.instance?.cacheDir?.absolutePath!!
         } else {
             savePath = cachePath
         }
@@ -35,9 +40,11 @@ class FileInfo : Parcelable {
     constructor(fileName: String, url: String) {
         this.fileName = fileName
         this.url = url
-        savePath = BiuBiuApp.getCachePath()
+        savePath = BaseApplication.instance?.cacheDir?.absolutePath!!
     }
-
+    constructor( url: String) {
+        this.url = url
+    }
 
     constructor(type: Int, path: String) {
         val file = File(path)
@@ -52,6 +59,7 @@ class FileInfo : Parcelable {
     protected constructor(`in`: Parcel) {
         fileName = `in`.readString()
         url = `in`.readString()
+        savePath = `in`.readString()
         absPath = `in`.readString()
     }
 

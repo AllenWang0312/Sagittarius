@@ -1,13 +1,13 @@
-package edu.tjrac.swant.image
+package edu.tjrac.swant.common.image
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.app.SharedElementCallback
 import androidx.viewpager.widget.ViewPager
-import android.view.View
 import edu.tjrac.swant.baselib.common.base.BaseBarActivity
 import edu.tjrac.swant.biubiu.R
 import kotlinx.android.synthetic.main.activity_image_preview.*

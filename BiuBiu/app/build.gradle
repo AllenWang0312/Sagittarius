@@ -31,6 +31,7 @@ android {
 //        main.res.srcDirs += 'src/main/res_download'
 //        main.res.srcDirs += 'src/main/res_faceid'
         main.res.srcDirs += 'src/main/res_filesystem'
+        main.res.srcDirs += 'src/main/res_torrent'
         main.res.srcDirs += 'src/main/res_map'
         main.res.srcDirs += 'src/main/res_meitu'
         main.res.srcDirs += 'src/main/res_todo'
@@ -121,7 +122,7 @@ dependencies {
 
     implementation 'com.hyman:flowlayout-lib:1.1.2'
 
-//    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
@@ -151,11 +152,13 @@ dependencies {
     implementation project(':kbaselib')
 
     implementation project(':amap')
-
     implementation project(':bluetooth')
     implementation project(':tensorflow')
     implementation project(':ar')
 //    api project(':simplemediaplayer')
+
+    implementation 'com.nononsenseapps:filepicker:4.1.0'
+    implementation project(path: ':simpletorrentandroid')
 
 }
 

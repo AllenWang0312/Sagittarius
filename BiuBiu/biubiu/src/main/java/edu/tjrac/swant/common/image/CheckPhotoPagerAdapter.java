@@ -1,16 +1,18 @@
-package edu.tjrac.swant.image;
+package edu.tjrac.swant.common.image;
 
 import android.content.Context;
 import android.os.Build;
-import androidx.viewpager.widget.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
 import com.bumptech.glide.Glide;
 import com.luck.picture.lib.photoview.PhotoView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 public class CheckPhotoPagerAdapter extends PagerAdapter {
 

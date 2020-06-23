@@ -9,6 +9,7 @@ import android.os.CancellationSignal
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import edu.tjrac.swant.fingerprint.core.CryptoObjectCreator.ICryptoObjectCreateListener
 
 import java.lang.ref.WeakReference
 
@@ -92,9 +93,11 @@ class FingerprintCore(context: Context) {
 
     private fun initCryptoObject() {
         try {
-            mCryptoObjectCreator = CryptoObjectCreator(CryptoObjectCreator.ICryptoObjectCreateListener {
-                // startAuthenticate(cryptoObject);
-                // 如果需要一开始就进行指纹识别，可以在秘钥数据创建之后就启动指纹认证
+            mCryptoObjectCreator = CryptoObjectCreator(object : ICryptoObjectCreateListener {
+                override fun onDataPrepared(cryptoObject: FingerprintManager.CryptoObject?) {
+                    // startAuthenticate(cryptoObject);
+                    // 如果需要一开始就进行指纹识别，可以在秘钥数据创建之后就启动指纹认证
+                }
             })
         } catch (throwable: Throwable) {
             //            FPLog.log("create cryptoObject failed!");

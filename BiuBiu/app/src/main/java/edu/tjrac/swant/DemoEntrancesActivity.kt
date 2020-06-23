@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.google.ar.sceneform.samples.solarsystem.SolarActivity
+import com.masterwok.demosimpletorrentandroid.activities.TorrentActivity
 import edu.tjrac.swant.baselib.util.IntentUtil
 import edu.tjrac.swant.fingerprint.FingerPrintBaseActivity
 import edu.tjrac.swant.recorder.Camera2VideoActivity
@@ -55,6 +56,9 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
 //                startActivity(IntentUtil.openUrlWithSystemChrome("xianzhilms://test.report.com/index.html?lms=3"))
                 startActivity(IntentUtil.openUrlWithSystemChrome("xianzhilms://wj.qq.com/s2/5112378/27bc?id=26&type=questionnaire"))
             }
+            R.id.bt_torrent_download->{
+                startActivity(Intent(this, TorrentActivity::class.java))
+            }
         }
     }
 
@@ -70,6 +74,7 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
         bt_camera2?.setOnClickListener(this)
         bt_web_home?.setOnClickListener(this)
         bt_web_scheme?.setOnClickListener(this)
+        bt_torrent_download?.setOnClickListener(this)
 
     }
 

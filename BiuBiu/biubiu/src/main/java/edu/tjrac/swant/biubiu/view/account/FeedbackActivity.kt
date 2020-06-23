@@ -114,7 +114,7 @@ class FeedbackActivity : BaseBarActivity(),View.OnClickListener {
 
         recycler.layoutManager = GridLayoutManager(mContext, 4)
         images.add(FileInfo())
-        adapter = UploadImageAdapter(4, images,R.layout.item_upload_file)
+        adapter = UploadImageAdapter(4, images,R.layout.item_upload_file,true)
         adapter.infoView = tv_image_info
         adapter.setOnItemClickListener { adapter, view, position ->
             Log.i("playing_position", position.toString())

@@ -5,13 +5,13 @@ import android.os.Bundle
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import edu.tjrac.swant.baselib.common.base.BaseActivity
-import edu.tjrac.swant.image.ImagePreviewActivity
 import edu.tjrac.swant.biubiu.R
 import edu.tjrac.swant.biubiu.adapter.ImageAdapter
 import edu.tjrac.swant.biubiu.bean.Album
 import edu.tjrac.swant.biubiu.net.BR
 import edu.tjrac.swant.biubiu.net.NESubscriber
 import edu.tjrac.swant.biubiu.net.Net
+import edu.tjrac.swant.common.image.ImagePreviewActivity
 import kotlinx.android.synthetic.main.activity_album_detail.*
 
 class AlbumDetailActivity : BaseActivity() {

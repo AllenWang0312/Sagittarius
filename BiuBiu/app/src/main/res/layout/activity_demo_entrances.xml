@@ -103,6 +103,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="文件系统" />
+            <Button
+                android:id="@+id/bt_torrent_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="torrent下载" />
         </com.zhy.view.flowlayout.FlowLayout>
 
 

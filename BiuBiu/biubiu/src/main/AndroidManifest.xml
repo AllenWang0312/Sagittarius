@@ -28,7 +28,7 @@
 
         <!-- common -->
         <activity
-            android:name="edu.tjrac.swant.image.ImagePreviewActivity"
+            android:name="edu.tjrac.swant.common.image.ImagePreviewActivity"
             android:launchMode="singleTop"/>
         <activity android:name=".view.account.FeedbackListActivity"/>
         <activity android:name=".view.mine.SettingActivity"/>
