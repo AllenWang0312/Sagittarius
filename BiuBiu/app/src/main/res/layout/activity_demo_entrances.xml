@@ -56,6 +56,22 @@
             android:layout_width="wrap_content"
             android:padding="4dp"
             android:layout_height="wrap_content"
+            android:text="VR" />
+        <com.zhy.view.flowlayout.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            zhy:max_select="-1">
+            <Button
+                android:id="@+id/bt_vr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="play VR video" />
+
+        </com.zhy.view.flowlayout.FlowLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:padding="4dp"
+            android:layout_height="wrap_content"
             android:text="AR core" />
         <com.zhy.view.flowlayout.FlowLayout
             android:layout_width="match_parent"

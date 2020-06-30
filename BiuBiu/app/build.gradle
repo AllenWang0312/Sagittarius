@@ -73,6 +73,14 @@ android {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
         }
+//        productFlavors {
+//            free {
+//                applicationIdSuffix ".free"
+//            }
+//            pro {
+//                applicationIdSuffix ".pro"
+//            }
+//        }
         //arouter end
     }
 //    signingConfigs {
@@ -97,9 +105,22 @@ android {
             minifyEnabled proguard
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        release {
-            minifyEnabled proguard
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        debug {
+            applicationIdSuffix ".debug"
+//            minifyEnabled proguard
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    splits {
+        density {
+            enable true
+            reset()
+            include "mdpi", "hdpi"
+        }
+        abi {
+            enable true
+            reset()
+            include "x86", "x86_64"
         }
     }
 }
@@ -154,7 +175,9 @@ dependencies {
     implementation project(':amap')
     implementation project(':bluetooth')
     implementation project(':tensorflow')
+    implementation project(':vr')
     implementation project(':ar')
+
 //    api project(':simplemediaplayer')
 
     implementation 'com.nononsenseapps:filepicker:4.1.0'

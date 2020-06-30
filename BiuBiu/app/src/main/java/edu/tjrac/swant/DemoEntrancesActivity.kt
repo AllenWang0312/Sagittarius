@@ -12,6 +12,7 @@ import edu.tjrac.swant.baselib.util.IntentUtil
 import edu.tjrac.swant.fingerprint.FingerPrintBaseActivity
 import edu.tjrac.swant.recorder.Camera2VideoActivity
 import com.mindorks.tensorflowexample.TensorFlowActivity
+import edu.tjrac.swant.vr.VRVideoActivity
 import edu.tjrac.swant.webview.ChromeActivity
 import edu.tjrac.swant.wjzx.R
 import kotlinx.android.synthetic.main.activity_demo_entrances.*
@@ -31,8 +32,11 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
             R.id.bt_camera2->{
                 startActivity(Intent(this, Camera2VideoActivity::class.java))
             }
+            R.id.bt_vr->{
+                startActivity(Intent(this,VRVideoActivity::class.java))
+            }
             R.id.bt_ar_solar->{
-                startActivity(Intent(this, com.google.ar.sceneform.samples.solarsystem.SolarActivity::class.java))
+                startActivity(Intent(this, SolarActivity::class.java))
             }
             R.id.bt_bluetooth -> {
 //                SingleFragmentActivity.start(this, BLEFragment())
@@ -69,6 +73,7 @@ class DemoEntrancesActivity : AppCompatActivity(), View.OnClickListener {
         bt_bluetooth?.setOnClickListener(this)
         bt_fingerprint?.setOnClickListener(this)
         bt_tf_camera?.setOnClickListener(this)
+        bt_vr?.setOnClickListener(this)
         bt_ar_solar?.setOnClickListener(this)
         bt_file_system?.setOnClickListener(this)
         bt_camera2?.setOnClickListener(this)
