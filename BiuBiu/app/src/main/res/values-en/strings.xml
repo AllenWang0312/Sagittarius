@@ -3,7 +3,7 @@
 
 
 
-    <string name="map">Map</string>
+    <string name="edu.tjrac.swant.map">Map</string>
     <string name="note">Note</string>
     <string name="notice">Notice</string>
     <string name="help_feedback">HelpAndFeedback</string>

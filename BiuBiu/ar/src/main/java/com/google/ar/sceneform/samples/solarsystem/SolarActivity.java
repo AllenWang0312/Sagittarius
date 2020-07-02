@@ -25,6 +25,7 @@ import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.Config;
@@ -56,6 +57,7 @@ import edu.tjrac.swant.ar.R;
  * This is a simple example that shows how to create an augmented reality (AR) application using the
  * ARCore and Sceneform APIs.
  */
+@Route(path="/module/ar/solar")
 public class SolarActivity extends AppCompatActivity {
   private static final int RC_PERMISSIONS = 0x123;
   private boolean cameraPermissionRequested;

@@ -8,7 +8,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import edu.tjrac.swant.baselib.util.Phone
+import edu.tjrac.swant.baselib.util.FileUtils
 import edu.tjrac.swant.filesystem.ChoseFileDialog
 import edu.tjrac.swant.filesystem.bean.TaskGroup
 import edu.tjrac.swant.wjzx.R
@@ -65,7 +65,7 @@ class RePushTasksAdapter(data: MutableList<TaskGroup>?) :
 
     var dialog: ChoseFileDialog? = null
     private fun showChoseFileDialog(edit: EditText) {
-        var dialog = ChoseFileDialog(Phone.SDCardPath!!,
+        var dialog = ChoseFileDialog(FileUtils.getSDcardPath(),
             DialogInterface.OnClickListener { dia, which -> edit.setText(dialog?.getPath()) })
         dialog?.show((mContext as Activity).fragmentManager, "chose_file")
     }

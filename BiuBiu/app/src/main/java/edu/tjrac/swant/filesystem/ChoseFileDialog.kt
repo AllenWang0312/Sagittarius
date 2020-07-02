@@ -13,7 +13,8 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
-import edu.tjrac.swant.baselib.util.Phone
+import edu.tjrac.swant.baselib.util.FileUtils
+
 import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.baselib.util.T
 import edu.tjrac.swant.filesystem.adapter.DiaplayFileListAdapter
@@ -29,7 +30,7 @@ class ChoseFileDialog() : DialogFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.iv_back -> {
-                if (dir?.path.equals(Phone.SDCardPath)) {
+                if (dir?.path.equals(FileUtils.getSDcardPath())) {
                     T.show("已经是根目录了")
                 } else {
                     enter(dir?.parentFile!!)

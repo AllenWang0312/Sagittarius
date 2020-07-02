@@ -933,7 +933,7 @@ public class SubsamplingScaleImageView extends View {
             return;
         }
 
-        // When using tiles, on first render with no tile map ready, initialise it and kick off async base image loading.
+        // When using tiles, on first render with no tile edu.tjrac.swant.map ready, initialise it and kick off async base image loading.
         if (tileMap == null && decoder != null) {
             initialiseBaseLayer(getMaxBitmapDimensions(canvas));
         }
@@ -1430,7 +1430,7 @@ public class SubsamplingScaleImageView extends View {
     }
 
     /**
-     * Once source image and view dimensions are known, creates a map of sample size to tile grid.
+     * Once source image and view dimensions are known, creates a edu.tjrac.swant.map of sample size to tile grid.
      */
     private void initialiseTileMap(Point maxTileDimensions) {
         debug("initialiseTileMap maxTileDimensions=%dx%d", maxTileDimensions.x, maxTileDimensions.y);

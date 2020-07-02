@@ -24,11 +24,12 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.wonderkiln.camerakit.*
 import edu.tjrac.swant.tensorflow.R
 import java.util.concurrent.Executors
 
-
+@Route(path="/tensorflow/main")
 class TensorFlowActivity : AppCompatActivity() {
 
     private var classifier: Classifier? = null

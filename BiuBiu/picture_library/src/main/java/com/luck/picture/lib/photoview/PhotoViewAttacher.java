@@ -596,7 +596,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     /**
      * Helper method that maps the supplied Matrix to the current Drawable
      *
-     * @param matrix - Matrix to map Drawable against
+     * @param matrix - Matrix to edu.tjrac.swant.map Drawable against
      * @return RectF - Displayed Rectangle
      */
     private RectF getDisplayRect(Matrix matrix) {

@@ -1,4 +1,4 @@
-package edu.tjrac.swant.wjzx
+package edu.tjrac.swant
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,13 +16,14 @@ import edu.tjrac.swant.baselib.common.base.BaseActivity
 import edu.tjrac.swant.bluetooth.view.BLEFragment
 import edu.tjrac.swant.map.MapFragment
 import edu.tjrac.swant.todo.view.WebWorkSpaceActivity
+import edu.tjrac.swant.wjzx.R
 import edu.tjrac.swant.wjzx.adapter.MainManuAdapter
 import edu.tjrac.swant.wjzx.bean.M
 import edu.tjrac.swant.wjzx.view.fragment.NoteFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_nav_head.view.*
 
-@Route(path = "/app/main")
+@Route(path = "/module/app/main")
 class MainActivity : BaseActivity() {
 
     var nav_recycler: RecyclerView? = null
@@ -31,7 +32,7 @@ class MainActivity : BaseActivity() {
 
     @JvmField
     @Autowired(name = "fragment")
-    var selected:Int?=R.string.map
+    var selected:Int?= R.string.map
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -172,42 +173,15 @@ class MainActivity : BaseActivity() {
         if (!nav_data?.isEmpty()!!) {
             nav_data?.clear()
         }
-        nav_data?.add(M(1,R.string.bluetooth,R.drawable.ic_bluetooth_grey_600_24dp,R.drawable.ic_bluetooth_white_24dp))
-        nav_data?.add(
-                M(
-                        1,
-                        R.string.map,
-                        R.drawable.ic_map_grey_600_24dp,
-                        R.drawable.ic_map_white_24dp
-                )
+        nav_data?.add(M(1, R.string.bluetooth, R.drawable.ic_bluetooth_grey_600_24dp, R.drawable.ic_bluetooth_white_24dp))
+        nav_data?.add(M(1, R.string.map, R.drawable.ic_map_grey_600_24dp, R.drawable.ic_map_white_24dp)
         )
-        nav_data?.add(
-                M(
-                        1,
-                        R.string.note,
-                        R.drawable.ic_lightbulb_outline_grey_600_24dp,
-                        R.drawable.ic_lightbulb_outline_white_24dp,
-                        false
-                )
+        nav_data?.add(M(1, R.string.note, R.drawable.ic_lightbulb_outline_grey_600_24dp, R.drawable.ic_lightbulb_outline_white_24dp, false)
         )
-        nav_data?.add(
-                M(
-                        1,
-                        R.string.notice,
-                        R.drawable.ic_notifications_none_grey_600_24dp,
-                        R.drawable.ic_notifications_none_white_24dp,
-                        false
-                )
+        nav_data?.add(M(1, R.string.notice, R.drawable.ic_notifications_none_grey_600_24dp, R.drawable.ic_notifications_none_white_24dp, false)
         )
 
-        nav_data?.add(
-                M(
-                        1,
-                        R.string.assistant,
-                        R.drawable.ic_lightbulb_outline_grey_600_24dp,
-                        R.drawable.ic_lightbulb_outline_white_24dp,
-                        false
-                )
+        nav_data?.add(M(1, R.string.assistant, R.drawable.ic_lightbulb_outline_grey_600_24dp, R.drawable.ic_lightbulb_outline_white_24dp, false)
         )
 
         nav_data?.add(M(0))

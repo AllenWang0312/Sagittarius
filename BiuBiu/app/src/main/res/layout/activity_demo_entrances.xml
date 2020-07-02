@@ -11,7 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
+        <Button
+            android:id="@+id/bt_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MainActivity" />
         <TextView
             android:layout_width="wrap_content"
             android:padding="4dp"
@@ -119,6 +123,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="文件系统" />
+            <Button
+                android:id="@+id/bt_smb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMB" />
             <Button
                 android:id="@+id/bt_torrent_download"
                 android:layout_width="wrap_content"

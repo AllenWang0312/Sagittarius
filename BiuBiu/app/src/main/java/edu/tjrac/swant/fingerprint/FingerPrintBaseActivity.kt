@@ -12,11 +12,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.alibaba.android.arouter.facade.annotation.Route
 import edu.tjrac.swant.fingerprint.core.FingerprintCore
 import edu.tjrac.swant.fingerprint.core.FingerprintCore.IFingerprintResultListener
 import edu.tjrac.swant.wjzx.R
 
 @TargetApi(Build.VERSION_CODES.M)
+@Route(path = "/finger/main")
 class FingerPrintBaseActivity : AppCompatActivity(), View.OnClickListener {
     private var mFingerprintCore: FingerprintCore? = null
     private var mKeyguardLockScreenManager: KeyguardLockScreenManager? = null

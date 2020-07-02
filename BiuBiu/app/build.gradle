@@ -5,10 +5,8 @@ if (application.equals("app")) {
 }
 
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.alibaba.arouter'
-
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion compile_version
@@ -19,8 +17,15 @@ android {
     }
     sourceSets {
 //                main.assets.srcDirs += 'src/main/assets_tensorflow'
-        main.res.srcDirs += 'src/main/res_fingerprint'
-
+        //        main.res.srcDirs += 'src/main/res_gank'
+//        main.res.srcDirs += 'src/main/res_kaiyan'
+//        main.res.srcDirs += 'src/main/res_netimage'
+//        main.res.srcDirs += 'src/main/res_qqmusic'
+//        main.res.srcDirs += 'src/main/res_theme_default'
+//        main.res.srcDirs += 'src/main/res_trafficmonitor'
+//        main.res.srcDirs += 'src/main/res_zhihu'
+//        main.res.srcDirs += 'src/main/res_todo'
+//        main.res.srcDirs += 'src/main/res-newyear'
 //        main.assets.srcDirs += 'src/main/assets_solar'
 //        main.res.srcDirs += 'src/main/res_solar'
 //        main.res.srcDirs += 'src/main/res_arcore'
@@ -30,23 +35,16 @@ android {
 //        main.res.srcDirs += 'src/main/res_douyin'
 //        main.res.srcDirs += 'src/main/res_download'
 //        main.res.srcDirs += 'src/main/res_faceid'
+        main.res.srcDirs += 'src/main/res_fingerprint'
         main.res.srcDirs += 'src/main/res_filesystem'
         main.res.srcDirs += 'src/main/res_torrent'
         main.res.srcDirs += 'src/main/res_map'
         main.res.srcDirs += 'src/main/res_meitu'
         main.res.srcDirs += 'src/main/res_todo'
         main.res.srcDirs += 'src/main/res_assistant'
-//        main.res.srcDirs += 'src/main/res_gank'
-//        main.res.srcDirs += 'src/main/res_kaiyan'
         main.res.srcDirs += 'src/main/res_media'
         main.res.srcDirs += 'src/main/res_recorder'
-//        main.res.srcDirs += 'src/main/res_netimage'
-//        main.res.srcDirs += 'src/main/res_qqmusic'
-//        main.res.srcDirs += 'src/main/res_theme_default'
-//        main.res.srcDirs += 'src/main/res_trafficmonitor'
-//        main.res.srcDirs += 'src/main/res_zhihu'
-//        main.res.srcDirs += 'src/main/res_todo'
-//        main.res.srcDirs += 'src/main/res-newyear'
+
         main.jniLibs.srcDirs = ['libs']
     }
 
@@ -64,11 +62,11 @@ android {
         versionName "1.0"
 //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //arouter
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
-//            }
-//        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
@@ -111,18 +109,19 @@ android {
 //            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    splits {
-        density {
-            enable true
-            reset()
-            include "mdpi", "hdpi"
-        }
-        abi {
-            enable true
-            reset()
-            include "x86", "x86_64"
-        }
-    }
+//    splits {
+//        density {
+//            enable true
+//            reset()
+//            include "mdpi", "hdpi"
+//        }
+//        abi {
+//            enable true
+//            reset()
+//            include "x86", "x86_64"
+//        }
+//    }
+    dynamicFeatures = [':features:samba']
 }
 
 kapt {
@@ -130,26 +129,26 @@ kapt {
         arg("AROUTER_MODULE_NAME", project.getName())
     }
 }
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 //    api 'androidx.multidex:multidex:2.0.1'
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+//    implementation 'androidx.appcompat:appcompat:1.1.0'
+//    implementation 'androidx.cardview:cardview:1.0.0'
+//    implementation 'androidx.annotation:annotation:1.1.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'com.hyman:flowlayout-lib:1.1.2'
 
-    testImplementation 'junit:junit:4.12'
+//    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    kapt 'com.alibaba:arouter-compiler:1.2.2'
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
 
 //    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
@@ -169,14 +168,16 @@ dependencies {
     if (application.equals("app")) {
         implementation project(':biubiu')
     }
-    implementation project(':libs')
-    implementation project(':kbaselib')
-
+    api project(':base')
     implementation project(':amap')
     implementation project(':bluetooth')
-    implementation project(':tensorflow')
-    implementation project(':vr')
-    implementation project(':ar')
+
+//    implementation project(':kbaselib')
+
+
+//    implementation project(':tensorflow')
+//    implementation project(':vr')
+//    implementation project(':ar')
 
 //    api project(':simplemediaplayer')
 

@@ -7,7 +7,6 @@ import android.os.AsyncTask
 import android.view.LayoutInflater
 import android.widget.TextView
 import edu.tjrac.swant.baselib.util.FileUtils
-import edu.tjrac.swant.baselib.util.Phone
 import edu.tjrac.swant.baselib.util.SUtil
 import edu.tjrac.swant.wjzx.R
 import java.io.File
@@ -49,9 +48,9 @@ class ResetPathAsyTask : AsyncTask<String, String, Int> {
         for (i in map?.keys!!) {
             if(i.contains("#")) continue
 
-            var from = File(Phone.SDCardPath + i)
+            var from = File(FileUtils.getSDcardPath() + i)
             if(from.exists()&&from.isDirectory){
-                var to = File(Phone.SDCardPath + map?.get(i))
+                var to = File(FileUtils.getSDcardPath() + map?.get(i))
                 if (!to.exists()) {
                     to.mkdirs()
                 }

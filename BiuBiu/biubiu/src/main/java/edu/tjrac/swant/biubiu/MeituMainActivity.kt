@@ -45,7 +45,7 @@ import kotlinx.android.synthetic.main.search_view.*
 
 
 @SuppressLint("RestrictedApi")
-@Route(path = "/biubiu/main" )
+@Route(path = "/module/biubiu/main" )
 class MeituMainActivity : BaseFragmentActivity(),
 //        BottomNavigationView.OnNavigationItemSelectedListener,
         ViewPager.OnPageChangeListener, View.OnClickListener {

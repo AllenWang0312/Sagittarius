@@ -82,6 +82,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api 'com.android.support:multidex:1.0.3'
 
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    kapt 'com.alibaba:arouter-annotation:1.0.6'
     kapt 'com.alibaba:arouter-compiler:1.2.2'
 //    implementation 'androidx.appcompat:appcompat:1.1.0'
 //    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
@@ -95,8 +97,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.8'
 
     implementation 'com.hyman:flowlayout-lib:1.1.2'
-    implementation project(':kbaselib')
-    implementation project(':libs')
+    implementation project(':base')
 //    api project(':picture_library')
 
     api 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.8'//2.3.2

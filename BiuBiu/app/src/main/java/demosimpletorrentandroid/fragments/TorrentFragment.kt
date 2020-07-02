@@ -41,7 +41,7 @@ class TorrentFragment : Fragment()
         fun newInstance(
                 context: Context
                 , tabIndex: Int
-                , magnetUri: Uri?
+                , magnetUri: Uri
                 , torrentSessionOptions: TorrentSessionOptions
         ): TorrentFragment = TorrentFragment().apply {
             this.tabIndex = tabIndex
@@ -209,13 +209,13 @@ class TorrentFragment : Fragment()
 
         private val context: WeakReference<Context>
         private val torrentSession: WeakReference<TorrentSession>
-        val magnetUri: Uri?
+        val magnetUri: Uri
 
         @Suppress("ConvertSecondaryConstructorToPrimary")
         constructor(
                 context: Context
                 , torrentSession: TorrentSession
-                , magnetUri: Uri?
+                , magnetUri: Uri
         ) : super() {
             this.context = WeakReference(context)
             this.torrentSession = WeakReference(torrentSession)

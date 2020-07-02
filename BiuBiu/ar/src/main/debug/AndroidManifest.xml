@@ -1,5 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.tjrac.swant.ar" >
+
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
+
     <application>
         <activity android:name="com.google.ar.sceneform.samples.solarsystem.SolarActivity" />
     </application>

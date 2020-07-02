@@ -107,7 +107,7 @@ class GalleryContentAdapter(
 
     fun bindToPathRecyc(Recyc: RecyclerView) {
         pathRecyc = Recyc
-        pathRecyc?.layoutManager = LinearLayoutManager(mContext, OrientationHelper.HORIZONTAL, false)
+        pathRecyc?.layoutManager = LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false)
         pathRecyc?.adapter = pathRecycAdapter
     }
 
@@ -146,12 +146,12 @@ class GalleryContentAdapter(
 
     fun setDatas(rootName: String?, dirfile: File?) {
         dir = dirfile
-        this.setDatas(rootName, dirfile?.listFiles()!!)
+        this.setDatas(rootName, dirfile?.listFiles())
     }
 
     fun setDatas(rootName: String?, data: Array<File>) {
         val files = ArrayList<File>()
-        for (file in data!!) {
+        for (file in data) {
             files.add(file)
         }
         this.setDatas(rootName, files)
@@ -258,7 +258,7 @@ class GalleryContentAdapter(
         //            }
         //        }
         if (item.isDirectory) {
-            helper.setText(R.id.tv_title, item.name + "(" + item.list().size + ")")
+            helper.setText(R.id.tv_title, item.name +if(null==item.list()){""}else{ "(" + item.list().size + ")"})
         } else {
             helper.setText(R.id.tv_title, item.name)
         }
@@ -290,8 +290,6 @@ class GalleryContentAdapter(
                 }
             }
         }
-
-
         //        helper.addOnClickListener(R.id.iv);
 
     }

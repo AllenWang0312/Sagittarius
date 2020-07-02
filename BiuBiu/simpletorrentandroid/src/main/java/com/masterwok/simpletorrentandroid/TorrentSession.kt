@@ -333,12 +333,12 @@ open class TorrentSession(
     private fun downloadUsingContentUri(
             context: Context
             , downloadLocation: File
-            , torrentUri: Uri?
+            , torrentUri: Uri
     ) {
         val bytes = context
                 .contentResolver
                 .openInputStream(torrentUri)
-                .readBytes()
+                ?.readBytes()
 
         sessionManager.download(
                 TorrentInfo.bdecode(bytes)
@@ -411,7 +411,7 @@ open class TorrentSession(
      * Attempt to start a torrent download. The provided [Context] is used to resolve
      * an input stream from the content resolver when the URI is a file or content scheme.
      */
-    fun start(context: Context, torrentUri: Uri?) {
+    fun start(context: Context, torrentUri: Uri) {
         setInitialStartState()
 
         if (!isValidTorrentUri(torrentUri)) {

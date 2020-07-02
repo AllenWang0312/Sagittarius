@@ -1,6 +1,7 @@
+include ':features:samba'
 include ':vr'
 include ':bluetooth'
-include ':app', ':biubiu',   ':kbaselib', ':amap',':libs'
+include ':app', ':biubiu',   ':kbaselib', ':amap',':base'
 //include ':picture_library',':ucrop'
 //':biubiu_launcher',
 //':simplemediaplayer',

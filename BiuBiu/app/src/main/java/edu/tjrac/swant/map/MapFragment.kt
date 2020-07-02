@@ -20,7 +20,6 @@ import edu.tjrac.swant.wjzx.NearUser
 import edu.tjrac.swant.wjzx.R
 import edu.tjrac.swant.wjzx.Random
 import edu.tjrac.swant.wjzx.adapter.MyInfoAdapter
-import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_map.view.*
 
 class MapFragment : BaseFragment(), AMap.OnMyLocationChangeListener,
@@ -70,7 +69,7 @@ class MapFragment : BaseFragment(), AMap.OnMyLocationChangeListener,
         rotateAnimation =
             RotateAnimation(lastBearing, bearing, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
         rotateAnimation?.fillAfter = true;
-        iv_compass.startAnimation(rotateAnimation)
+        v?.iv_compass.startAnimation(rotateAnimation)
         lastBearing = bearing
     }
 
@@ -110,10 +109,10 @@ class MapFragment : BaseFragment(), AMap.OnMyLocationChangeListener,
             R.id.bt_location -> {
                 lock = !lock
                 if (lock) {
-                    bt_location.setImageDrawable(resources.getDrawable(R.drawable.ic_my_location_white_18dp))
+                    v?.bt_location.setImageDrawable(resources.getDrawable(R.drawable.ic_my_location_white_18dp))
                     myLocationStyle?.myLocationType(MyLocationStyle.LOCATION_TYPE_MAP_ROTATE)
                 } else {
-                    bt_location.setImageDrawable(resources.getDrawable(R.drawable.ic_location_searching_white_18dp))
+                   v?. bt_location.setImageDrawable(resources.getDrawable(R.drawable.ic_location_searching_white_18dp))
                     myLocationStyle?.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER)
                 }
                 aMap?.myLocationStyle = myLocationStyle
@@ -125,8 +124,8 @@ class MapFragment : BaseFragment(), AMap.OnMyLocationChangeListener,
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_map, container, false)
         sp = activity?.getSharedPreferences(Config.SP.CACHE, Context.MODE_PRIVATE)
-        v.map?.onCreate(savedInstanceState)
-        aMap = v.map?.map
+        v?.map?.onCreate(savedInstanceState)
+        aMap = v?.map?.map
 
         mUiSettings = aMap?.uiSettings
         mUiSettings?.isZoomControlsEnabled = false//不显示缩放
@@ -245,7 +244,7 @@ class MapFragment : BaseFragment(), AMap.OnMyLocationChangeListener,
 
 //    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
 //        super.onSaveInstanceState(outState, outPersistentState)
-//        map.onSaveInstanceState(outState)
+//        edu.tjrac.swant.map.onSaveInstanceState(outState)
 //    }
 
 }

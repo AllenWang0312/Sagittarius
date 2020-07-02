@@ -401,7 +401,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
         var uri: Uri? = null
         when (type) {
             MediaUtil.MediaType.file -> {
-                val file = File(Phone.SDCardPath)
+                val file = File(FileUtils.getSDcardPath())
                 adapter?.path_histroy?.clear()
                 adapter?.path_histroy?.push(file)
                 adapter?.setDatas("本地文件", file)
@@ -609,7 +609,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
             backable = adapter?.back()!!
         }
     }
-    var config = File(Phone.SDCardPath + RESET_PATH_SETTING_PATH)
+    var config = File(FileUtils.getSDcardPath() + RESET_PATH_SETTING_PATH)
 
     override fun onLongClick(v: View?): Boolean {
         when (v?.id) {
@@ -646,7 +646,7 @@ class GalleryFragment : BaseFragment(), View.OnClickListener, View.OnLongClickLi
 //                    savePushTask()
 //                }
 //                foot.bt_run.setOnClickListener {
-//                    var asyTask = RePushTask(activity?, map(rePushTasks?))
+//                    var asyTask = RePushTask(activity?, edu.tjrac.swant.map(rePushTasks?))
 //                    asyTask.execute()
 //                }
 //                pop.layoutManager = LinearLayoutManager(activity)

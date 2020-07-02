@@ -8,7 +8,7 @@
     <string name="zn_rtw">中文(繁體)</string>
     <string name="en">English</string>
 
-    <string name="map">地圖</string>
+    <string name="edu.tjrac.swant.map">地圖</string>
     <string name="note">記事</string>
     <string name="notice">提醒</string>
     <string name="settings">設置</string>

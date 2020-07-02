@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">libs</string>
+    <string name="app_name">base</string>
 
-    <string name="map">地图</string>
+    <string name="edu.tjrac.swant.map">地图</string>
     <string name="note">记事</string>
     <string name="notice">提醒</string>
     <string name="file_system">文件管理</string>
