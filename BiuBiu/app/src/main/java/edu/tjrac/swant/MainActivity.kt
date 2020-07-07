@@ -23,7 +23,7 @@ import edu.tjrac.swant.wjzx.view.fragment.NoteFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_nav_head.view.*
 
-@Route(path = "/module/app/main")
+@Route(path = Router.app_main)
 class MainActivity : BaseActivity() {
 
     var nav_recycler: RecyclerView? = null
@@ -94,7 +94,7 @@ class MainActivity : BaseActivity() {
         when(title){
             R.string.bluetooth->{
                 if(bleFragment==null){
-                    bleFragment= edu.tjrac.swant.bluetooth.view.BLEFragment()
+                    bleFragment= BLEFragment()
                 }
                 changeFragment(nowFragment, bleFragment!!)
             }

@@ -51,13 +51,14 @@ import java.util.concurrent.ExecutionException;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import edu.tjrac.swant.Router;
 import edu.tjrac.swant.ar.R;
 
 /**
  * This is a simple example that shows how to create an augmented reality (AR) application using the
  * ARCore and Sceneform APIs.
  */
-@Route(path="/module/ar/solar")
+@Route(path= Router.ar_solar)
 public class SolarActivity extends AppCompatActivity {
   private static final int RC_PERMISSIONS = 0x123;
   private boolean cameraPermissionRequested;
@@ -242,6 +243,7 @@ public class SolarActivity extends AppCompatActivity {
 
   @Override
   protected void onResume() {
+
     super.onResume();
     if (arSceneView == null) {
       return;

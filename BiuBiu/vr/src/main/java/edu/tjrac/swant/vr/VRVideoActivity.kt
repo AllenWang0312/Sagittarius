@@ -5,16 +5,16 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.telecom.VideoProfile.isPaused
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.vr.sdk.widgets.video.VrVideoEventListener
 import com.google.vr.sdk.widgets.video.VrVideoView
+import edu.tjrac.swant.Router
 import kotlinx.android.synthetic.main.activity_v_r_video.*
 import java.io.IOException
 
 
-@Route(path = "/module/vr/main")
+@Route(path = Router.vr_player)
 class VRVideoActivity : AppCompatActivity() {
     internal class ActivityEventListener : VrVideoEventListener() {
         override fun onLoadSuccess() { //加载成功
